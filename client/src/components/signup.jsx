@@ -3,10 +3,10 @@ import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
 // import { app } from "firebase";
 
-class login extends Component {
+class signUp extends Component {
   constructor(props) {
     super(props);
-    this.logInEmailPassword = this.authWithEmailPassword.bind(this);
+    this.signUpEmailPassword = this.authWithEmailPassword.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       redirect: false,
@@ -14,27 +14,8 @@ class login extends Component {
   }
 // fire.auth().signOut();
 
-// SignIn
-  logInEmailPassword(event) {
-    event.preventDefault();
-    const email = this.emailInput.value;
-    const password = this.passwordInput.value;
-    fire
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        if (user && user.email) {
-          this.loginForm.reset();
-          this.setState({ redirect: true });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
 // Sign up function
-  signUp(event){
+  signUpEmailPassword(event){
       event.preventDefault();
       fire.auth().createUserWithEmailAndPassword(email, password).then((user)=>{
 
@@ -52,7 +33,7 @@ class login extends Component {
       <div>
         <form
           onSubmit={(event) => {
-            this.logInEmailPassword(event);
+            this.signUpEmailPassword(event);
           }}
           ref={(form) => {
             this.loginForm = form;
@@ -96,4 +77,4 @@ class login extends Component {
   }
 }
 
-export default login;
+export default signUp;
