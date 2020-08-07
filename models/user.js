@@ -10,8 +10,8 @@ const UserSchema = new Schema({
   },
   email: {
     type: String,
-    required: "Full name is required.",
-    validate: [ isEmail, 'invalid email' ]
+    unique: true,
+    match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
   },
   password: {
     type: String,

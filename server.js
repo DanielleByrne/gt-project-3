@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const message = require("./models/message");
+const db = require("./models");
 
 const app = express();
 
@@ -18,20 +18,42 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-app.post("/api/message", (req,res)=>{
-message.create(req.body).then(newMessage=>{
-  console.log(newMessage)
-  res.json(newMessage)})
+//Test post route for message
+app.post("/api/message", (req, res) => {
+  db.Message.create(req.body).then((newMessage) => {
+    console.log(newMessage);
+    res.json(newMessage);
+  });
 });
+
+//Test post route for workout
+app.post("/api/workout", (req, res) => {
+  db.Workout.create(req.body).then((newWorkout) => {
+    console.log(newWorkout);
+    res.json(newWorkout);
+  });
+});
+
+//Test post route for user
+app.post("/api/user", (req, res) => {
+  db.User.create(req.body).then((newUser) => {
+    console.log(newUser);
+    res.json(newUser);
+  });
+});
+
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
 
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/healthycompetition", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    process.env.MONGODB_URI || "mongodb://localhost/healthycompetition",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("Successfully connected to database.");
   })
