@@ -75,7 +75,8 @@ app.listen(PORT, () => {
 // const CronJob = require('../lib/cron.js').CronJob;
 
 // console.log('Before job instantiation');
-// const job = new CronJob('00 00 00 * * *', function() {
+// const job = new CronJob('00 07 00 * * *', function() {
+  //^^^ 07 because GMT for EST 3am
 // 	const d = new Date();
 //^^^^not required either just to show date in console log
 // 	console.log('Midnight:', d);
