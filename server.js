@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const message = require("./models/message");
 
 const app = express();
 
@@ -17,12 +18,17 @@ app.get("/api/config", (req, res) => {
   });
 });
 
+app.post("/api/message", (req,res)=>{
+message.create(req.body).then(newMessage=>{
+  console.log(newMessage)
+  res.json(newMessage)})
+});
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
 
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/HealthyCompetition", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/healthycompetition", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
