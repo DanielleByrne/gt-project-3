@@ -5,4 +5,7 @@ module.exports = {
   };
   
   //db.Workout for ex
+
+
+//In controller ==> db.Message.findUpdate ... push user id into array 
   

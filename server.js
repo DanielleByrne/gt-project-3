@@ -65,3 +65,21 @@ mongoose
 app.listen(PORT, () => {
   console.log(`Express server running on http://localhost:${PORT}`);
 });
+
+
+//cronjob everyday at 3am it runs a function that loops through users,for each, creates a workout and pushes to array
+// so when user wakes up, workout is default false in array https://www.npmjs.com/package/cron
+//user.Workout return an array and loop through 
+//https://github.com/kelektiv/node-cron/tree/master/examples
+  
+// const CronJob = require('../lib/cron.js').CronJob;
+
+// console.log('Before job instantiation');
+// const job = new CronJob('00 00 00 * * *', function() {
+// 	const d = new Date();
+//^^^^not required either just to show date in console log
+// 	console.log('Midnight:', d);
+//^^^^where we would put our function
+// });
+// console.log('After job instantiation');
+// job.start();

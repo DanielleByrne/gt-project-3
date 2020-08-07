@@ -11,13 +11,7 @@ const WorkoutSchema = new Schema({
   completed_workout: {
     type: Boolean,
     default: false
-  },
-  user_id: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Users",
-    },
-  ],
+  }
 });
 
 const Workout = mongoose.model("Workout", WorkoutSchema);

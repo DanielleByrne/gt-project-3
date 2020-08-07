@@ -19,6 +19,12 @@ const UserSchema = new Schema({
     required: "Password is required.",
     validate: [({ length }) => length >= 6, "Password should be longer."]
   },
+  workouts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Workout",
+    },
+  ],
 });
 
 const User = mongoose.model("User", UserSchema);
