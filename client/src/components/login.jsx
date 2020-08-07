@@ -1,34 +1,27 @@
 import React, { Component } from "react";
-import fbApp from "../base";
-import { Redirect } from "react-router-dom";
-import { app } from "firebase";
+import fire from "../config/Fire";
+import { Redirect, Link } from "react-router-dom";
+// import { app } from "firebase";
 
 class login extends Component {
   constructor(props) {
     super(props);
-    this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
+    this.logIn = this.authWithEmailPassword.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       redirect: false,
     };
   }
-  authWithEmailPassword(event) {
+// fire.auth().signOut();
+
+// SignIn
+  logIn(event) {
     event.preventDefault();
     const email = this.emailInput.value;
     const password = this.passwordInput.value;
-    fbApp
+    fire
       .auth()
-      .fetchProvidersForEmail(email)
-      .then((providers) => {
-        if (providers.length === 0) {
-          return fbApp.auth().createUserWithEmailAndPassword(email, password);
-          // Create User
-        } else if (providers.indexOf("password") === -1) {
-          // FB login used
-        } else {
-          return app.auth().signInWithEmailAndPassword(email, password);
-          // sign user in
-        }
-      })
+      .signInWithEmailAndPassword(email, password)
       .then((user) => {
         if (user && user.email) {
           this.loginForm.reset();
@@ -36,11 +29,23 @@ class login extends Component {
         }
       })
       .catch((error) => {
-        throw error;
+        console.log(error);
       });
   }
+  
+// Sign up function
+  signUp(event){
+      event.preventDefault();
+      fire.auth().createUserWithEmailAndPassword(email, password).then((user)=>{
+
+      }).catch(error)=>{
+          console.log(error)
+      }
+  }
+
   render() {
     if (this.state.redirect === true) {
+      // If user is authenticated redirect to a diff page below
       return <Redirect to="/" />;
     }
     return (
