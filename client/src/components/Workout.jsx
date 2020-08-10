@@ -7,7 +7,17 @@ class Workout extends Component {
     return (
       <div>
         <Card title="Get after it!" style={{ width: 300, marginLeft: "39%" }}>
-          <Button type="primary" size="large" icon={<FireTwoTone twoToneColor="#f18f8e"/>} style={{backgroundColor: "pink", paddingBottom:"45px",borderRadius: "12px", fontSize:"25px"}}>
+          <Button
+            type="primary"
+            size="large"
+            icon={<FireTwoTone twoToneColor="#f18f8e" />}
+            style={{
+              backgroundColor: "pink",
+              paddingBottom: "45px",
+              borderRadius: "12px",
+              fontSize: "25px",
+            }}
+          >
             {/* position 9 makes it centered in the inspector, can't get it working in the code  */}
             I worked out today!
           </Button>

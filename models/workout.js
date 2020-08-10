@@ -12,6 +12,13 @@ const WorkoutSchema = new Schema({
     type: Boolean,
     default: false
   }
+  // ,
+  // user: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Users",
+  //   },
+  // ],
 });
 
 const Workout = mongoose.model("Workout", WorkoutSchema);

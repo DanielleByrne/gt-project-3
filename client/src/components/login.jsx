@@ -50,10 +50,10 @@ class Login extends Component {
             this.loginForm = form;
           }}
         >
-          <label className="">
-            Email
+          {/* <label className=""> */}
+            
             <input
-              style={{ width: "100%" }}
+              style={{ width: "50%", margin: "10px", marginTop: "20px", border: " 1px solid #f18f8e" }}
               className=""
               name="email"
               type="email"
@@ -62,11 +62,13 @@ class Login extends Component {
               }}
               placeholder="Email"
             ></input>
-          </label>
-          <label className="">
-            Password
+          {/* </label> */}
+          <br>
+          </br>
+          {/* <label className=""> */}
+           
             <input
-              style={{ width: "100%" }}
+              style={{ width: "50%", margin: "10px" , border: " 1px solid #f18f8e" }}
               className=""
               name="password"
               type="password"
@@ -75,9 +77,11 @@ class Login extends Component {
               }}
               placeholder="Password"
             ></input>
-          </label>
+          {/* </label> */}
+          <br>
+          </br>
           <input
-            style={{ width: "100%" }}
+            style={{ margin: "10px" }}
             type="submit"
             className="button"
             value="Log In"
