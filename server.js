@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const db = require("./models");
 const userController = require("./controllers/userControllers");
-// const workoutsController = require("./controllers/workoutsController");
+const workoutsController = require("./controllers/workoutsController");
 
 const app = express();
 
@@ -21,7 +21,7 @@ app.get("/api/config", (req, res) => {
 });
 
 app.use(userController);
-// app.use(workoutsController);
+app.use(workoutsController);
 
 //Test post route for message
 // app.post("/api/message", (req, res) => {
