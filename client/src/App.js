@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./container/Home/Home";
 import Login from "./components/login";
 import fire from "./config/Fire";
+import {Layout} from "antd";
+import "./App.css"
 
 class App extends Component {
   constructor(props) {
@@ -40,11 +42,20 @@ class App extends Component {
     this.authListener();
   }
 
+
   render() {
+    const { Header } = Layout; 
     return (
       <div className="App">
+        <Layout>
+          <Header className = "heading">
+            <h1 className = "title">
+              Healthy Competition
+            </h1>
+          </Header>
+        </Layout>
+        {/* <Login /> */}
         {this.state.user ? <Home /> : <Login />}
-        <Login />
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
