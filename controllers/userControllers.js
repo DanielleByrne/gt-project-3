@@ -20,39 +20,40 @@ router.post("/api/signup", function(req,res){
     })
 })
 
-//Get workout calendar or list specific to that user. 
-router.get("/api/workout/:id", function(req, res) {
-    db.Workout.find({}).then(workout =>{
-        res.json(workout)
-    })
-})
-
-
 //Get user (for dashboard purposes)
 router.get("/api/user/:id", function(req, res) {
     db.User.findOne({}).then(userFound =>{
-        res.json(userFound)
+        res.json({
+          error: false,
+          data: userFound,
+          message: "Successfully found user.",
+        });
+      }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          error: true,
+          data: null,
+          message: "Failed to get user.",
+        });
     })
 })
 
-//Create workout (using that cronjon?) for each specific user ID
-router.post("/api/workout/:id", function(req,res){
-    db.Workout.create(req.body).then(createdWorkout => {
-        res.json(createdWorkout)
-    })
-})
-
-//Update workout (false --> true) by workout ID
-router.put("/api/workout/:id", function(req,res){
-    db.Workout.findOneAndUpdate(req.params).then(updatedWorkout => {
-        res.json(updatedWorkout)
-    })
-})
 
 //Delete account by user ID
 router.delete("/api/user/:id", function(req,res){
     db.User.destroy(req.params).then(deletedAccount => {
-        res.json(deletedAccount)
+        res.json({
+          error: false,
+          data: deletedAccount,
+          message: "Successfully deleted account.",
+        });
+      }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          error: true,
+          data: null,
+          message: "Failed to delete.",
+        });
     })
 })
 

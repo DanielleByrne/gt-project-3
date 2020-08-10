@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const db = require("./models");
-const Controller = require("./controllers/API");
+const userController = require("./controllers/userControllers");
+// const workoutsController = require("./controllers/workoutsController");
 
 const app = express();
 
@@ -19,7 +20,8 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-app.use(Controller);
+app.use(userController);
+// app.use(workoutsController);
 
 //Test post route for message
 // app.post("/api/message", (req, res) => {
