@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import axios from "axios";
+import Axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./container/Home/Home";
-import Login from "./components/login";
+import Home from "./components/Home";
+import Login from "./components/Login";
 import fire from "./config/Fire";
+import SignUp from "./components/Signup"
 
 class App extends Component {
   constructor(props) {
@@ -25,6 +26,9 @@ class App extends Component {
   //     }
   //   });
   // };
+  logout(){
+    fire.auth().signOut();
+  }
   authListener() {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -43,13 +47,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {/* <Home /> */}
         {this.state.user ? <Home /> : <Login />}
-        <Login />
+        <div>Here is the signup form</div>
+        <SignUp />
         <Router>
           <Switch>
-            <Route exact path="/" component={Home} />
+            {/* <Route exact path="/" component={Home} /> */}
           </Switch>
         </Router>
+        <button onClick={this.logout}>Log Out</button>
       </div>
     );
   }

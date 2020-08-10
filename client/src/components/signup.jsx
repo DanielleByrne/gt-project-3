@@ -16,6 +16,8 @@ class SignUp extends Component {
   // Sign up function
   signUpEmailPassword(event) {
     event.preventDefault();
+    const email = this.emailInput.value;
+    const password = this.passwordInput.value;
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
