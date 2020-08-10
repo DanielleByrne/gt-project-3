@@ -6,8 +6,8 @@ class Workout extends Component {
   render() {
     return (
       <div>
-        <Card title="Get after it!" style={{ width: 300, marginLeft: "40%" }}>
-          <Button type="primary" size="large" icon={<FireTwoTone twoToneColor="#f18f8e"/>} style={{backgroundColor: "pink", padding:"50px", borderRadius: "12px"}}>
+        <Card title="Get after it!" style={{ width: 300, marginLeft: "39%" }}>
+          <Button type="primary" size="large" icon={<FireTwoTone twoToneColor="#f18f8e"/>} style={{backgroundColor: "pink", paddingBottom:"45px",borderRadius: "12px", fontSize:"25px"}}>
             I worked out today!
           </Button>
           <p>
