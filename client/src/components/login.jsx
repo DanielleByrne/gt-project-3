@@ -6,15 +6,14 @@ import { Redirect, Link } from "react-router-dom";
 class login extends Component {
   constructor(props) {
     super(props);
-    this.logInEmailPassword = this.authWithEmailPassword.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.logInEmailPassword = this.logInEmailPassword.bind(this);
     this.state = {
       redirect: false,
     };
   }
-// fire.auth().signOut();
+  // fire.auth().signOut();
 
-// SignIn
+  // SignIn
   logInEmailPassword(event) {
     event.preventDefault();
     const email = this.emailInput.value;
@@ -33,16 +32,7 @@ class login extends Component {
       });
   }
 
-// Sign up function
-  signUp(event){
-      event.preventDefault();
-      fire.auth().createUserWithEmailAndPassword(email, password).then((user)=>{
-
-      }).catch(error)=>{
-          console.log(error)
-      }
-  }
-
+  // Sign up function
   render() {
     if (this.state.redirect === true) {
       // If user is authenticated redirect to a diff page below
