@@ -22,7 +22,7 @@ router.post("/api/signup", function(req,res){
 
 //Get workout calendar or list?
 router.get("/api/workout", function(req, res) {
-    db.Workout.findAll({}).then(workout =>{
+    db.Workout.find({}).then(workout =>{
         res.json(workout)
     })
 })
@@ -36,7 +36,7 @@ router.get("/api/user/:id", function(req, res) {
 })
 
 //Create workout (using that cronjon?)
-router.post("/api/user/:id", function(req,res){
+router.post("/api/workout/:id", function(req,res){
     db.Workout.create(req.body).then(createdWorkout => {
         res.json(createdWorkout)
     })
