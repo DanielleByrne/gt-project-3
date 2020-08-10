@@ -3,20 +3,23 @@ import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
 // import { app } from "firebase";
 
-class signUp extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.signUpEmailPassword = this.authWithEmailPassword.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.signUpEmailPassword = this.signUpEmailPassword.bind(this);
     this.state = {
       redirect: false,
     };
   }
-  // fire.auth().signOut();
+  // fire.auth().signOut(); code needed to sign out of page. easily attached to button
 
   // Sign up function
+  // takes email and password with signup (may be able to store more data with setValue)
+  // similar to login once user is created, redirect will be set to true and user will be redirected.
   signUpEmailPassword(event) {
     event.preventDefault();
+    const email = this.emailInput.value;
+    const password = this.passwordInput.value;
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -79,4 +82,4 @@ class signUp extends Component {
   }
 }
 
-export default signUp;
+export default SignUp;

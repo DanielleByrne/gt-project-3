@@ -3,7 +3,7 @@ import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
 // import { app } from "firebase";
 
-class login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.logInEmailPassword = this.logInEmailPassword.bind(this);
@@ -14,6 +14,8 @@ class login extends Component {
   // fire.auth().signOut();
 
   // SignIn
+  // takes email and password from login and authenticates
+  // If authenticated redirect is set to true allowing line 41 to work.
   logInEmailPassword(event) {
     event.preventDefault();
     const email = this.emailInput.value;
@@ -32,7 +34,7 @@ class login extends Component {
       });
   }
 
-  // Sign up function
+// Basic form included below. Email and password required.
   render() {
     if (this.state.redirect === true) {
       // If user is authenticated redirect to a diff page below
@@ -86,4 +88,4 @@ class login extends Component {
   }
 }
 
-export default login;
+export default Login;
