@@ -20,8 +20,8 @@ router.post("/api/signup", function(req,res){
     })
 })
 
-//Get workout calendar or list?
-router.get("/api/workout", function(req, res) {
+//Get workout calendar or list specific to that user. 
+router.get("/api/workout/:id", function(req, res) {
     db.Workout.find({}).then(workout =>{
         res.json(workout)
     })
@@ -35,21 +35,21 @@ router.get("/api/user/:id", function(req, res) {
     })
 })
 
-//Create workout (using that cronjon?)
+//Create workout (using that cronjon?) for each specific user ID
 router.post("/api/workout/:id", function(req,res){
     db.Workout.create(req.body).then(createdWorkout => {
         res.json(createdWorkout)
     })
 })
 
-//Update workout (false --> true)
+//Update workout (false --> true) by workout ID
 router.put("/api/workout/:id", function(req,res){
     db.Workout.findOneAndUpdate(req.params).then(updatedWorkout => {
         res.json(updatedWorkout)
     })
 })
 
-//Delete account
+//Delete account by user ID
 router.delete("/api/user/:id", function(req,res){
     db.User.destroy(req.params).then(deletedAccount => {
         res.json(deletedAccount)
