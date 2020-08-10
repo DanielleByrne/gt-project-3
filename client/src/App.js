@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Login from "./components/Login";
+import Home from "./container/Home/Home";
+import Login from "./components/login";
+import Workout from "./components/Workout";
 import fire from "./config/Fire";
-import SignUp from "./components/Signup"
+import {Layout} from "antd";
+import "./App.css"
+// import Home from "./components/Home";
+// import Login from "./components/Login";
+// import fire from "./config/Fire";
+import SignUp from "./components/signup"
 
 class App extends Component {
   constructor(props) {
@@ -44,19 +50,27 @@ class App extends Component {
     this.authListener();
   }
 
+
   render() {
+    const { Header } = Layout; 
     return (
       <div className="App">
-        {/* <Home /> */}
+        <Layout>
+          <Header className = "heading">
+            <h1 className = "title">
+              Healthy Competition
+            </h1>
+          </Header>
+        </Layout>
+        {/* <Login /> */}
         {this.state.user ? <Home /> : <Login />}
-        <div>Here is the signup form</div>
-        <SignUp />
         <Router>
           <Switch>
             {/* <Route exact path="/" component={Home} /> */}
           </Switch>
         </Router>
         <button onClick={this.logout}>Log Out</button>
+        <Workout/>
       </div>
     );
   }
