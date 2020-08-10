@@ -36,7 +36,9 @@ router.get("/api/user/:id", function(req, res) {
 })
 
 //Create workout (using that cronjon?) for each specific user ID
+//How can we connect body to the ID ? req.body is just date/complete so it's created on a users
 router.post("/api/workout/:id", function(req,res){
+    req.body.userId = req.params.id
     db.Workout.create(req.body).then(createdWorkout => {
         res.json(createdWorkout)
     })
