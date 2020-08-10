@@ -29,9 +29,9 @@ class App extends Component {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
-        setUser(user);
+        // setUser(user);
       } else {
-        setUser(null);
+        this.setState({ user: null });
       }
     });
   }
@@ -39,18 +39,19 @@ class App extends Component {
   componentDidMount() {
     this.authListener();
   }
+
   render() {
-    return;
-    <div className="App">
-      {/* If user is logged in send to Home, if not send to login (change with correct links) */}
-      {this.state.user ? <Home /> : <Login />}
-      <Login />
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-        </Switch>
-      </Router>
-    </div>;
+    return (
+      <div className="App">
+        {this.state.user ? <Home /> : <Login />}
+        <Login />
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </Router>
+      </div>
+    );
   }
 }
 
