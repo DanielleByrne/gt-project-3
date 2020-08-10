@@ -12,16 +12,18 @@ class signUp extends Component {
       redirect: false,
     };
   }
-// fire.auth().signOut();
+  // fire.auth().signOut();
 
-// Sign up function
-  signUpEmailPassword(event){
-      event.preventDefault();
-      fire.auth().createUserWithEmailAndPassword(email, password).then((user)=>{
-
-      }).catch(error)=>{
-          console.log(error)
-      }
+  // Sign up function
+  signUpEmailPassword(event) {
+    event.preventDefault();
+    fire
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((user) => {})
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
