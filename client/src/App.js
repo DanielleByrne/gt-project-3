@@ -3,6 +3,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./container/Home/Home";
 import Login from "./components/login";
+import Workout from "./components/Workout";
 import fire from "./config/Fire";
 import {Layout} from "antd";
 import "./App.css"
@@ -61,6 +62,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
           </Switch>
         </Router>
+        <Workout/>
       </div>
     );
   }
