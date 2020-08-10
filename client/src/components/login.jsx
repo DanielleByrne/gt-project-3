@@ -3,7 +3,7 @@ import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
 // import { app } from "firebase";
 
-class login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.logInEmailPassword = this.logInEmailPassword.bind(this);
@@ -86,4 +86,4 @@ class login extends Component {
   }
 }
 
-export default login;
+export default Login;

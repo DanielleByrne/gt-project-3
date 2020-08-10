@@ -3,11 +3,10 @@ import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
 // import { app } from "firebase";
 
-class signUp extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.signUpEmailPassword = this.authWithEmailPassword.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.signUpEmailPassword = this.signUpEmailPassword.bind(this);
     this.state = {
       redirect: false,
     };
@@ -79,4 +78,4 @@ class signUp extends Component {
   }
 }
 
-export default signUp;
+export default SignUp;
