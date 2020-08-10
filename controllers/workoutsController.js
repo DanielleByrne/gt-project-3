@@ -1,9 +1,32 @@
 const router = require("express").Router();
 const db = require("../models/index");
 
+
+//Get all workouts
+router.get("/api/workout", function (req, res) {
+    db.Workout.find({})
+      .then((workout) => {
+        res.json({
+          error: false,
+          data: workout,
+          message: "Successfully found workout.",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          error: true,
+          data: null,
+          message: "Failed to find out.",
+        });
+      });
+  });
+
+
 //Get workout calendar or list specific to that user.
 router.get("/api/workout/:id", function (req, res) {
-  db.Workout.find({})
+  db.User.find({})
+  .populate("workouts")
     .then((workout) => {
       res.json({
         error: false,
@@ -24,12 +47,12 @@ router.get("/api/workout/:id", function (req, res) {
 //Create workout (using that cronjon?) for each specific user ID
 //How can we connect body to the ID ? req.body is just date/complete so it's created on a users
 router.post("/api/workout/:id", function (req, res) {
-  req.body.userId = req.params.id;
   db.Workout.create(req.body)
+//   .populate("workouts")
     .then((createdWorkout) => {
       res.json({
         error: false,
-        data: userFound,
+        data: createdWorkout,
         message: "Successfully created workout.",
       });
     })

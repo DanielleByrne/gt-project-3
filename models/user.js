@@ -18,7 +18,8 @@ const UserSchema = new Schema({
     trim: true,
     required: "Password is required.",
     validate: [({ length }) => length >= 6, "Password should be longer."]
-  },
+  }
+  ,
   workouts: [
     {
       type: Schema.Types.ObjectId,
