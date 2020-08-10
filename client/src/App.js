@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./container/Home/Home";
+import Home from "./components/Home";
 import Login from "./components/login";
 import Workout from "./components/Workout";
 import fire from "./config/Fire";
@@ -63,14 +63,15 @@ class App extends Component {
           </Header>
         </Layout>
         {/* <Login /> */}
-        {this.state.user ? <Home /> : <Login />}
+        {/* {this.state.user ? <Home /> : <Login />} */}
         <Router>
           <Switch>
-            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path="/" component={Home} />
+            <Route exact path="/workout" component={Workout}/>
           </Switch>
         </Router>
         <button onClick={this.logout}>Log Out</button>
-        <Workout/>
+        {/* <Workout/> */}
       </div>
     );
   }
