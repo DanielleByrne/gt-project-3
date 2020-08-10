@@ -15,20 +15,16 @@ import React, { Component } from "react";
 import Login from "./login"
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {},
-    };
-  }
+  
 
-  componentDidMount() {
-    this.authListener();
-  }
+//   componentDidMount() {
+//     this.authListener();
+//   }
   render() {
     return <div>
         <Login/>
-        {this.state.user ? <Home /> : <Login />}
+        {/* Need to figure out after things are set up */}
+        {/* {this.state.user ? <Home /> : <Login />} */}
     </div>;
   }
 }

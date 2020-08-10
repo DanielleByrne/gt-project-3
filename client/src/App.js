@@ -60,6 +60,7 @@ class App extends Component {
             <h1 className = "title">
               Healthy Competition
             </h1>
+           {this.state.user ? <button style ={{marginLeft: "70%", backgroundColor: "coral", marginBottom: "20%" }} onClick={this.logout}>Log Out</button> : null} 
           </Header>
         </Layout>
         {/* <Login /> */}
@@ -70,7 +71,6 @@ class App extends Component {
             <Route exact path="/workout" component={Workout}/>
           </Switch>
         </Router>
-        <button onClick={this.logout}>Log Out</button>
         {/* <Workout/> */}
       </div>
     );
