@@ -14,12 +14,10 @@ const MessageSchema = new Schema({
     type: String,
     default: "This is a test."
   },
-  user_id: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Users",
-    },
-  ],
+  username: {
+    type: String,
+    required: "username required"
+  }
 });
 
 const Message = mongoose.model("Message", MessageSchema);
