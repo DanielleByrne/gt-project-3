@@ -93,6 +93,7 @@ class App extends Component {
                     backgroundColor: "coral",
                     marginBottom: "20%",
                     color: "white",
+                    float: "right",
                   }}
                   onClick={this.logout}
                 >
