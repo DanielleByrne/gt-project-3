@@ -38,6 +38,7 @@ class App extends Component {
   // };
   logout() {
     fire.auth().signOut();
+    localStorage.clear();
   }
   authListener() {
     fire.auth().onAuthStateChanged((user) => {

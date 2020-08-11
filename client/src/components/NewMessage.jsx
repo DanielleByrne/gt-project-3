@@ -5,7 +5,7 @@ import { Input } from "antd";
 import axios from "axios";
 const { Search } = Input;
 
-const NewMessage = (props) => {
+const NewMessage = () => {
   function handleMessageSubmit(msg) {
     const userEmail = localStorage.getItem("email");
     const data = {
