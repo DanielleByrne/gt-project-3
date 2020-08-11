@@ -70,7 +70,9 @@ class SignUp extends Component {
               width: "50%",
               margin: "10px",
               marginTop: "20px",
-              border: " 1px solid #f18f8e",
+              border: " 1px solid lightsteelblue",
+              height: "35px",
+
             }}
             className=""
             name="email"
@@ -88,7 +90,9 @@ class SignUp extends Component {
               width: "50%",
               margin: "10px",
               marginTop: "20px",
-              border: " 1px solid #f18f8e",
+              // border: " 1px solid #ECFEE8",
+              border: "1px solid lightsteelblue",
+              height: "35px",
             }}
             className=""
             name="password"
@@ -104,9 +108,14 @@ class SignUp extends Component {
           <input
             style={{ margin: "10px", 
             margin: "10px",
-            backgroundColor: "coral",
+            backgroundColor: "lightcoral",
+            width: "100px", 
+            height: "35px",
             color: "white",
-            border: "1px solid white", }}
+            border: "1px solid #ECFEE8", 
+            borderRadius: "12px",
+          
+          }}
             type="submit"
             className="button"
             // I CHANGED THE VALUE OF THE BUTTON TO SIGN UP I DON'T KNOW IF THAT MESSES ANYTHING UP 

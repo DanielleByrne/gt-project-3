@@ -44,7 +44,7 @@ class Workout extends Component {
             size="large"
             icon={<BookTwoTone twoToneColor="#f18f8e" />}
             style={{
-              backgroundColor: "pink",
+              backgroundColor: "darksalmon",
               padding: "10px",
               borderRadius: "12px",
               margin: "20px",
@@ -63,7 +63,7 @@ class Workout extends Component {
             size="large"
             icon={<ThunderboltTwoTone twoToneColor="#f18f8e" />}
             style={{
-              backgroundColor: "pink",
+              backgroundColor: "darksalmon",
               padding: "10px",
               borderRadius: "12px",
               verticalAlign: "middle",
@@ -79,24 +79,22 @@ class Workout extends Component {
             Consistent hard work gains success. Greatness will come.{" "}
           </p>
           <Button
-          type="primary"
-          size="large"
-          icon={<FundTwoTone twoToneColor="#f18f8e" />}
-          style={{
-            backgroundColor: "pink",
-            // padding: "20px",
-            borderRadius: "12px",
-            width: "300px",
-            height: "100px",
-            marginLeft: "5%",
-
-          }}
-        >
-          See how you stack up!
-        </Button>
+            type="primary"
+            size="large"
+            icon={<FundTwoTone twoToneColor="#f18f8e" />}
+            style={{
+              backgroundColor: "darksalmon",
+              // padding: "20px",
+              borderRadius: "12px",
+              width: "300px",
+              height: "100px",
+              fontSize: "25px",
+              marginLeft: "5%",
+            }}
+          >
+            See how you stack up!
+          </Button>
         </Card>
-
-
       </div>
     );
   }

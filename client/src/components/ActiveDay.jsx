@@ -15,12 +15,13 @@ class ActiveDay extends Component {
             size="large"
             icon={<FireTwoTone twoToneColor="#f18f8e" />}
             style={{
-              backgroundColor: "pink",
+              backgroundColor: "darksalmon",
               padding: "20px",
               borderRadius: "12px",
               width: "300px",
               height: "100px",
-              marginBottom: "20px"
+              marginBottom: "20px",
+              fontSize: "25px"
             }}
           >
             I worked out today!

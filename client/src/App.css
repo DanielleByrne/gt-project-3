@@ -1,13 +1,14 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 .App {
-    text-align: center
+  text-align: center;
 }
 
 .title {
-    color: white;
+  color: white;
 }
 
 .heading {
-    background-color: coral;
+  background-color: darksalmon;
+  font-size: 30px;
 }
