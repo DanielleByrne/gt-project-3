@@ -45,7 +45,7 @@ class App extends Component {
       if (user) {
         this.setState({ user });
         const emailPrefix = user.email.split("@");
-        localStorage.setItem("email", emailPrefix);
+        localStorage.setItem("email", emailPrefix[0]);
         // setUser(user);
       } else {
         this.setState({ user: null });

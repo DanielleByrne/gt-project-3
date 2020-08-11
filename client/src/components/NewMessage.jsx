@@ -2,7 +2,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import "./index.css";
 import { Input } from "antd";
-import axios from "axios";
+import Axios from "axios";
 const { Search } = Input;
 
 const NewMessage = () => {
