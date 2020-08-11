@@ -25,7 +25,6 @@ class App extends Component {
     };
   }
 
-
   // componentDidMount() {
   //   this.removeAuthListener = fire.auth().onAuthStateChanged((user) => {
   //     if (user) {
@@ -43,7 +42,7 @@ class App extends Component {
     fire.auth().signOut();
     localStorage.clear();
   }
-  
+
   authListener() {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -56,13 +55,49 @@ class App extends Component {
       }
     });
   }
-
+  
   componentDidMount() {
     this.authListener();
   }
 
   render() {
     const { Header } = Layout;
+    if (this.state.user) {
+      return (
+        <div className="App">
+          <Router>
+            <Layout>
+              <Header className="heading">
+                <h1 className="title">Healthy Competition</h1>
+                {this.state.user ? (
+                  <Button
+                    icon={<LogoutOutlined />}
+                    style={{
+                      marginLeft: "90%",
+                      backgroundColor: "coral",
+                      marginBottom: "20%",
+                      color: "white",
+                    }}
+                    onClick={this.logout}
+                  >
+                    Log Out
+                  </Button>
+                ) : null}
+              </Header>
+            </Layout>
+
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/workout" component={Workout} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/team" component={TeamView} />
+              <Route exact path="/activeday" component={ActiveDay} />
+            </Switch>
+          </Router>
+        </div>
+      );
+    }
     return (
       <div className="App">
         <Router>
@@ -88,11 +123,7 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/workout" component={Workout} />
             <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/team" component={TeamView} />
-            <Route exact path="/activeday" component={ActiveDay} />
           </Switch>
         </Router>
       </div>
