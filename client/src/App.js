@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/login";
 import Workout from "./components/Workout";
@@ -20,8 +25,10 @@ import ActiveDay from "./components/ActiveDay";
 class App extends Component {
   constructor(props) {
     super(props);
+    this.logout = this.logout.bind(this);
     this.state = {
       user: {},
+      logoutRedirect: false,
     };
   }
 
@@ -41,6 +48,7 @@ class App extends Component {
   logout() {
     fire.auth().signOut();
     localStorage.clear();
+    this.setState({ logoutRedirect: true });
   }
 
   authListener() {
@@ -55,13 +63,21 @@ class App extends Component {
       }
     });
   }
-  
+
   componentDidMount() {
     this.authListener();
   }
 
   render() {
     const { Header } = Layout;
+    if (this.state.logoutRedirect == true) {
+      this.setState({ logoutRedirect: false });
+      return (
+        <Router>
+          <Redirect to="/" />
+        </Router>
+      );
+    }
     if (this.state.user) {
       return (
         <div className="App">
@@ -69,20 +85,19 @@ class App extends Component {
             <Layout>
               <Header className="heading">
                 <h1 className="title">Healthy Competition</h1>
-                {this.state.user ? (
-                  <Button
-                    icon={<LogoutOutlined />}
-                    style={{
-                      marginLeft: "90%",
-                      backgroundColor: "coral",
-                      marginBottom: "20%",
-                      color: "white",
-                    }}
-                    onClick={this.logout}
-                  >
-                    Log Out
-                  </Button>
-                ) : null}
+
+                <Button
+                  icon={<LogoutOutlined />}
+                  style={{
+                    marginLeft: "90%",
+                    backgroundColor: "coral",
+                    marginBottom: "20%",
+                    color: "white",
+                  }}
+                  onClick={this.logout}
+                >
+                  Log Out
+                </Button>
               </Header>
             </Layout>
 
@@ -104,20 +119,6 @@ class App extends Component {
           <Layout>
             <Header className="heading">
               <h1 className="title">Healthy Competition</h1>
-              {this.state.user ? (
-                <Button
-                  icon={<LogoutOutlined />}
-                  style={{
-                    marginLeft: "90%",
-                    backgroundColor: "coral",
-                    marginBottom: "20%",
-                    color: "white",
-                  }}
-                  onClick={this.logout}
-                >
-                  Log Out
-                </Button>
-              ) : null}
             </Header>
           </Layout>
 
