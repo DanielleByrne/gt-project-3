@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import { Card, Button, Icon } from "antd";
-import { FireTwoTone } from "@ant-design/icons";
 import { ThunderboltTwoTone } from "@ant-design/icons";
 import { BookTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
+import { Redirect } from "react-router-dom";
 
 class Workout extends Component {
+
   render() {
+
+    handleRedirect = () => {
+      return <Redirect to="/activeday" />;
+    };
     return (
       <div>
         <Card style={{ width: 300, marginLeft: "39%" }}>
-          <h1>Is today a rest day?</h1>
+          <h1>Is today an active day?</h1>
           <Button
             type="primary"
             size="large"
@@ -21,9 +26,10 @@ class Workout extends Component {
               borderRadius: "12px",
             }}
           >
-            Yes
+            No
           </Button>
           <Button
+            onClick={handleRedirect}
             type="primary"
             size="large"
             icon={<ThunderboltTwoTone twoToneColor="#f18f8e" />}
@@ -33,32 +39,14 @@ class Workout extends Component {
               borderRadius: "12px",
             }}
           >
-            No
+            Yes
           </Button>
           <p>
             Success isn’t always about greatness. It’s about consistency.
             Consistent hard work gains success. Greatness will come.{" "}
           </p>
         </Card>
-        <Card style={{ width: 300, marginLeft: "39%" }}>
-          <h1>Get after it!</h1>
-          <Button
-            type="primary"
-            size="large"
-            icon={<FireTwoTone twoToneColor="#f18f8e" />}
-            style={{
-              backgroundColor: "pink",
-              padding: "20px",
-              borderRadius: "12px",
-            }}
-          >
-            I worked out today!
-          </Button>
-          <p>
-            Success isn’t always about greatness. It’s about consistency.
-            Consistent hard work gains success. Greatness will come.{" "}
-          </p>
-        </Card>
+
         <Button
           type="primary"
           size="large"
