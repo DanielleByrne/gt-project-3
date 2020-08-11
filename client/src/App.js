@@ -5,14 +5,16 @@ import Home from "./components/Home";
 import Login from "./components/login";
 import Workout from "./components/Workout";
 import fire from "./config/Fire";
-import {Layout} from "antd";
-import "./App.css"
+import { Layout } from "antd";
+import "./App.css";
 // import Home from "./components/Home";
 // import Login from "./components/Login";
 // import fire from "./config/Fire";
-import SignUp from "./components/signup"
-import {Button, Icon} from "antd";
-import {LogoutOutlined} from "@ant-design/icons"
+import SignUp from "./components/signup";
+import { Button, Icon } from "antd";
+import { LogoutOutlined } from "@ant-design/icons";
+
+const UserContext = React.createContext("user");
 
 class App extends Component {
   constructor(props) {
@@ -34,8 +36,9 @@ class App extends Component {
   //     }
   //   });
   // };
-  logout(){
+  logout() {
     fire.auth().signOut();
+    console.log("User Signed Out");
   }
   authListener() {
     fire.auth().onAuthStateChanged((user) => {
@@ -52,17 +55,27 @@ class App extends Component {
     this.authListener();
   }
 
-
   render() {
-    const { Header } = Layout; 
+    const { Header } = Layout;
     return (
       <div className="App">
         <Layout>
-          <Header className = "heading">
-            <h1 className = "title">
-              Healthy Competition
-            </h1>
-           {this.state.user ? <Button icon={<LogoutOutlined />}  style ={{marginLeft: "90%", backgroundColor: "coral", marginBottom: "20%", color:"white"}} onClick={this.logout}>Log Out</Button> : null} 
+          <Header className="heading">
+            <h1 className="title">Healthy Competition</h1>
+            {this.state.user ? (
+              <Button
+                icon={<LogoutOutlined />}
+                style={{
+                  marginLeft: "90%",
+                  backgroundColor: "coral",
+                  marginBottom: "20%",
+                  color: "white",
+                }}
+                onClick={this.logout}
+              >
+                Log Out
+              </Button>
+            ) : null}
           </Header>
         </Layout>
         {/* <Login /> */}
@@ -70,8 +83,8 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/workout" component={Workout}/>
-            <Route exact path="/signup" component={SignUp}/>
+            <Route exact path="/workout" component={Workout} />
+            <Route exact path="/signup" component={SignUp} />
           </Switch>
         </Router>
         {/* <Workout/> */}

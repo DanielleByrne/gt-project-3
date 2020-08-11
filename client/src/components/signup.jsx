@@ -23,7 +23,11 @@ class SignUp extends Component {
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((user) => {})
+      .then((user) => {
+        console.log("Logged In");
+        this.loginForm.reset();
+        this.setState({ redirect: true });
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -80,19 +84,20 @@ class SignUp extends Component {
             }}
             placeholder="Password"
           ></input>
-          <br>
-          </br>
+          <br></br>
           {/* </label> */}
           <input
-            style={{ margin: "10px", 
-            margin: "10px",
-            backgroundColor: "coral",
-            color: "white",
-            border: "1px solid white", }}
+            style={{
+              margin: "10px",
+              margin: "10px",
+              backgroundColor: "coral",
+              color: "white",
+              border: "1px solid white",
+            }}
             type="submit"
             className="button"
-            // I CHANGED THE VALUE OF THE BUTTON TO SIGN UP I DON'T KNOW IF THAT MESSES ANYTHING UP 
-            
+            // I CHANGED THE VALUE OF THE BUTTON TO SIGN UP I DON'T KNOW IF THAT MESSES ANYTHING UP
+
             value="Sign Up"
           ></input>
         </form>

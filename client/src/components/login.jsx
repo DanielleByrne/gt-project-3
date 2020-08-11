@@ -14,7 +14,6 @@ class Login extends Component {
     };
   }
   // fire.auth().signOut();
-
   // SignIn
   // takes email and password from login and authenticates
   // If authenticated redirect is set to true allowing line 41 to work.
@@ -26,10 +25,9 @@ class Login extends Component {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
-        if (user && user.email) {
-          this.loginForm.reset();
-          this.setState({ redirect: true });
-        }
+        console.log("Logged In")
+        this.loginForm.reset();
+        this.setState({ redirect: true });
       })
       .catch((error) => {
         console.log(error);
