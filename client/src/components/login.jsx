@@ -105,7 +105,8 @@ class Login extends Component {
           <br></br>
           <label>Don't Have An Account?</label>
           <br></br>
-          <a href="/signup">Register Here</a>
+          {/* <a href="/signup">Register Here</a> */}
+          <Link to={`/signup`} activeClassName="active">Register Here</Link>
           <br></br>
         </form>
       </div>

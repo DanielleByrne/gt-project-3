@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import Axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/login";
@@ -61,28 +61,83 @@ class App extends Component {
     const { Header } = Layout;
     return (
       <div className="App">
-        <Layout>
-          <Header className="heading">
-            <h1 className="title">Healthy Competition</h1>
-            {this.state.user ? (
-              <Button
-                icon={<LogoutOutlined />}
-                style={{
-                  marginLeft: "90%",
-                  backgroundColor: "coral",
-                  marginBottom: "20%",
-                  color: "white",
-                }}
-                onClick={this.logout}
-              >
-                Log Out
-              </Button>
-            ) : null}
-          </Header>
-        </Layout>
-        {/* <Login /> */}
-        {/* {this.state.user ? <Home /> : <Login />} */}
-        <Router>
+        {this.state.user ? (
+          <Router>
+            <Layout>
+              <Header className="heading">
+                <h1 className="title">Healthy Competition</h1>
+                {this.state.user ? (
+                  <Button
+                    icon={<LogoutOutlined />}
+                    style={{
+                      marginLeft: "90%",
+                      backgroundColor: "coral",
+                      marginBottom: "20%",
+                      color: "white",
+                    }}
+                    onClick={this.logout}
+                  >
+                    Log Out
+                  </Button>
+                ) : null}
+              </Header>
+            </Layout>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/signup" component={SignUp} />
+          </Router>
+        ) : (
+          <Router>
+            <Layout>
+              <Header className="heading">
+                <h1 className="title">Healthy Competition</h1>
+                {this.state.user ? (
+                  <Button
+                    icon={<LogoutOutlined />}
+                    style={{
+                      marginLeft: "90%",
+                      backgroundColor: "coral",
+                      marginBottom: "20%",
+                      color: "white",
+                    }}
+                    onClick={this.logout}
+                  >
+                    Log Out
+                  </Button>
+                ) : null}
+              </Header>
+            </Layout>
+            {/* <Login /> */}
+            {/* {this.state.user ? <Home /> : <Login />} */}
+
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/workout" component={Workout} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/team" component={TeamView} />
+            </Switch>
+          </Router>
+        )}
+        {/* <Router>
+          <Layout>
+            <Header className="heading">
+              <h1 className="title">Healthy Competition</h1>
+              {this.state.user ? (
+                <Button
+                  icon={<LogoutOutlined />}
+                  style={{
+                    marginLeft: "90%",
+                    backgroundColor: "coral",
+                    marginBottom: "20%",
+                    color: "white",
+                  }}
+                  onClick={this.logout}
+                >
+                  Log Out
+                </Button>
+              ) : null}
+            </Header>
+          </Layout>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/workout" component={Workout} />
@@ -90,7 +145,7 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/team" component={TeamView} />
           </Switch>
-        </Router>
+        </Router> */}
       </div>
     );
   }
