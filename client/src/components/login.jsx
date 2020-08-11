@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
-import { Form, Input, Button, Checkbox } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+// import { Form, Input, Button, Checkbox } from "antd";
+// import { UserOutlined, LockOutlined } from "@ant-design/icons";
 // import { app } from "firebase";
 
 class Login extends Component {
