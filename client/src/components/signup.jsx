@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
+import axios from "axios";
 // import { app } from "firebase";
 
 class SignUp extends Component {
@@ -20,14 +21,36 @@ class SignUp extends Component {
     event.preventDefault();
     const email = this.emailInput.value;
     const password = this.passwordInput.value;
+    axios
+    .post("/api/signup", { email, password })
+    .then((response) => {
+      console.log(response.data)})
+    .catch((err) => {
+      console.log(err);
+      });
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((user) => {})
+      .then((user) => {
+
+      })
       .catch((error) => {
         console.log(error);
       });
   }
+
+  // const userInfoDb = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post("/api/user", { email, password })
+  //     .then((response) => {
+  //       console.log(response.data)
+  //     .catch((err) => {
+  //       console.log(err);
+  //       });
+  //     });
+  // };
+
 
   render() {
     if (this.state.redirect === true) {

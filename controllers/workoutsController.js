@@ -46,10 +46,14 @@ router.get("/api/workout/:id", function (req, res) {
 
 //Create workout (using that cronjon?) for each specific user ID
 //How can we connect body to the ID ? req.body is just date/complete so it's created on a users
-router.post("/api/workout/:id", function (req, res) {
+router.post("/api/workout", function (req, res) {
   db.Workout.create(req.body)
-//   .populate("workouts")
+    //   .populate("workouts")
     .then((createdWorkout) => {
+      // GET USER ID HERE AND PASS INTO findOneAndUpdate
+      db.User.findOneAndUpdate(userId, {
+        $push: { workouts: { _id: createdWorkout._id } },
+      });
       res.json({
         error: false,
         data: createdWorkout,
@@ -65,6 +69,8 @@ router.post("/api/workout/:id", function (req, res) {
       });
     });
 });
+
+
 
 //Update workout (false --> true) by workout ID
 router.put("/api/workout/:id", function (req, res) {
@@ -87,3 +93,6 @@ router.put("/api/workout/:id", function (req, res) {
 });
 
 module.exports = router;
+
+
+//create workout with name of each user (manually) so we can push easier and see in robo easier?
