@@ -6,19 +6,9 @@ class Workout extends Component {
   render() {
     return (
       <div>
-        <Card title="Get after it!" style={{ width: 300, marginLeft: "39%" }}>
-          <Button
-            type="primary"
-            size="large"
-            icon={<FireTwoTone twoToneColor="#f18f8e" />}
-            style={{
-              backgroundColor: "pink",
-              paddingBottom: "45px",
-              borderRadius: "12px",
-              fontSize: "25px",
-            }}
-          >
-            {/* position 9 makes it centered in the inspector, can't get it working in the code  */}
+        <Card style={{ width: 300, marginLeft: "39%" }}>
+          <h1>Get after it!</h1>
+          <Button type="primary" size="large" icon={<FireTwoTone twoToneColor="#f18f8e"/>} style={{backgroundColor: "pink", padding:"50px", borderRadius: "12px", fontSize:"25px"}}>
             I worked out today!
           </Button>
           <p>

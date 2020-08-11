@@ -11,6 +11,8 @@ import "./App.css"
 // import Login from "./components/Login";
 // import fire from "./config/Fire";
 import SignUp from "./components/signup"
+import {Button, Icon} from "antd";
+import {LogoutOutlined} from "@ant-design/icons"
 
 class App extends Component {
   constructor(props) {
@@ -60,7 +62,7 @@ class App extends Component {
             <h1 className = "title">
               Healthy Competition
             </h1>
-           {this.state.user ? <button style ={{marginLeft: "70%", backgroundColor: "coral", marginBottom: "20%" }} onClick={this.logout}>Log Out</button> : null} 
+           {this.state.user ? <Button icon={<LogoutOutlined />}  style ={{marginLeft: "90%", backgroundColor: "coral", marginBottom: "20%", color:"white"}} onClick={this.logout}>Log Out</Button> : null} 
           </Header>
         </Layout>
         {/* <Login /> */}
@@ -69,6 +71,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/workout" component={Workout}/>
+            <Route exact path="/signup" component={SignUp}/>
           </Switch>
         </Router>
         {/* <Workout/> */}
