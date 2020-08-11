@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "antd";
+import { useSpring, animated } from "react-spring";
 
 const columns = [
   {
@@ -40,15 +41,20 @@ const styles = {
   table: {
     marginTop: "45px",
     width: "75%",
-    marginLeft: "15%"
+    marginLeft: "15%",
   },
 };
+
+function App() {
+  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+  return <animated.div style={props}>How's Your Team Doing?</animated.div>;
+}
 
 class TeamView extends Component {
   render() {
     return (
       <div style={styles.table}>
-        <h4>How's Your Team Doing?</h4>
+        <App></App>
         <Table columns={columns} dataSource={data} size="middle" />
       </div>
     );
