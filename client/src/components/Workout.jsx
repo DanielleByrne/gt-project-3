@@ -17,12 +17,12 @@ class Workout extends Component {
   }
 
   handleNoClick() {
-    console.log("No Clicked")
+    console.log("No Clicked");
     this.setState({ redirectNo: true });
   }
 
   handleYesClick() {
-    console.log("Yes Clicked")
+    console.log("Yes Clicked");
     this.setState({ redirectYes: true });
   }
 
@@ -36,7 +36,7 @@ class Workout extends Component {
     }
     return (
       <div>
-        <Card style={{ width: 300, marginLeft: "39%" }}>
+        <Card style={{ width: 500, marginLeft: "32%", marginTop: "150px" }}>
           <h1>Is today an active day?</h1>
           <Button
             onClick={this.handleNoClick}
@@ -47,6 +47,12 @@ class Workout extends Component {
               backgroundColor: "pink",
               padding: "10px",
               borderRadius: "12px",
+              margin: "20px",
+              verticalAlign: "middle",
+              textAlign: "center",
+              display: "table-cell",
+              width: "100px",
+              height: "50px",
             }}
           >
             No
@@ -60,6 +66,10 @@ class Workout extends Component {
               backgroundColor: "pink",
               padding: "10px",
               borderRadius: "12px",
+              verticalAlign: "middle",
+              display: "table-cell",
+              width: "100px",
+              height: "50px",
             }}
           >
             Yes
@@ -68,20 +78,25 @@ class Workout extends Component {
             Success isn’t always about greatness. It’s about consistency.
             Consistent hard work gains success. Greatness will come.{" "}
           </p>
-        </Card>
-
-        <Button
+          <Button
           type="primary"
           size="large"
           icon={<FundTwoTone twoToneColor="#f18f8e" />}
           style={{
             backgroundColor: "pink",
-            padding: "20px",
+            // padding: "20px",
             borderRadius: "12px",
+            width: "300px",
+            height: "100px",
+            marginLeft: "5%",
+
           }}
         >
           See how you stack up!
         </Button>
+        </Card>
+
+
       </div>
     );
   }
