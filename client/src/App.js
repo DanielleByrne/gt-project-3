@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import Axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/login";
@@ -76,7 +76,6 @@ class App extends Component {
             <Route exact path="/signup" component={SignUp}/>
             <Route exact path="/profile" component={Profile}/>
             <Route exact path="/team" component={TeamView}/>
-
           </Switch>
         </Router>
         {/* <Workout/> */}
