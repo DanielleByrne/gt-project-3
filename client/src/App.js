@@ -15,6 +15,7 @@ import { Button, Icon } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import Profile from "./components/Profile";
 import TeamView from "./components/TeamView";
+import ActiveDay from "./components/ActiveDay";
 
 class App extends Component {
   constructor(props) {
@@ -87,6 +88,8 @@ class App extends Component {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/team" component={TeamView} />
+            <Route exact path="/activeday" component={ActiveDay} />
+
           </Switch>
         </Router>
         {/* <Workout/> */}
