@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
 import { Spring } from "react-spring/renderprops";
+
 // import { Form, Input, Button, Checkbox } from "antd";
 // import { UserOutlined, LockOutlined } from "@ant-design/icons";
 // import { app } from "firebase";
@@ -118,6 +119,7 @@ class Login extends Component {
           <Link to={`/signup`} activeClassName="active">
             Register Here
           </Link>
+          
           <br></br>
         </form>
       </div>
