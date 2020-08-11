@@ -15,6 +15,7 @@ function Messages() {
     <div>
       {Messages.map((message) => (
         <Card>
+          <div>{message.email}</div>
           <div>{message.message}</div>
           <small>{message.time_posted}</small>
         </Card>

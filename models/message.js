@@ -14,9 +14,9 @@ const MessageSchema = new Schema({
     type: String,
     default: "This is a test."
   },
-  username: {
+  email: {
     type: String,
-    required: "username required"
+    required: "email required"
   }
 });
 
