@@ -23,6 +23,8 @@ class App extends Component {
       user: {},
     };
   }
+
+
   // componentDidMount() {
   //   this.removeAuthListener = fire.auth().onAuthStateChanged((user) => {
   //     if (user) {
@@ -36,10 +38,13 @@ class App extends Component {
   //     }
   //   });
   // };
+
+
   logout() {
     fire.auth().signOut();
     localStorage.clear();
   }
+  
   authListener() {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
