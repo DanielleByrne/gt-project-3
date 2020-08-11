@@ -2,6 +2,7 @@
 
 .App {
   text-align: center;
+  font-family: 'Baloo Tamma 2', cursive;
 }
 
 .title {
@@ -12,3 +13,8 @@
   background-color: darksalmon;
   font-size: 30px;
 }
+
+  
+  a:hover {
+     color: black
+  }
