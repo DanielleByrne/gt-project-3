@@ -66,6 +66,8 @@ router.post("/api/workout/:id", function (req, res) {
     });
 });
 
+
+
 //Update workout (false --> true) by workout ID
 router.put("/api/workout/:id", function (req, res) {
   db.Workout.findOneAndUpdate(req.params)
@@ -87,3 +89,6 @@ router.put("/api/workout/:id", function (req, res) {
 });
 
 module.exports = router;
+
+
+//create workout with name of each user (manually) so we can push easier and see in robo easier?
