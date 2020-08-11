@@ -42,6 +42,7 @@ const styles = {
     marginTop: "45px",
     width: "75%",
     marginLeft: "15%",
+
   },
 };
 
