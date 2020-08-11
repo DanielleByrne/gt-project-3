@@ -22,13 +22,12 @@ class SignUp extends Component {
     const email = this.emailInput.value;
     const password = this.passwordInput.value;
     axios
-    .post("/api/user", { email, password })
+    .post("/api/signup", { email, password })
     .then((response) => {
-      console.log(response.data)
+      console.log(response.data)})
     .catch((err) => {
       console.log(err);
       });
-    });
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
