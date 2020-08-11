@@ -44,7 +44,7 @@ router.post("/api/signup", function (req, res) {
 
 
 
-//Get user (for dashboard purposes)
+//Get user (for dashboard purposes) and shows workouts completed 
 router.get("/api/user/:id", function (req, res) {
   db.User.findOne({ _id: req.params.id })
     .populate("workouts")
