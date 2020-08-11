@@ -41,7 +41,10 @@ router.post("/api/signup", function (req, res) {
     });
 });
 
-//Get user (for dashboard purposes)
+
+
+
+//Get user (for dashboard purposes) and shows workouts completed 
 router.get("/api/user/:id", function (req, res) {
   db.User.findOne({ _id: req.params.id })
     .populate("workouts")
@@ -63,9 +66,37 @@ router.get("/api/user/:id", function (req, res) {
 });
 
 
-// PUT ROUTE
+
+
+
+// PUT ROUTE for creating a working for user (updating their workout array with a push)
 // Find the user by ID
 // push a workout into the user's workout array. 
+router.put("/api/user/:id", function (req, res) {
+    db.User.findOneAndUpdate(req.params)
+      .then((addedWorkout) => {
+        res.json({
+          error: false,
+          data: addedWorkout,
+          message: "Successfully updated workout.",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          error: true,
+          data: null,
+          message: "Failed to add workout to user's array.",
+        });
+      });
+  });
+//example from documentation 
+//   db.students.update(
+//     { _id: 1 },
+//     { $push: { scores: 89 } }
+//  )
+
+
 
 //Delete account by user ID
 router.delete("/api/user/:id", function (req, res) {

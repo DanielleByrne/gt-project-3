@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Axios from "axios";
+import axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./container/Home/Home";
+import Home from "./components/Home";
 import Login from "./components/login";
 import Workout from "./components/Workout";
 import fire from "./config/Fire";
@@ -11,6 +11,8 @@ import "./App.css"
 // import Login from "./components/Login";
 // import fire from "./config/Fire";
 import SignUp from "./components/signup"
+import {Button, Icon} from "antd";
+import {LogoutOutlined} from "@ant-design/icons"
 
 class App extends Component {
   constructor(props) {
@@ -60,17 +62,19 @@ class App extends Component {
             <h1 className = "title">
               Healthy Competition
             </h1>
+           {this.state.user ? <Button icon={<LogoutOutlined />}  style ={{marginLeft: "90%", backgroundColor: "coral", marginBottom: "20%", color:"white"}} onClick={this.logout}>Log Out</Button> : null} 
           </Header>
         </Layout>
         {/* <Login /> */}
-        {this.state.user ? <Home /> : <Login />}
+        {/* {this.state.user ? <Home /> : <Login />} */}
         <Router>
           <Switch>
-            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path="/" component={Home} />
+            <Route exact path="/workout" component={Workout}/>
+            <Route exact path="/signup" component={SignUp}/>
           </Switch>
         </Router>
-        <button onClick={this.logout}>Log Out</button>
-        <Workout/>
+        {/* <Workout/> */}
       </div>
     );
   }

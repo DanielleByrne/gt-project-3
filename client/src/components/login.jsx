@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
+import { Form, Input, Button, Checkbox } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 // import { app } from "firebase";
 
 class Login extends Component {
@@ -34,14 +36,17 @@ class Login extends Component {
       });
   }
 
-// Basic form included below. Email and password required.
+  // Basic form included below. Email and password required.
   render() {
     if (this.state.redirect === true) {
       // If user is authenticated redirect to a diff page below
-      return <Redirect to="/" />;
+      //this isn't working how i want it to be 
+      return <Redirect to="/workout" />;
     }
     return (
       <div>
+        <h2 style={{ marginTop: "20px" }}>Welcome back!</h2>
+        <h3>Login to your account:</h3>
         <form
           onSubmit={(event) => {
             this.logInEmailPassword(event);
@@ -50,38 +55,65 @@ class Login extends Component {
             this.loginForm = form;
           }}
         >
-          <label className="">
-            Email
-            <input
-              style={{ width: "100%" }}
-              className=""
-              name="email"
-              type="email"
-              ref={(input) => {
-                this.emailInput = input;
-              }}
-              placeholder="Email"
-            ></input>
-          </label>
-          <label className="">
-            Password
-            <input
-              style={{ width: "100%" }}
-              className=""
-              name="password"
-              type="password"
-              ref={(input) => {
-                this.passwordInput = input;
-              }}
-              placeholder="Password"
-            ></input>
-          </label>
+          {/* <label className=""> */}
+
           <input
-            style={{ width: "100%" }}
+            style={{
+              width: "50%",
+              margin: "10px",
+              marginTop: "20px",
+              border: " 1px solid #f18f8e",
+            }}
+            className=""
+            name="email"
+            type="email"
+            ref={(input) => {
+              this.emailInput = input;
+            }}
+            placeholder="Email"
+          ></input>
+          {/* </label> */}
+          <br></br>
+          {/* <label className=""> */}
+
+          <input
+            style={{
+              width: "50%",
+              margin: "10px",
+              border: " 1px solid #f18f8e",
+            }}
+            className=""
+            name="password"
+            type="password"
+            ref={(input) => {
+              this.passwordInput = input;
+            }}
+            placeholder="Password"
+          ></input>
+          {/* </label> */}
+          <br></br>
+
+          <input
+            style={{
+              margin: "10px",
+              backgroundColor: "coral",
+              color: "white",
+              border: "1px solid white",
+            }}
             type="submit"
             className="button"
             value="Log In"
           ></input>
+          <br>
+          </br>
+          <label>Don't Have An Account?</label>
+          <br>
+          </br>
+          <a href="/signup">
+            Register Here
+          </a>
+          <br>
+          </br>
         </form>
       </div>
     );

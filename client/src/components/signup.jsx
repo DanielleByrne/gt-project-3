@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
+import axios from "axios";
 // import { app } from "firebase";
 
 class SignUp extends Component {
@@ -20,14 +21,36 @@ class SignUp extends Component {
     event.preventDefault();
     const email = this.emailInput.value;
     const password = this.passwordInput.value;
+    axios
+    .post("/api/signup", { email, password })
+    .then((response) => {
+      console.log(response.data)})
+    .catch((err) => {
+      console.log(err);
+      });
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((user) => {})
+      .then((user) => {
+
+      })
       .catch((error) => {
         console.log(error);
       });
   }
+
+  // const userInfoDb = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post("/api/user", { email, password })
+  //     .then((response) => {
+  //       console.log(response.data)
+  //     .catch((err) => {
+  //       console.log(err);
+  //       });
+  //     });
+  // };
+
 
   render() {
     if (this.state.redirect === true) {
@@ -36,6 +59,7 @@ class SignUp extends Component {
     }
     return (
       <div>
+        <h2 style={{ marginTop: "20px" }}>Create an Account: </h2>
         <form
           onSubmit={(event) => {
             this.signUpEmailPassword(event);
@@ -44,37 +68,55 @@ class SignUp extends Component {
             this.loginForm = form;
           }}
         >
-          <label className="">
-            Email
-            <input
-              style={{ width: "100%" }}
-              className=""
-              name="email"
-              type="email"
-              ref={(input) => {
-                this.emailInput = input;
-              }}
-              placeholder="Email"
-            ></input>
-          </label>
-          <label className="">
-            Password
-            <input
-              style={{ width: "100%" }}
-              className=""
-              name="password"
-              type="password"
-              ref={(input) => {
-                this.passwordInput = input;
-              }}
-              placeholder="Password"
-            ></input>
-          </label>
+          {/* <label className="">
+            Email */}
           <input
-            style={{ width: "100%" }}
+            style={{
+              width: "50%",
+              margin: "10px",
+              marginTop: "20px",
+              border: " 1px solid #f18f8e",
+            }}
+            className=""
+            name="email"
+            type="email"
+            ref={(input) => {
+              this.emailInput = input;
+            }}
+            placeholder="Email"
+          ></input>
+          {/* </label> */}
+          {/* <label className="">
+            Password */}
+          <input
+            style={{
+              width: "50%",
+              margin: "10px",
+              marginTop: "20px",
+              border: " 1px solid #f18f8e",
+            }}
+            className=""
+            name="password"
+            type="password"
+            ref={(input) => {
+              this.passwordInput = input;
+            }}
+            placeholder="Password"
+          ></input>
+          <br>
+          </br>
+          {/* </label> */}
+          <input
+            style={{ margin: "10px", 
+            margin: "10px",
+            backgroundColor: "coral",
+            color: "white",
+            border: "1px solid white", }}
             type="submit"
             className="button"
-            value="Log In"
+            // I CHANGED THE VALUE OF THE BUTTON TO SIGN UP I DON'T KNOW IF THAT MESSES ANYTHING UP 
+            
+            value="Sign Up"
           ></input>
         </form>
       </div>
