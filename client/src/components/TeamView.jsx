@@ -39,8 +39,8 @@ const data = [
 const styles = {
   table: {
     marginTop: "45px",
-    width: "75%",
-    marginLeft: "15%"
+    width: "50%",
+    marginLeft: "30px"
   },
 };
 
