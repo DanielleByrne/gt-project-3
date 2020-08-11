@@ -17,13 +17,12 @@ import Login from "./login"
 class Home extends Component {
   
 
-//   componentDidMount() {
-//     this.authListener();
-//   }
+  // componentDidMount() {
+  //   this.authListener();
+  // }
   render() {
     return <div>
         <Login/>
-        {/* Need to figure out after things are set up */}
         {/* {this.state.user ? <Home /> : <Login />} */}
     </div>;
   }
