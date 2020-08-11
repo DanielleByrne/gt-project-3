@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
-import { Form, Input, Button, Checkbox } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+// import { Form, Input, Button, Checkbox } from "antd";
+// import { UserOutlined, LockOutlined } from "@ant-design/icons";
 // import { app } from "firebase";
 
 class Login extends Component {
@@ -26,10 +26,8 @@ class Login extends Component {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
-        if (user && user.email) {
-          this.loginForm.reset();
-          this.setState({ redirect: true });
-        }
+        this.loginForm.reset();
+        this.setState({ redirect: true });
       })
       .catch((error) => {
         console.log(error);
@@ -40,7 +38,7 @@ class Login extends Component {
   render() {
     if (this.state.redirect === true) {
       // If user is authenticated redirect to a diff page below
-      //this isn't working how i want it to be 
+      //this isn't working how i want it to be
       return <Redirect to="/workout" />;
     }
     return (
@@ -104,16 +102,11 @@ class Login extends Component {
             className="button"
             value="Log In"
           ></input>
-          <br>
-          </br>
+          <br></br>
           <label>Don't Have An Account?</label>
-          <br>
-          </br>
-          <a href="/signup">
-            Register Here
-          </a>
-          <br>
-          </br>
+          <br></br>
+          <a href="/signup">Register Here</a>
+          <br></br>
         </form>
       </div>
     );
