@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
+import { Spring } from "react-spring/renderprops";
 // import { app } from "firebase";
 
 class SignUp extends Component {
@@ -39,19 +40,6 @@ class SignUp extends Component {
       });
   }
 
-  // const userInfoDb = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post("/api/user", { email, password })
-  //     .then((response) => {
-  //       console.log(response.data)
-  //     .catch((err) => {
-  //       console.log(err);
-  //       });
-  //     });
-  // };
-
-
   render() {
     if (this.state.redirect === true) {
       // If user is authenticated redirect to a diff page below
@@ -59,7 +47,14 @@ class SignUp extends Component {
     }
     return (
       <div>
-        <h2 style={{ marginTop: "20px" }}>Create an Account: </h2>
+        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+          {(props) => (
+            <div style={props}>
+               <h2 style={{ marginTop: "20px" }}>Create an Account</h2>
+            </div>
+          )}
+        </Spring>
+        {/* <h2 style={{ marginTop: "20px" }}>Create an Account: </h2> */}
         <form
           onSubmit={(event) => {
             this.signUpEmailPassword(event);

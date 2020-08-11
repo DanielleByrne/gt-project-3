@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
+import { Spring } from "react-spring/renderprops";
+
 // import { Form, Input, Button, Checkbox } from "antd";
 // import { UserOutlined, LockOutlined } from "@ant-design/icons";
 // import { app } from "firebase";
@@ -13,6 +15,7 @@ class Login extends Component {
       redirect: false,
     };
   }
+
   // fire.auth().signOut();
 
   // SignIn
@@ -43,7 +46,14 @@ class Login extends Component {
     }
     return (
       <div>
-        <h2 style={{ marginTop: "20px" }}>Welcome back!</h2>
+        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+          {(props) => (
+            <div style={props}>
+              <h2 style={{ marginTop: "20px" }}>Welcome back!</h2>
+            </div>
+          )}
+        </Spring>
+        {/* <h2 style={{ marginTop: "20px" }}>Welcome back!</h2> */}
         <h3>Login to your account:</h3>
         <form
           onSubmit={(event) => {
@@ -106,7 +116,10 @@ class Login extends Component {
           <label>Don't Have An Account?</label>
           <br></br>
           {/* <a href="/signup">Register Here</a> */}
-          <Link to={`/signup`} activeClassName="active">Register Here</Link>
+          <Link to={`/signup`} activeClassName="active">
+            Register Here
+          </Link>
+          
           <br></br>
         </form>
       </div>
