@@ -79,7 +79,6 @@ class App extends Component {
 
           </Switch>
         </Router>
-        {/* <Workout/> */}
       </div>
     );
   }
