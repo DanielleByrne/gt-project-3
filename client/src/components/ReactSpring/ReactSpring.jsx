@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useTransition, animated } from "react-spring";
+import {ReactComponent as Strongicon} from "./strong.svg"
+import {ReactComponent as Clock} from "./clock.svg"
 
 const ReactSpring = () => {
   const [toggle, set] = useState(false);
@@ -12,12 +14,12 @@ const ReactSpring = () => {
     <>
       {transitions.map(({ item, key, props }) =>
         item ? (
-          <animated.div style={props}>😄</animated.div>
+          <animated.div style={props}><Strongicon/></animated.div>
         ) : (
-          <animated.div style={props}>🤪</animated.div>
+          <animated.div style={props}><Clock/></animated.div>
         )
       )}
-      <button onClick={set}>test</button>
+      <button onClick={set}>Workout complete!</button>
     </>
   );
 };
