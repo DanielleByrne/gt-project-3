@@ -43,7 +43,7 @@ function Profile() {
         id: userID,
       },
     }).then((res) => {
-      setUserInfo(res);
+      setUserInfo(res.data);
       console.log("res",res.data);
     });
   },[]);
