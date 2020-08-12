@@ -51,9 +51,10 @@ router.post("/api/workout", function (req, res) {
     //   .populate("workouts")
     .then((createdWorkout) => {
       console.log("CREATED WORKOUT", createdWorkout);
+      res.json(createdWorkout);
       // GET USER ID HERE AND PASS INTO findOneAndUpdate
       db.User.findOneAndUpdate(
-        userID,
+        { _id: userID },
         {
           $push: { workouts: { _id: createdWorkout._id } },
         },
@@ -75,14 +76,13 @@ router.post("/api/workout", function (req, res) {
 });
 
 //Update workout (false --> true) by workout ID
-router.put("/api/workout/:id", function (req, res) {
-  db.Workout.findOneAndUpdate(req.params)
+router.put("/api/workoutUpdate", function (req, res) {
+  db.Workout.findOneAndUpdate(
+    { _id: req.body.params.workoutID },
+    { $set: { completed_workout: true } }
+  )
     .then((updatedWorkout) => {
-      res.json({
-        error: false,
-        data: updatedWorkout,
-        message: "Successfully updated workout.",
-      });
+      res.json(updatedWorkout);
     })
     .catch((err) => {
       console.log(err);

@@ -4,7 +4,7 @@ import { StarTwoTone } from "@ant-design/icons";
 import { BookTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
-import Axios from 'axios'
+import Axios from "axios";
 class Workout extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ class Workout extends Component {
 
   handleYesClick() {
     console.log("Yes Clicked");
-    console.log(localStorage.getItem("userID"))
+    console.log(localStorage.getItem("userID"));
     this.setState({ redirectYes: true });
     const userID = localStorage.getItem("userID");
     Axios.post("/api/workout", {
@@ -33,7 +33,10 @@ class Workout extends Component {
         userID: userID,
       },
     })
-      .then(console.log("Axios route done?"))
+      .then((res) => {
+        console.log("Axios Complete", res);
+        localStorage.setItem("currentWorkout", res.data._id);
+      })
       .catch((err) => console.log("Axios route error", err));
   }
 
@@ -111,7 +114,6 @@ class Workout extends Component {
               width: "300px",
               height: "100px",
               fontSize: "25px",
-              marginLeft: "5%",
             }}
           >
             See how you stack up!

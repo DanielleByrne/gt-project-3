@@ -1,3 +1,6 @@
+
+// THIS COMPONENT IS NOT NECESSARY
+
 import React from "react";
 import "antd/dist/antd.css";
 import { Input } from "antd";
@@ -28,6 +31,7 @@ const NewMessage = () => {
         placeholder="Write your message here"
         enterButton="Send"
         size="large"
+        style ={{width: "50%", justifyContent: "center"}}
         onSearch={(value) => handleMessageSubmit(value)}
       />
       ;
