@@ -61,9 +61,6 @@ function Messages() {
               {message.time_posted.split("T")[0]}
             </small>
           </small>
-          {/* <small>{message.time_posted.split("T")[0]}</small> */}
-          {/* <br /> */}
-          {/* <small>{message.time_posted.split("T")[1].slice(0, 5)}</small> */}
         </Card>
       ))}
     </div>
