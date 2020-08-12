@@ -10,9 +10,11 @@ class Workout extends Component {
     super(props);
     this.handleNoClick = this.handleNoClick.bind(this);
     this.handleYesClick = this.handleYesClick.bind(this);
+    this.handleStackUpButton = this.handleStackUpButton.bind(this);
     this.state = {
       redirectNo: false,
       redirectYes: false,
+      redirectTeam: false,
     };
   }
 
@@ -26,6 +28,11 @@ class Workout extends Component {
     this.setState({ redirectYes: true });
   }
 
+  handleStackUpButton() {
+    console.log("Stack Button Clicked");
+    this.setState({ redirectTeam: true });
+  }
+
   render() {
     if (this.state.redirectNo === true) {
       // If user is authenticated redirect to a diff page below
@@ -33,6 +40,10 @@ class Workout extends Component {
       return <Redirect to="/profile" />;
     } else if (this.state.redirectYes === true) {
       return <Redirect to="/activeday" />;
+    }
+
+    if (this.state.redirectTeam === true) {
+      return <Redirect to="/team" />;
     }
     return (
       <div>
@@ -80,6 +91,7 @@ class Workout extends Component {
             Consistent hard work gains success. Greatness will come.{" "}
           </p>
           <Button
+            onClick={this.handleStackUpButton}
             type="primary"
             size="large"
             icon={<FundTwoTone twoToneColor="#ED6A5E" />}
