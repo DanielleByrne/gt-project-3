@@ -5,6 +5,11 @@ import { Card, Button, Icon } from "antd";
 
 
 class ActiveDay extends Component {
+
+  handleWorkedOutClick(){
+    
+  }
+
   render() {
     return (
       <div>
