@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
 import { Spring } from "react-spring/renderprops";
-
-// import { Form, Input, Button, Checkbox } from "antd";
+import axios from "axios";
+import { Form, Input, Button, Checkbox } from "antd";
 // import { UserOutlined, LockOutlined } from "@ant-design/icons";
 // import { app } from "firebase";
 
@@ -25,6 +25,20 @@ class Login extends Component {
     event.preventDefault();
     const email = this.emailInput.value;
     const password = this.passwordInput.value;
+    axios
+      .post("/api/user", {
+        params: {
+          email: email,
+          password: password,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.data)
+        localStorage.setItem("userID", response.data.data._id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     fire
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -72,7 +86,6 @@ class Login extends Component {
               marginTop: "20px",
               height: "35px",
               border: " 1px solid lightsteelblue",
-        
             }}
             className=""
             name="email"
@@ -108,7 +121,7 @@ class Login extends Component {
             style={{
               margin: "10px",
               backgroundColor: "lightcoral",
-              width: "100px", 
+              width: "100px",
               height: "35px",
               color: "white",
               border: "1px solid white",
@@ -125,7 +138,7 @@ class Login extends Component {
           <Link to={`/signup`} activeClassName="active">
             Register Here
           </Link>
-          
+
           <br></br>
         </form>
       </div>
