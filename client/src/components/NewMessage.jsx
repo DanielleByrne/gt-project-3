@@ -1,3 +1,6 @@
+
+// THIS COMPONENT IS NOT NECESSARY
+
 import React from "react";
 import "antd/dist/antd.css";
 import { Input } from "antd";
