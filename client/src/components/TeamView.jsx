@@ -40,8 +40,13 @@ const data = [
 const styles = {
   table: {
     marginTop: "45px",
+<<<<<<< HEAD
     width: "75%",
     marginLeft: "15%",
+=======
+    width: "50%",
+    marginLeft: "30px"
+>>>>>>> d4e40567977ac839d19b77abf575ce449d30ff0f
   },
 };
 

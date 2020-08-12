@@ -33,7 +33,7 @@ class SignUp extends Component {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
-
+        this.setState({ redirect: true });
       })
       .catch((error) => {
         console.log(error);
@@ -43,7 +43,7 @@ class SignUp extends Component {
   render() {
     if (this.state.redirect === true) {
       // If user is authenticated redirect to a diff page below
-      return <Redirect to="/" />;
+      return <Redirect to="/workout" />;
     }
     return (
       <div>
