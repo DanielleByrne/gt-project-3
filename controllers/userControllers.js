@@ -22,6 +22,7 @@ router.post("/api/user", function (req, res) {
     });
 });
 
+
 //Create user (using that cronjon?)
 router.post("/api/signup", function (req, res) {
   db.User.create(req.body)
@@ -63,7 +64,11 @@ router.get("/api/user/:id", function (req, res) {
     });
 });
 
-// PUT ROUTE for creating a working for user (updating their workout array with a push)
+
+
+
+
+// PUT ROUTE for creating a workout for user (updating their workout array with a push)
 // Find the user by ID
 // push a workout into the user's workout array.
 router.put("/api/user/:id", function (req, res) {
@@ -90,6 +95,10 @@ router.put("/api/user/:id", function (req, res) {
 //     { $push: { scores: 89 } }
 //  )
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 41c4a7c134d180b7c3923c8e31e5c62e4fb5abf6
 //Delete account by user ID
 router.delete("/api/user/:id", function (req, res) {
   db.User.destroy(req.params)
