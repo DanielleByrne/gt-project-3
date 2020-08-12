@@ -22,11 +22,15 @@ router.get("/api/messages", function (req, res) {
     });
 });
 
-router
-  .post("/api/messages", function (req, res) {
-    db.Message.create(req.body);
-  })
-  .then(() => {})
-  .catch((err) => {
-    throw err;
-  });
+router.post("/api/messages", function (req, res) {
+  console.log("Post Route Hit, req.body is ", req.body);
+  db.Message.create(req.body)
+    .then((newMessage) => {
+      res.json(newMessage);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+module.exports = router

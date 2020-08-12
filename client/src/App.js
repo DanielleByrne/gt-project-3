@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/login";
 import Workout from "./components/Workout";
@@ -114,7 +120,9 @@ class App extends Component {
         <Router>
           <Layout>
             <Header className="heading">
-              <Link to ={"/"} className="title" >Healthy Competition</Link>
+              <Link to={"/"} className="title">
+                Healthy Competition
+              </Link>
               {this.state.user ? (
                 <Button
                   icon={<LogoutOutlined />}
@@ -141,7 +149,6 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/team" component={TeamView} />
             <Route exact path="/activeday" component={ActiveDay} />
-
           </Switch>
         </Router>
       </div>
