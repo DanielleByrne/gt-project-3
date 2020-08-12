@@ -9,8 +9,10 @@ class ActiveDay extends Component {
   constructor(props) {
     super(props);
     this.handleStackUpButton = this.handleStackUpButton.bind(this);
+    this.handleWorkedOutClick = this.handleWorkedOutClick.bind(this)
     this.state = {
       redirectTeam: false,
+      redirectToProfile: false
     };
   }
   handleStackUpButton() {
@@ -19,6 +21,7 @@ class ActiveDay extends Component {
   }
 
   handleWorkedOutClick() {
+    this.setState({redirectToProfile : true})
     const workoutID = localStorage.getItem("currentWorkout");
     Axios.put("/api/workoutUpdate", { params: { workoutID: workoutID } })
       .then((res) => {
@@ -31,6 +34,9 @@ class ActiveDay extends Component {
     if (this.state.redirectTeam === true) {
       return <Redirect to="/team" />;
     }
+    if (this.state.redirectToProfile){
+      return <Redirect to="profile"/>
+    }
     return (
       <div>
         <Card style={{ width: 500, marginLeft: "32%", marginTop: "150px" }}>
@@ -39,7 +45,7 @@ class ActiveDay extends Component {
             onClick={this.handleWorkedOutClick}
             type="primary"
             size="large"
-            icon={<FireTwoTone twoToneColor="#f18f8e" />}
+            icon={<FireTwoTone twoToneColor="#ED6A5E" />}
             style={{
               backgroundColor: "darksalmon",
               padding: "20px",
