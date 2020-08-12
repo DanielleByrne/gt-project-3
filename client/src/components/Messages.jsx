@@ -15,9 +15,9 @@ function Messages() {
       setMessagesArr(res.data.data);
     });
   }, []);
-// ISSUES WITH THIS: I THINK IT WOULD ONLY UPDATE IF YOU ARE THE PERSON CHATTING.
-// REFRESH MAY NEED TO BE DONE IN REAL TIME TO GET OTHER PEOPLES MESSAGES
-// MAYBE USE CRON HERE?
+  // ISSUES WITH THIS: I THINK IT WOULD ONLY UPDATE IF YOU ARE THE PERSON CHATTING.
+  // REFRESH MAY NEED TO BE DONE IN REAL TIME TO GET OTHER PEOPLES MESSAGES
+  // MAYBE USE CRON HERE?
   function handleMessageSubmit(msg) {
     console.log("Send button clicked");
     const userEmail = localStorage.getItem("email");
@@ -41,6 +41,7 @@ function Messages() {
 
   return (
     <div>
+      <h3>Chat With Your Team</h3>
       {messagesArr.map((message) => (
         <Card>
           <div>{message.email}</div>
