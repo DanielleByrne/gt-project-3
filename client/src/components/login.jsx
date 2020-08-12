@@ -39,7 +39,7 @@ class Login extends Component {
 
   // Basic form included below. Email and password required.
   render() {
-    if (this.state.redirect === true) {
+    if (this.state.redirect === true || localStorage.getItem("email")) {
       // If user is authenticated redirect to a diff page below
       //this isn't working how i want it to be
       return <Redirect to="/workout" />;

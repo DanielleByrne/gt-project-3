@@ -7,23 +7,17 @@ const MessageSchema = new Schema({
     type: String,
   },
   time_posted: {
-    type : Date, 
-    default: Date.now 
+    type: Date,
+    default: Date.now,
   },
-  test: {
+  email: {
     type: String,
-    default: "This is a test."
+    required: "email required",
   },
-  user_id: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Users",
-    },
-  ],
 });
 
 const Message = mongoose.model("Message", MessageSchema);
 
 module.exports = Message;
 
-// {timestamps: true} 
+// {timestamps: true}
