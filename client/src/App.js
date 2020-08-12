@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Axios from "axios";
+// import Axios from "axios";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Home from "./components/Home";
-import Login from "./components/login";
+// import Login from "./components/login";
 import Workout from "./components/Workout";
 import fire from "./config/Fire";
 import { Layout } from "antd";
@@ -71,7 +71,7 @@ class App extends Component {
 
   render() {
     const { Header } = Layout;
-    if (this.state.logoutRedirect == true) {
+    if (this.state.logoutRedirect === true) {
       this.setState({ logoutRedirect: false });
       return (
         <Router>
@@ -85,14 +85,14 @@ class App extends Component {
           <Router>
             <Layout>
               <Header className="heading">
-                <h1 className="title">Healthy Competition</h1>
+                <Link to ="/" className="title">Healthy Competition</Link>
 
                 <Button
                   icon={<LogoutOutlined />}
                   style={{
                     marginLeft: "90%",
-                    backgroundColor: "coral",
-                    marginBottom: "20%",
+                    backgroundColor: "lightsteelblue",
+                    marginTop: "10px",
                     color: "white",
                     float: "right",
                   }}

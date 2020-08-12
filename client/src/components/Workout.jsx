@@ -4,15 +4,17 @@ import { ThunderboltTwoTone } from "@ant-design/icons";
 import { BookTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
-import Axios from 'axios'
+import Axios from "axios";
 class Workout extends Component {
   constructor(props) {
     super(props);
     this.handleNoClick = this.handleNoClick.bind(this);
     this.handleYesClick = this.handleYesClick.bind(this);
+    this.handleStackUpButton = this.handleStackUpButton.bind(this);
     this.state = {
       redirectNo: false,
       redirectYes: false,
+      redirectTeam: false,
     };
   }
 
@@ -23,7 +25,7 @@ class Workout extends Component {
 
   handleYesClick() {
     console.log("Yes Clicked");
-    console.log(localStorage.getItem("userID"))
+    console.log(localStorage.getItem("userID"));
     this.setState({ redirectYes: true });
     const userID = localStorage.getItem("userID");
     Axios.post("/api/workout", {
@@ -31,8 +33,16 @@ class Workout extends Component {
         userID: userID,
       },
     })
-      .then(console.log("Axios route done?"))
+      .then((res) => {
+        console.log("Axios Complete", res);
+        localStorage.setItem("currentWorkout", res.data._id);
+      })
       .catch((err) => console.log("Axios route error", err));
+  }
+
+  handleStackUpButton() {
+    console.log("Stack Button Clicked");
+    this.setState({ redirectTeam: true });
   }
 
   render() {
@@ -42,6 +52,10 @@ class Workout extends Component {
       return <Redirect to="/profile" />;
     } else if (this.state.redirectYes === true) {
       return <Redirect to="/activeday" />;
+    }
+
+    if (this.state.redirectTeam === true) {
+      return <Redirect to="/team" />;
     }
     return (
       <div>
@@ -87,22 +101,6 @@ class Workout extends Component {
             Success isn’t always about greatness. It’s about consistency.
             Consistent hard work gains success. Greatness will come.{" "}
           </p>
-          <Button
-            type="primary"
-            size="large"
-            icon={<FundTwoTone twoToneColor="#f18f8e" />}
-            style={{
-              backgroundColor: "darksalmon",
-              // padding: "20px",
-              borderRadius: "12px",
-              width: "300px",
-              height: "100px",
-              fontSize: "25px",
-              marginLeft: "5%",
-            }}
-          >
-            See how you stack up!
-          </Button>
         </Card>
       </div>
     );
