@@ -4,7 +4,7 @@ import { ThunderboltTwoTone } from "@ant-design/icons";
 import { BookTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
-
+import Axios from 'axios'
 class Workout extends Component {
   constructor(props) {
     super(props);
@@ -17,13 +17,22 @@ class Workout extends Component {
   }
 
   handleNoClick() {
-    console.log("No Clicked")
+    console.log("No Clicked");
     this.setState({ redirectNo: true });
   }
 
   handleYesClick() {
-    console.log("Yes Clicked")
+    console.log("Yes Clicked");
+    console.log(localStorage.getItem("userID"))
     this.setState({ redirectYes: true });
+    const userID = localStorage.getItem("userID");
+    Axios.post("/api/workout", {
+      params: {
+        userID: userID,
+      },
+    })
+      .then(console.log("Axios route done?"))
+      .catch((err) => console.log("Axios route error", err));
   }
 
   render() {
