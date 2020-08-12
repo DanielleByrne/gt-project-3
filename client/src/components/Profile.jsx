@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Avatar, List, Row, Col } from "antd";
+import Axios from "axios";
 const { Meta } = Card;
 
 const styles = {
@@ -32,7 +33,21 @@ const data = [
   },
 ];
 
-const Profile = () => {
+function Profile() {
+  const [userInfo, setUserInfo] = useState({});
+
+  const userID = localStorage.getItem("userID");
+  useEffect(() => {
+    Axios.post("/api/userProfile", {
+      params: {
+        id: userID,
+      },
+    }).then((res) => {
+      setUserInfo(res.data);
+      console.log("res",res.data);
+    });
+  },[]);
+
   return (
     <div>
       {/* THIS IS THE USER CARD */}
@@ -52,33 +67,34 @@ const Profile = () => {
               //   avatar={
               //     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               //   }
-              title="Name:"
+              title={userInfo.email}
               description="This is the description"
             />
           </Card>
         </Col>
         {/* this is a list of their workouts  */}
-        <Col span ={12}>
-        <List
-          style={styles.list}
-          itemLayout="horizontal"
-          dataSource={data}
-          renderItem={(item) => (
-            <List.Item>
-              <List.Item.Meta
-                avatar={
-                  <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
-                }
-                title={<a href="https://ant.design">{item.title}</a>}
-                description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-              />
-            </List.Item>
-          )}
-        />
+        {/* Map over/input data from userInfo.workouts to get the cards to load below */}
+        <Col span={12}>
+          <List
+            style={styles.list}
+            itemLayout="horizontal"
+            dataSource={data}
+            renderItem={(item) => (
+              <List.Item>
+                <List.Item.Meta
+                  avatar={
+                    <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
+                  }
+                  title={<a href="https://ant.design">{item.title}</a>}
+                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                />
+              </List.Item>
+            )}
+          />
         </Col>
       </Row>
     </div>
   );
-};
+}
 
 export default Profile;
