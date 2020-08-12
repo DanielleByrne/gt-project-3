@@ -1,38 +1,51 @@
-import React, { Component } from "react";
-import { Card, Button, Icon } from "antd";
-import { ThunderboltTwoTone } from "@ant-design/icons";
-import { BookTwoTone } from "@ant-design/icons";
-import { FundTwoTone } from "@ant-design/icons";
-import { Redirect } from "react-router-dom";
-import Axios from 'axios'
+import React, { Component } from 'react';
+import { Card, Button, Icon } from 'antd';
+import { StarTwoTone } from '@ant-design/icons';
+import { BookTwoTone } from '@ant-design/icons';
+import { FundTwoTone } from '@ant-design/icons';
+import { Redirect } from 'react-router-dom';
+import Yesbutton from './Animations/Yesbutton';
+import Nobutton from './Animations/Nobutton';
+import Axios from 'axios';
+
 class Workout extends Component {
   constructor(props) {
     super(props);
     this.handleNoClick = this.handleNoClick.bind(this);
     this.handleYesClick = this.handleYesClick.bind(this);
+    this.handleStackUpButton = this.handleStackUpButton.bind(this);
     this.state = {
       redirectNo: false,
       redirectYes: false,
+      redirectTeam: false
     };
   }
 
   handleNoClick() {
-    console.log("No Clicked");
+    console.log('No Clicked');
     this.setState({ redirectNo: true });
   }
 
   handleYesClick() {
-    console.log("Yes Clicked");
-    console.log(localStorage.getItem("userID"))
+    console.log('Yes Clicked');
+    console.log(localStorage.getItem('userID'));
     this.setState({ redirectYes: true });
-    const userID = localStorage.getItem("userID");
-    Axios.post("/api/workout", {
+    const userID = localStorage.getItem('userID');
+    Axios.post('/api/workout', {
       params: {
-        userID: userID,
-      },
+        userID: userID
+      }
     })
-      .then(console.log("Axios route done?"))
-      .catch((err) => console.log("Axios route error", err));
+      .then(res => {
+        console.log('Axios Complete', res);
+        localStorage.setItem('currentWorkout', res.data._id);
+      })
+      .catch(err => console.log('Axios route error', err));
+  }
+
+  handleStackUpButton() {
+    console.log('Stack Button Clicked');
+    this.setState({ redirectTeam: true });
   }
 
   render() {
@@ -43,62 +56,69 @@ class Workout extends Component {
     } else if (this.state.redirectYes === true) {
       return <Redirect to="/activeday" />;
     }
+
+    if (this.state.redirectTeam === true) {
+      return <Redirect to="/team" />;
+    }
     return (
       <div>
-        <Card style={{ width: 500, marginLeft: "32%", marginTop: "150px" }}>
+        <Card style={{ width: 500, marginLeft: '34%', marginTop: '150px' }}>
           <h1>Is today an active day?</h1>
-          <Button
-            onClick={this.handleNoClick}
-            type="primary"
-            size="large"
-            icon={<BookTwoTone twoToneColor="#f18f8e" />}
-            style={{
-              backgroundColor: "darksalmon",
-              padding: "10px",
-              borderRadius: "12px",
-              margin: "20px",
-              verticalAlign: "middle",
-              textAlign: "center",
-              display: "table-cell",
-              width: "100px",
-              height: "50px",
-            }}
-          >
-            No
-          </Button>
-          <Button
+          <Yesbutton handleYesClick={this.handleYesClick} />
+          <Nobutton handleNoClick={this.handleNoClick} />
+          {/* <Button
             onClick={this.handleYesClick}
             type="primary"
             size="large"
-            icon={<ThunderboltTwoTone twoToneColor="#f18f8e" />}
+            icon={<StarTwoTone twoToneColor="#ED6A5E" />}
             style={{
-              backgroundColor: "darksalmon",
-              padding: "10px",
-              borderRadius: "12px",
-              verticalAlign: "middle",
-              display: "table-cell",
-              width: "100px",
-              height: "50px",
+              backgroundColor: 'darksalmon',
+              padding: '10px',
+              borderRadius: '12px',
+              verticalAlign: 'middle',
+              display: 'table-cell',
+              width: '100px',
+              height: '50px'
             }}
           >
             Yes
           </Button>
-          <p>
-            Success isn’t always about greatness. It’s about consistency.
-            Consistent hard work gains success. Greatness will come.{" "}
-          </p>
           <Button
+            onClick={this.handleNoClick}
             type="primary"
             size="large"
-            icon={<FundTwoTone twoToneColor="#f18f8e" />}
+            icon={<BookTwoTone twoToneColor="#ED6A5E" />}
             style={{
-              backgroundColor: "darksalmon",
+              backgroundColor: 'darksalmon',
+              padding: '10px',
+              borderRadius: '12px',
+              margin: '20px',
+              verticalAlign: 'middle',
+              textAlign: 'center',
+              display: 'table-cell',
+              width: '100px',
+              height: '50px'
+            }}
+          >
+            No
+          </Button> */}
+
+          <p>
+            Success isn’t always about greatness. It’s about consistency.
+            Consistent hard work gains success. Greatness will come.{' '}
+          </p>
+          <Button
+            onClick={this.handleStackUpButton}
+            type="primary"
+            size="large"
+            icon={<FundTwoTone twoToneColor="#ED6A5E" />}
+            style={{
+              backgroundColor: 'darksalmon',
               // padding: "20px",
-              borderRadius: "12px",
-              width: "300px",
-              height: "100px",
-              fontSize: "25px",
-              marginLeft: "5%",
+              borderRadius: '12px',
+              width: '300px',
+              height: '100px',
+              fontSize: '25px'
             }}
           >
             See how you stack up!
