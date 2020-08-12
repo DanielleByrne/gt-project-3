@@ -17,6 +17,11 @@ class ActiveDay extends Component {
     console.log("Stack Button Clicked");
     this.setState({ redirectTeam: true });
   }
+
+  handleWorkedOutClick(){
+    
+  }
+
   render() {
     if (this.state.redirectTeam === true) {
       return <Redirect to="/team" />;
