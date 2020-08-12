@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/login";
 import Workout from "./components/Workout";
@@ -119,13 +114,34 @@ class App extends Component {
         <Router>
           <Layout>
             <Header className="heading">
-              <h1 className="title">Healthy Competition</h1>
+              <Link to ={"/"} className="title" >Healthy Competition</Link>
+              {this.state.user ? (
+                <Button
+                  icon={<LogoutOutlined />}
+                  style={{
+                    marginLeft: "90%",
+                    backgroundColor: "lightsteelblue",
+                    marginBottom: "20%",
+                    color: "white",
+                  }}
+                  onClick={this.logout}
+                >
+                  Log Out
+                </Button>
+              ) : null}
             </Header>
           </Layout>
+          {/* <Login /> */}
+          {/* {this.state.user ? <Home /> : <Login />} */}
 
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/workout" component={Workout} />
             <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/team" component={TeamView} />
+            <Route exact path="/activeday" component={ActiveDay} />
+
           </Switch>
         </Router>
       </div>
