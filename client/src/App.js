@@ -22,14 +22,17 @@ import { LogoutOutlined } from "@ant-design/icons";
 import Profile from "./components/Profile";
 import TeamView from "./components/TeamView";
 import ActiveDay from "./components/ActiveDay";
+import { UserOutlined } from "@ant-design/icons";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.logout = this.logout.bind(this);
+    this.handleProfileClick = this.handleProfileClick.bind(this);
     this.state = {
       user: {},
       logoutRedirect: false,
+      profileRedirect: false,
     };
   }
 
@@ -46,6 +49,11 @@ class App extends Component {
   //     }
   //   });
   // };
+  handleProfileClick() {
+    console.log("Profile button clicked");
+    this.setState({ profileRedirect: true });
+  }
+
   logout() {
     fire.auth().signOut();
     localStorage.clear();
@@ -71,6 +79,15 @@ class App extends Component {
 
   render() {
     const { Header } = Layout;
+    if (this.state.profileRedirect) {
+      this.setState({ profileRedirect: false });
+      console.log("You are going to be redirected.");
+      return (
+        <Router>
+          <Redirect to="/profile" />
+        </Router>
+      );
+    }
     if (this.state.logoutRedirect == true) {
       this.setState({ logoutRedirect: false });
       return (
@@ -85,20 +102,32 @@ class App extends Component {
           <Router>
             <Layout>
               <Header className="heading">
-                <Link to ="/" className="title">Healthy Competition</Link>
-
+                <Link to="/" className="title">
+                  Healthy Competition
+                </Link>
                 <Button
                   icon={<LogoutOutlined />}
                   style={{
-                    marginLeft: "90%",
                     backgroundColor: "lightsteelblue",
-                    marginTop: "10px",
+                    marginTop: "15px",
                     color: "white",
                     float: "right",
                   }}
                   onClick={this.logout}
                 >
                   Log Out
+                </Button>
+                <Button
+                  icon={<UserOutlined />}
+                  style={{
+                    backgroundColor: "darksalmon",
+                    color: "white",
+                    float: "right",
+                    marginTop: "15px",
+                  }}
+                  onClick={this.handleProfileClick}
+                >
+                  Profile
                 </Button>
               </Header>
             </Layout>

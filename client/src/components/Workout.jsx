@@ -101,6 +101,22 @@ class Workout extends Component {
             Success isn’t always about greatness. It’s about consistency.
             Consistent hard work gains success. Greatness will come.{" "}
           </p>
+          <Button
+            onClick={this.handleStackUpButton}
+            type="primary"
+            size="large"
+            icon={<FundTwoTone twoToneColor="#f18f8e" />}
+            style={{
+              backgroundColor: "darksalmon",
+              // padding: "20px",
+              borderRadius: "12px",
+              width: "300px",
+              height: "100px",
+              fontSize: "25px",
+            }}
+          >
+            See how you stack up!
+          </Button>
         </Card>
       </div>
     );
