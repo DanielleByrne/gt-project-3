@@ -20,6 +20,7 @@ const styles = {
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
+  let workoutArr;
 
   const userID = localStorage.getItem("userID");
   useEffect(() => {
@@ -28,8 +29,10 @@ function Profile() {
         id: userID,
       },
     }).then((res) => {
+      workoutArr = res.data.workouts;
+      workoutArr = [...workoutArr].reverse();
+      res.data.workouts = workoutArr;
       setUserInfo(res.data);
-      console.log("res", res.data);
     });
   }, []);
 
