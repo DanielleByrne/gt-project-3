@@ -28,6 +28,7 @@ const NewMessage = () => {
         placeholder="Write your message here"
         enterButton="Send"
         size="large"
+        style ={{width: "50%", justifyContent: "center"}}
         onSearch={(value) => handleMessageSubmit(value)}
       />
       ;
