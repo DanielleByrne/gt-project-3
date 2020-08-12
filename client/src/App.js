@@ -111,6 +111,8 @@ class App extends Component {
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/team" component={TeamView} />
               <Route exact path="/activeday" component={ActiveDay} />
+              <Route component= {NoMatch}/>
+
             </Switch>
           </Router>
         </div>
