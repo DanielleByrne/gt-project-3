@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { FireTwoTone } from "@ant-design/icons";
 import { Card, Button, Icon } from "antd";
-
-
+import Axios from "axios";
 
 class ActiveDay extends Component {
-
-  handleWorkedOutClick(){
-    
+  handleWorkedOutClick() {
+    const workoutID = localStorage.getItem("currentWorkout");
+    Axios.put("/api/workoutUpdate", { params: { workoutID: workoutID } })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => console.log("Workout Update Axios Error", err));
   }
 
   render() {
@@ -16,6 +19,7 @@ class ActiveDay extends Component {
         <Card style={{ width: 500, marginLeft: "32%", marginTop: "150px" }}>
           <h1>Get after it!</h1>
           <Button
+            onClick={this.handleWorkedOutClick}
             type="primary"
             size="large"
             icon={<FireTwoTone twoToneColor="#f18f8e" />}
@@ -26,7 +30,7 @@ class ActiveDay extends Component {
               width: "300px",
               height: "100px",
               marginBottom: "20px",
-              fontSize: "25px"
+              fontSize: "25px",
             }}
           >
             I worked out today!

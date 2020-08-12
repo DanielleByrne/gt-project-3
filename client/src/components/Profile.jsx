@@ -44,9 +44,9 @@ function Profile() {
       },
     }).then((res) => {
       setUserInfo(res.data);
-      console.log("res",res.data);
+      console.log("res", res.data);
     });
-  },[]);
+  }, []);
 
   return (
     <div>
@@ -68,7 +68,7 @@ function Profile() {
               //     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               //   }
               title={userInfo.email}
-              description="This is the description"
+              description={"This is the description"}
             />
           </Card>
         </Col>
@@ -85,8 +85,16 @@ function Profile() {
                   avatar={
                     <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
                   }
-                  title={<a href="https://ant.design">{item.date_completed.split("T")[0]}</a>}
-                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                  title={
+                    <a href="https://ant.design">
+                      {item.date_completed.split("T")[0]}
+                    </a>
+                  }
+                  description={
+                    item.completed_workout === true
+                      ? "Workout Done"
+                      : "You didn't do your workout"
+                  }
                 />
               </List.Item>
             )}
