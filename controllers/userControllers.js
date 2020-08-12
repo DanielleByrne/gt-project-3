@@ -95,10 +95,6 @@ router.put("/api/user/:id", function (req, res) {
 //     { $push: { scores: 89 } }
 //  )
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 41c4a7c134d180b7c3923c8e31e5c62e4fb5abf6
 //Delete account by user ID
 router.delete("/api/user/:id", function (req, res) {
   db.User.destroy(req.params)
