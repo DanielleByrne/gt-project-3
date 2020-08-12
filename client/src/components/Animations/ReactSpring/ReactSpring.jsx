@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTransition, animated } from "react-spring";
 import { ReactComponent as Strongicon } from "./strong.svg";
 import { ReactComponent as Clock } from "./clock.svg";
+import "./ReactSpring.css";
 
 const ReactSpring = props => {
   const [toggle, handleClick] = useState(false);
@@ -52,7 +53,7 @@ const ReactSpring = props => {
             </animated.div>
           )
         )}
-        Workout complete!
+        <p id="buttonText">Workout complete!</p>
       </button>
     </>
   );
