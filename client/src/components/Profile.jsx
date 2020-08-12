@@ -67,12 +67,13 @@ function Profile() {
               //   avatar={
               //     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               //   }
-              title="Name:"
+              title={userInfo.email}
               description="This is the description"
             />
           </Card>
         </Col>
         {/* this is a list of their workouts  */}
+        {/* Map over userInfo.workouts to get the cards to load below */}
         <Col span={12}>
           <List
             style={styles.list}
