@@ -25,6 +25,9 @@ app.use(userController);
 app.use(workoutsController);
 app.use(messagesController);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 //Test post route for message
 // app.post("/api/message", (req, res) => {
