@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/login";
 import Workout from "./components/Workout";
@@ -21,10 +27,13 @@ import NoMatch from "./components/NoMatch";
 class App extends Component {
   constructor(props) {
     super(props);
+    this.logout = this.logout.bind(this);
     this.state = {
       user: {},
+      logoutRedirect: false,
     };
   }
+
   // componentDidMount() {
   //   this.removeAuthListener = fire.auth().onAuthStateChanged((user) => {
   //     if (user) {
@@ -40,11 +49,16 @@ class App extends Component {
   // };
   logout() {
     fire.auth().signOut();
+    localStorage.clear();
+    this.setState({ logoutRedirect: true });
   }
+
   authListener() {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
+        const emailPrefix = user.email.split("@");
+        localStorage.setItem("email", emailPrefix[0]);
         // setUser(user);
       } else {
         this.setState({ user: null });
@@ -58,12 +72,58 @@ class App extends Component {
 
   render() {
     const { Header } = Layout;
+    if (this.state.logoutRedirect == true) {
+      this.setState({ logoutRedirect: false });
+      return (
+        <Router>
+          <Redirect to="/" />
+        </Router>
+      );
+    }
+    if (this.state.user) {
+      return (
+        <div className="App">
+          <Router>
+            <Layout>
+              <Header className="heading">
+                <h1 className="title">Healthy Competition</h1>
+
+                <Button
+                  icon={<LogoutOutlined />}
+                  style={{
+                    marginLeft: "90%",
+                    backgroundColor: "coral",
+                    marginBottom: "20%",
+                    color: "white",
+                    float: "right",
+                  }}
+                  onClick={this.logout}
+                >
+                  Log Out
+                </Button>
+              </Header>
+            </Layout>
+
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/workout" component={Workout} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/team" component={TeamView} />
+              <Route exact path="/activeday" component={ActiveDay} />
+            </Switch>
+          </Router>
+        </div>
+      );
+    }
     return (
       <div className="App">
         <Router>
           <Layout>
             <Header className="heading">
-              <Link to ={"/"} className="title" >Healthy Competition</Link>
+              <Link to={"/"} className="title">
+                Healthy Competition
+              </Link>
               {this.state.user ? (
                 <Button
                   icon={<LogoutOutlined />}
@@ -94,7 +154,6 @@ class App extends Component {
 
           </Switch>
         </Router>
-        {/* <Workout/> */}
       </div>
     );
   }
