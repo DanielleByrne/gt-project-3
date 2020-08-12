@@ -2,9 +2,25 @@ import React, { Component } from "react";
 import { FireTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
 import { Card, Button, Icon } from "antd";
+import { Redirect } from "react-router-dom";
+
 
 class ActiveDay extends Component {
+  constructor(props) {
+    super(props);
+    this.handleStackUpButton = this.handleStackUpButton.bind(this);
+    this.state = {
+      redirectTeam: false,
+    };
+  }
+  handleStackUpButton() {
+    console.log("Stack Button Clicked");
+    this.setState({ redirectTeam: true });
+  }
   render() {
+    if (this.state.redirectTeam === true) {
+      return <Redirect to="/team" />;
+    }
     return (
       <div>
         <Card style={{ width: 500, marginLeft: "32%", marginTop: "150px" }}>
