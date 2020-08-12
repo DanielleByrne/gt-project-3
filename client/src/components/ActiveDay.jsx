@@ -13,7 +13,7 @@ class ActiveDay extends Component {
           <Button
             type="primary"
             size="large"
-            icon={<FireTwoTone twoToneColor="#f18f8e" />}
+            icon={<FireTwoTone twoToneColor="#ED6A5E" />}
             style={{
               backgroundColor: "darksalmon",
               padding: "20px",
