@@ -1,32 +1,30 @@
 const router = require("express").Router();
 const db = require("../models/index");
 
-
 //Get all workouts
 router.get("/api/workout", function (req, res) {
-    db.Workout.find({})
-      .then((workout) => {
-        res.json({
-          error: false,
-          data: workout,
-          message: "Successfully found workout.",
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({
-          error: true,
-          data: null,
-          message: "Failed to find out.",
-        });
+  db.Workout.find({})
+    .then((workout) => {
+      res.json({
+        error: false,
+        data: workout,
+        message: "Successfully found workout.",
       });
-  });
-
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: true,
+        data: null,
+        message: "Failed to find out.",
+      });
+    });
+});
 
 //Get workout calendar or list specific to that user.
 router.get("/api/workout/:id", function (req, res) {
   db.User.find({})
-  .populate("workouts")
+    .populate("workouts")
     .then((workout) => {
       res.json({
         error: false,
@@ -47,18 +45,24 @@ router.get("/api/workout/:id", function (req, res) {
 //Create workout (using that cronjon?) for each specific user ID
 //How can we connect body to the ID ? req.body is just date/complete so it's created on a users
 router.post("/api/workout", function (req, res) {
-  db.Workout.create(req.body)
+  console.log("Create workout route hit", req.body.params.userID);
+  const userID = req.body.params.userID;
+  db.Workout.create({})
     //   .populate("workouts")
     .then((createdWorkout) => {
+      console.log("CREATED WORKOUT", createdWorkout);
       // GET USER ID HERE AND PASS INTO findOneAndUpdate
-      db.User.findOneAndUpdate(userId, {
-        $push: { workouts: { _id: createdWorkout._id } },
-      });
-      res.json({
-        error: false,
-        data: createdWorkout,
-        message: "Successfully created workout.",
-      });
+      db.User.findOneAndUpdate(
+        userID,
+        {
+          $push: { workouts: { _id: createdWorkout._id } },
+        },
+        { new: true }
+      )
+        .then((response) => {
+          console.log("User workout pushed", response);
+        })
+        .catch((err) => console.log("put route error"));
     })
     .catch((err) => {
       console.log(err);
@@ -69,8 +73,6 @@ router.post("/api/workout", function (req, res) {
       });
     });
 });
-
-
 
 //Update workout (false --> true) by workout ID
 router.put("/api/workout/:id", function (req, res) {
@@ -93,6 +95,5 @@ router.put("/api/workout/:id", function (req, res) {
 });
 
 module.exports = router;
-
 
 //create workout with name of each user (manually) so we can push easier and see in robo easier?
