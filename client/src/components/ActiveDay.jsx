@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FireTwoTone } from "@ant-design/icons";
 import { Card, Button, Icon } from "antd";
-
+import ReactSpring from "./Animations/ReactSpring/ReactSpring"
 
 
 class ActiveDay extends Component {
@@ -10,6 +10,8 @@ class ActiveDay extends Component {
       <div>
         <Card style={{ width: 500, marginLeft: "32%", marginTop: "150px" }}>
           <h1>Get after it!</h1>
+          {/* After click function complete --> */}
+          {/* <ReactSpring handleWorkoutClick={this.handleWorkoutClick}/> */}
           <Button
             type="primary"
             size="large"
