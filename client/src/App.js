@@ -91,8 +91,8 @@ class App extends Component {
                   icon={<LogoutOutlined />}
                   style={{
                     marginLeft: "90%",
-                    backgroundColor: "coral",
-                    marginBottom: "20%",
+                    backgroundColor: "lightsteelblue",
+                    marginTop: "10px",
                     color: "white",
                     float: "right",
                   }}
