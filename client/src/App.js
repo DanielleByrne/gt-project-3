@@ -62,13 +62,13 @@ class App extends Component {
         <Router>
           <Layout>
             <Header className="heading">
-              <Link to ={"/"} className="title">Healthy Competition</Link>
+              <Link to ={"/"} className="title" >Healthy Competition</Link>
               {this.state.user ? (
                 <Button
                   icon={<LogoutOutlined />}
                   style={{
                     marginLeft: "90%",
-                    backgroundColor: "coral",
+                    backgroundColor: "lightsteelblue",
                     marginBottom: "20%",
                     color: "white",
                   }}

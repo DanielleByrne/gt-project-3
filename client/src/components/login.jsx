@@ -3,7 +3,7 @@ import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
 import { Spring } from "react-spring/renderprops";
 
-// import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox } from "antd";
 // import { UserOutlined, LockOutlined } from "@ant-design/icons";
 // import { app } from "firebase";
 
@@ -70,7 +70,9 @@ class Login extends Component {
               width: "50%",
               margin: "10px",
               marginTop: "20px",
-              border: " 1px solid #f18f8e",
+              height: "35px",
+              border: " 1px solid lightsteelblue",
+        
             }}
             className=""
             name="email"
@@ -88,7 +90,8 @@ class Login extends Component {
             style={{
               width: "50%",
               margin: "10px",
-              border: " 1px solid #f18f8e",
+              border: " 1px solid lightsteelblue",
+              height: "35px",
             }}
             className=""
             name="password"
@@ -104,9 +107,12 @@ class Login extends Component {
           <input
             style={{
               margin: "10px",
-              backgroundColor: "coral",
+              backgroundColor: "lightcoral",
+              width: "100px", 
+              height: "35px",
               color: "white",
               border: "1px solid white",
+              borderRadius: "15px",
             }}
             type="submit"
             className="button"
