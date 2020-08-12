@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card, Button, Icon } from "antd";
-import { ThunderboltTwoTone } from "@ant-design/icons";
+import { StarTwoTone } from "@ant-design/icons";
 import { BookTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
@@ -59,13 +59,30 @@ class Workout extends Component {
     }
     return (
       <div>
-        <Card style={{ width: 500, marginLeft: "32%", marginTop: "150px" }}>
+        <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
           <h1>Is today an active day?</h1>
+          <Button
+            onClick={this.handleYesClick}
+            type="primary"
+            size="large"
+            icon={<StarTwoTone twoToneColor="#ED6A5E" />}
+            style={{
+              backgroundColor: "darksalmon",
+              padding: "10px",
+              borderRadius: "12px",
+              verticalAlign: "middle",
+              display: "table-cell",
+              width: "100px",
+              height: "50px",
+            }}
+          >
+            Yes
+          </Button>
           <Button
             onClick={this.handleNoClick}
             type="primary"
             size="large"
-            icon={<BookTwoTone twoToneColor="#f18f8e" />}
+            icon={<BookTwoTone twoToneColor="#ED6A5E" />}
             style={{
               backgroundColor: "darksalmon",
               padding: "10px",
@@ -80,23 +97,7 @@ class Workout extends Component {
           >
             No
           </Button>
-          <Button
-            onClick={this.handleYesClick}
-            type="primary"
-            size="large"
-            icon={<ThunderboltTwoTone twoToneColor="#f18f8e" />}
-            style={{
-              backgroundColor: "darksalmon",
-              padding: "10px",
-              borderRadius: "12px",
-              verticalAlign: "middle",
-              display: "table-cell",
-              width: "100px",
-              height: "50px",
-            }}
-          >
-            Yes
-          </Button>
+
           <p>
             Success isn’t always about greatness. It’s about consistency.
             Consistent hard work gains success. Greatness will come.{" "}
@@ -105,7 +106,7 @@ class Workout extends Component {
             onClick={this.handleStackUpButton}
             type="primary"
             size="large"
-            icon={<FundTwoTone twoToneColor="#f18f8e" />}
+            icon={<FundTwoTone twoToneColor="#ED6A5E" />}
             style={{
               backgroundColor: "darksalmon",
               // padding: "20px",
