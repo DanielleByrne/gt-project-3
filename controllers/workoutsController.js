@@ -53,7 +53,7 @@ router.post("/api/workout", function (req, res) {
       console.log("CREATED WORKOUT", createdWorkout);
       // GET USER ID HERE AND PASS INTO findOneAndUpdate
       db.User.findOneAndUpdate(
-        userID,
+        { _id: userID },
         {
           $push: { workouts: { _id: createdWorkout._id } },
         },
