@@ -60,7 +60,7 @@ class TeamView extends Component {
           <Table columns={columns} dataSource={data} size="middle" />
         </div>
         <Messages />
-        <NewMessage />
+        {/* <NewMessage /> */}
       </div>
     );
   }
