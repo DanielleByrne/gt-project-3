@@ -53,14 +53,14 @@ function Messages() {
         <Card>
           <div>
             {message.email} <br />
-            <small>
-              <small>
-                at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}
-                {message.time_posted.split("T")[0]}
-              </small>
-            </small>
           </div>
           <div>{message.message}</div>
+          <small>
+            <small>
+              at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}
+              {message.time_posted.split("T")[0]}
+            </small>
+          </small>
           {/* <small>{message.time_posted.split("T")[0]}</small> */}
           {/* <br /> */}
           {/* <small>{message.time_posted.split("T")[1].slice(0, 5)}</small> */}
