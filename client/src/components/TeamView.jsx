@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Table } from "antd";
 import { useSpring, animated } from "react-spring";
-
+import NewMessage from "./NewMessage"
+import Messages from "./Messages"
 const columns = [
   {
     title: "Name",
@@ -53,9 +54,13 @@ function App() {
 class TeamView extends Component {
   render() {
     return (
-      <div style={styles.table}>
-        <App></App>
-        <Table columns={columns} dataSource={data} size="middle" />
+      <div>
+        <div style={styles.table}>
+          <App></App>
+          <Table columns={columns} dataSource={data} size="middle" />
+        </div>
+        <Messages />
+        <NewMessage />
       </div>
     );
   }

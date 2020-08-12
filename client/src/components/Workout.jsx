@@ -17,12 +17,12 @@ class Workout extends Component {
   }
 
   handleNoClick() {
-    console.log("No Clicked");
+    console.log("No Clicked")
     this.setState({ redirectNo: true });
   }
 
   handleYesClick() {
-    console.log("Yes Clicked");
+    console.log("Yes Clicked")
     this.setState({ redirectYes: true });
   }
 
