@@ -3,7 +3,7 @@ import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
 import { Spring } from "react-spring/renderprops";
 import axios from "axios";
-import { Form, Input, Button, Checkbox } from "antd";
+// import { Form, Input, Button, Checkbox } from "antd";
 // import { UserOutlined, LockOutlined } from "@ant-design/icons";
 // import { app } from "firebase";
 

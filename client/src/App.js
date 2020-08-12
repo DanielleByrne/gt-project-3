@@ -17,7 +17,7 @@ import "./App.css";
 // import Login from "./components/Login";
 // import fire from "./config/Fire";
 import SignUp from "./components/signup";
-import { Button, Icon } from "antd";
+import { Button} from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import Profile from "./components/Profile";
 import TeamView from "./components/TeamView";
@@ -89,7 +89,7 @@ class App extends Component {
         </Router>
       );
     }
-    if (this.state.logoutRedirect == true) {
+    if (this.state.logoutRedirect === true) {
       this.setState({ logoutRedirect: false });
       return (
         <Router>

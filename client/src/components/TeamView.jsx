@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import { Table } from "antd";
 import { useSpring, animated } from "react-spring";
-import NewMessage from "./NewMessage"
+// import NewMessage from "./NewMessage"
 import Messages from "./Messages"
+// import Axios from "axios";
 const columns = [
   {
     title: "Name",
@@ -47,6 +48,9 @@ const styles = {
 };
 
 function App() {
+  // const [teamInfo, setTeamInfo] = useState({});
+
+
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
   return <animated.div style={props}>How's Your Team Doing?</animated.div>;
 }
