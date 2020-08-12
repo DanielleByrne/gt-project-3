@@ -21,7 +21,12 @@ router.post("/api/user", function (req, res) {
       });
     });
 });
-
+// GET USER INFO FOR PROFILE PAGE
+router.post("/api/userProfile",function(req,res){
+  db.User.findOne({_id: req.body.params.id}).populate.then((userFound)=>{
+    res.json(userFound)
+  })
+})
 
 //Create user (using that cronjon?)
 router.post("/api/signup", function (req, res) {
