@@ -73,7 +73,7 @@ function Profile() {
           </Card>
         </Col>
         {/* this is a list of their workouts  */}
-        {/* Map over userInfo.workouts to get the cards to load below */}
+        {/* Map over/input data from userInfo.workouts to get the cards to load below */}
         <Col span={12}>
           <List
             style={styles.list}
