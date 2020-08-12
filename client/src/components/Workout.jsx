@@ -4,7 +4,7 @@ import { ThunderboltTwoTone } from "@ant-design/icons";
 import { BookTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
-
+import Axios from 'axios'
 class Workout extends Component {
   constructor(props) {
     super(props);
@@ -19,13 +19,22 @@ class Workout extends Component {
   }
 
   handleNoClick() {
-    console.log("No Clicked")
+    console.log("No Clicked");
     this.setState({ redirectNo: true });
   }
 
   handleYesClick() {
-    console.log("Yes Clicked")
+    console.log("Yes Clicked");
+    console.log(localStorage.getItem("userID"))
     this.setState({ redirectYes: true });
+    const userID = localStorage.getItem("userID");
+    Axios.post("/api/workout", {
+      params: {
+        userID: userID,
+      },
+    })
+      .then(console.log("Axios route done?"))
+      .catch((err) => console.log("Axios route error", err));
   }
 
   handleStackUpButton() {
@@ -89,23 +98,6 @@ class Workout extends Component {
             Success isn’t always about greatness. It’s about consistency.
             Consistent hard work gains success. Greatness will come.{" "}
           </p>
-          <Button
-            onClick={this.handleStackUpButton}
-            type="primary"
-            size="large"
-            icon={<FundTwoTone twoToneColor="#f18f8e" />}
-            style={{
-              backgroundColor: "darksalmon",
-              // padding: "20px",
-              borderRadius: "12px",
-              width: "300px",
-              height: "100px",
-              fontSize: "25px",
-              marginLeft: "5%",
-            }}
-          >
-            See how you stack up!
-          </Button>
         </Card>
       </div>
     );

@@ -22,12 +22,15 @@ class SignUp extends Component {
     event.preventDefault();
     const email = this.emailInput.value;
     const password = this.passwordInput.value;
+    // CREATES NEW USER, SAVES USER ID TO LOCAL STORAGE
     axios
-    .post("/api/signup", { email, password })
-    .then((response) => {
-      console.log(response.data)})
-    .catch((err) => {
-      console.log(err);
+      .post("/api/signup", { email, password })
+      .then((response) => {
+        console.log(response.data);
+        localStorage.setItem("userID", response.data.data._id)
+      })
+      .catch((err) => {
+        console.log(err);
       });
     fire
       .auth()
@@ -50,7 +53,7 @@ class SignUp extends Component {
         <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
           {(props) => (
             <div style={props}>
-               <h2 style={{ marginTop: "20px" }}>Create an Account</h2>
+              <h2 style={{ marginTop: "20px" }}>Create an Account</h2>
             </div>
           )}
         </Spring>
@@ -72,7 +75,6 @@ class SignUp extends Component {
               marginTop: "20px",
               border: " 1px solid lightsteelblue",
               height: "35px",
-
             }}
             className=""
             name="email"
@@ -102,24 +104,23 @@ class SignUp extends Component {
             }}
             placeholder="Password"
           ></input>
-          <br>
-          </br>
+          <br></br>
           {/* </label> */}
           <input
-            style={{ margin: "10px", 
-            margin: "10px",
-            backgroundColor: "lightcoral",
-            width: "100px", 
-            height: "35px",
-            color: "white",
-            border: "1px solid #ECFEE8", 
-            borderRadius: "12px",
-          
-          }}
+            style={{
+              margin: "10px",
+              margin: "10px",
+              backgroundColor: "lightcoral",
+              width: "100px",
+              height: "35px",
+              color: "white",
+              border: "1px solid #ECFEE8",
+              borderRadius: "12px",
+            }}
             type="submit"
             className="button"
-            // I CHANGED THE VALUE OF THE BUTTON TO SIGN UP I DON'T KNOW IF THAT MESSES ANYTHING UP 
-            
+            // I CHANGED THE VALUE OF THE BUTTON TO SIGN UP I DON'T KNOW IF THAT MESSES ANYTHING UP
+
             value="Sign Up"
           ></input>
         </form>
