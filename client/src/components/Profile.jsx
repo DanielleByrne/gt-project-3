@@ -44,9 +44,9 @@ function Profile() {
       },
     }).then((res) => {
       setUserInfo(res);
-      console.log(res);
+      console.log("res",res.data);
     });
-  });
+  },[]);
 
   return (
     <div>
