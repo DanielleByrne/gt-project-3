@@ -56,7 +56,7 @@ class Workout extends Component {
     }
     return (
       <div>
-        <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
+        <Card style={{ width: 500, marginLeft: "33%", marginTop: "150px" }}>
           <h1>Is today an active day?</h1>
           <Button
             onClick={this.handleYesClick}
