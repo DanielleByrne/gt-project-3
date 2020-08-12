@@ -51,11 +51,19 @@ function Messages() {
 
       {messagesArr.map((message) => (
         <Card>
-          <div>{message.email}</div>
+          <div>
+            {message.email} <br />
+            <small>
+              <small>
+                at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}
+                {message.time_posted.split("T")[0]}
+              </small>
+            </small>
+          </div>
           <div>{message.message}</div>
-          <small>{message.time_posted.split("T")[0]}</small>
-          <br />
-          <small>{message.time_posted.split("T")[1].slice(0, 5)}</small>
+          {/* <small>{message.time_posted.split("T")[0]}</small> */}
+          {/* <br /> */}
+          {/* <small>{message.time_posted.split("T")[1].slice(0, 5)}</small> */}
         </Card>
       ))}
     </div>
