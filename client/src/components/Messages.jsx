@@ -42,13 +42,6 @@ function Messages() {
   return (
     <div>
       <h3>Chat With Your Team</h3>
-      {messagesArr.map((message) => (
-        <Card>
-          <div>{message.email}</div>
-          <div>{message.message}</div>
-          <small>{message.time_posted}</small>
-        </Card>
-      ))}
       <Search
         placeholder="Write your message here"
         enterButton="Send"
@@ -56,6 +49,13 @@ function Messages() {
         onSearch={(value) => handleMessageSubmit(value)}
       />
       ;
+      {messagesArr.map((message) => (
+        <Card>
+          <div>{message.email}</div>
+          <div>{message.message}</div>
+          <small>{message.time_posted}</small>
+        </Card>
+      ))}
     </div>
   );
 }

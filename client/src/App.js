@@ -85,14 +85,14 @@ class App extends Component {
           <Router>
             <Layout>
               <Header className="heading">
-                <h1 className="title">Healthy Competition</h1>
+                <Link to ="/" className="title">Healthy Competition</Link>
 
                 <Button
                   icon={<LogoutOutlined />}
                   style={{
                     marginLeft: "90%",
-                    backgroundColor: "coral",
-                    marginBottom: "20%",
+                    backgroundColor: "lightsteelblue",
+                    marginTop: "10px",
                     color: "white",
                     float: "right",
                   }}

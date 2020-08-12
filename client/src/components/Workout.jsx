@@ -10,9 +10,11 @@ class Workout extends Component {
     super(props);
     this.handleNoClick = this.handleNoClick.bind(this);
     this.handleYesClick = this.handleYesClick.bind(this);
+    this.handleStackUpButton = this.handleStackUpButton.bind(this);
     this.state = {
       redirectNo: false,
       redirectYes: false,
+      redirectTeam: false,
     };
   }
 
@@ -38,6 +40,11 @@ class Workout extends Component {
       .catch((err) => console.log("Axios route error", err));
   }
 
+  handleStackUpButton() {
+    console.log("Stack Button Clicked");
+    this.setState({ redirectTeam: true });
+  }
+
   render() {
     if (this.state.redirectNo === true) {
       // If user is authenticated redirect to a diff page below
@@ -45,6 +52,10 @@ class Workout extends Component {
       return <Redirect to="/profile" />;
     } else if (this.state.redirectYes === true) {
       return <Redirect to="/activeday" />;
+    }
+
+    if (this.state.redirectTeam === true) {
+      return <Redirect to="/team" />;
     }
     return (
       <div>
@@ -90,22 +101,6 @@ class Workout extends Component {
             Success isn’t always about greatness. It’s about consistency.
             Consistent hard work gains success. Greatness will come.{" "}
           </p>
-          <Button
-            type="primary"
-            size="large"
-            icon={<FundTwoTone twoToneColor="#f18f8e" />}
-            style={{
-              backgroundColor: "darksalmon",
-              // padding: "20px",
-              borderRadius: "12px",
-              width: "300px",
-              height: "100px",
-              fontSize: "25px",
-              marginLeft: "5%",
-            }}
-          >
-            See how you stack up!
-          </Button>
         </Card>
       </div>
     );
