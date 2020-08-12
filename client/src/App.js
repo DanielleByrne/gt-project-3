@@ -23,6 +23,7 @@ import Profile from "./components/Profile";
 import TeamView from "./components/TeamView";
 import ActiveDay from "./components/ActiveDay";
 import ReactSpring from "./components/ReactSpring/ReactSpring";
+import Clicktest from "./components/clickTest";
 
 class App extends Component {
   constructor(props) {
@@ -112,6 +113,7 @@ class App extends Component {
               <Route exact path="/team" component={TeamView} />
               <Route exact path="/activeday" component={ActiveDay} />
               <Route exact path = "/testspring" component = {ReactSpring}/>
+              <Route exact path = "/clicktest" component = {Clicktest}/>
             </Switch>
           </Router>
         </div>
