@@ -5,7 +5,6 @@ import "antd/dist/antd.css";
 import { Input, Table } from "antd";
 const { Search } = Input;
 
-
 function Messages() {
   const [messagesArr, setMessagesArr] = useState([]);
 
@@ -38,6 +37,17 @@ function Messages() {
     });
   }
 
+  const columns = [
+    {
+      title: "Username",
+      dataIndex: "email",
+    },
+    {
+      title: "Message",
+      dataIndex: "message",
+    },
+  ];
+
   return (
     <div>
       <h4>Chat With Your Team</h4>
@@ -45,28 +55,15 @@ function Messages() {
         placeholder="Write your message here"
         enterButton="Send"
         size="large"
-        style={{width:"50%"}}
+        style={{ width: "50%" }}
         onSearch={(value) => handleMessageSubmit(value)}
       />
-      <div scroll={{y:240}}>
-      {messagesArr.map((message) => (
-        <Card
-        // scroll={{y:240}}
-        style={{width:"50%", marginLeft:"25%", marginTop: "20px"}}
-        >
-          <div>
-            {message.email} <br />
-          </div>
-          <div>{message.message}</div>
-          <small>
-            <small>
-              at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}
-              {message.time_posted.split("T")[0]}
-            </small>
-          </small>
-        </Card>
-      ))}
-      </div>
+
+      <Table
+        scroll={{ y: 240 }}
+        columns={columns}
+        dataSource={messagesArr}
+      ></Table>
     </div>
   );
 }

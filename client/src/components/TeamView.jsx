@@ -54,9 +54,9 @@ function App() {
             res.data[i].workouts[res.data[i].workouts.length - 1]
               .completed_workout === true
           ) {
-            res.data[i].completed_today = "WORKOUT COMPLETED";
+            res.data[i].completed_today = "🔥";
           } else {
-            res.data[i].completed_today = "WORKOUT NOT DONE";
+            res.data[i].completed_today = "❌";
           }
         }
         setAllUsers(res.data);
