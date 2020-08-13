@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+
+
 // import ReactDOM from 'react-dom';
+
 import { useSpring, animated } from 'react-spring';
 import { BookTwoTone } from '@ant-design/icons';
 import '../Workout';
@@ -20,7 +23,8 @@ const Nobutton = props => {
   };
 
   return (
-    <div state={state} toggle={toggle}>
+    <div>
+    {/*  <div state={state} toggle={toggle}> */}
       <animated.button
         // onClick={this.handleNoClick}
         // onClick={() => toggle(!state)}

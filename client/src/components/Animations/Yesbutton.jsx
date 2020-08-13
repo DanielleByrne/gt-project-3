@@ -20,7 +20,8 @@ const Yesbutton = props => {
   };
 
   return (
-    <div state={state} toggle={toggle}>
+    <div>
+   {/* <div state={state} toggle={toggle}> */}
       <animated.button
         // onClick={this.handleNoClick}
         // onClick={() => toggle(!state)}

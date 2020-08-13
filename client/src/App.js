@@ -24,8 +24,14 @@ import TeamView from "./components/TeamView";
 import ActiveDay from "./components/ActiveDay";
 import { UserOutlined } from "@ant-design/icons";
 import NoMatch from "./components/NoMatch";
+
+// import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
+// import NoMatchAnimate from "./components/Animations/NoMatchAnimate";
+
+
 import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
 const { Header } = Layout;
+
 class App extends Component {
   
   constructor(props) {
@@ -143,7 +149,7 @@ class App extends Component {
               <Route exact path="/team" component={TeamView} />
               <Route exact path="/activeday" component={ActiveDay} />
               <Route component= {NoMatch}/>
-              <Route exact path = "/testspring" component = {ReactSpring}/>
+              {/* <Route exact path = "/testspring" component = {NoMatchAnimate}/> */}
               {/* render= if lift state */}
               {/* <Route exact path = "/clicktest" component = {Clicktest}/> */}
             </Switch>
