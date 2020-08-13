@@ -84,7 +84,7 @@ function Profile() {
               height: "75px",
               fontSize: "18px",
               marginTop: "15px",
-              marginRight:"7%"
+              marginRight:"39%"
             }}
           >
             Back to team page
