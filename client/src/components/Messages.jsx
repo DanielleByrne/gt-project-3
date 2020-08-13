@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Card } from "antd";
 import "antd/dist/antd.css";
-import { Input, Table } from "antd";
+import { Input} from "antd";
 const { Search } = Input;
 
 function Messages() {
@@ -37,16 +37,7 @@ function Messages() {
     });
   }
 
-  const columns = [
-    {
-      title: "Username",
-      dataIndex: "email",
-    },
-    {
-      title: "Message",
-      dataIndex: "message",
-    },
-  ];
+
 
   return (
     <div>
@@ -58,12 +49,27 @@ function Messages() {
         style={{ width: "50%" }}
         onSearch={(value) => handleMessageSubmit(value)}
       />
-
-      <Table
-        scroll={{ y: 240 }}
-        columns={columns}
-        dataSource={messagesArr}
-      ></Table>
+      <div scroll={{ y: 240 }}>
+        <div className="scrollable">
+          {messagesArr.map((message) => (
+            <Card
+              // scroll={{y:240}}
+              style={{ width: "50%", marginLeft: "25%", marginTop: "20px" }}
+            >
+              <div>
+                {message.email} <br />
+              </div>
+              <div>{message.message}</div>
+              <small>
+                <small>
+                  at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}
+                  {message.time_posted.split("T")[0]}
+                </small>
+              </small>
+            </Card>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
