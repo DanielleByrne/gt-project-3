@@ -10,9 +10,7 @@ function Messages() {
   const [messagesArr, setMessagesArr] = useState([]);
 
   useEffect(() => {
-    console.log("Loading Messages (GET ROUTE)");
     Axios.get("/api/messages").then((res) => {
-      console.log(res.data.data);
       setMessagesArr(res.data.data);
     });
   }, []);
@@ -50,7 +48,7 @@ function Messages() {
         style={{width:"50%"}}
         onSearch={(value) => handleMessageSubmit(value)}
       />
-  
+      <div scroll={{y:240}}>
       {messagesArr.map((message) => (
         <Card
         // scroll={{y:240}}
@@ -68,6 +66,7 @@ function Messages() {
           </small>
         </Card>
       ))}
+      </div>
     </div>
   );
 }
