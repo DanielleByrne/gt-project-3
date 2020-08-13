@@ -10,6 +10,7 @@ function Messages() {
 
   useEffect(() => {
     Axios.get("/api/messages").then((res) => {
+      console.log(res.data.data);
       setMessagesArr(res.data.data);
     });
   }, []);
@@ -32,7 +33,6 @@ function Messages() {
         throw err;
       });
     Axios.get("/api/messages").then((res) => {
-      console.log(res.data.data);
       setMessagesArr(res.data.data);
     });
   }
