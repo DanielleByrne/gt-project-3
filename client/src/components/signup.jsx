@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import fire from "../config/Fire";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { Spring } from "react-spring/renderprops";
 // import { app } from "firebase";
@@ -108,7 +108,6 @@ class SignUp extends Component {
           {/* </label> */}
           <input
             style={{
-              margin: "10px",
               margin: "10px",
               backgroundColor: "lightcoral",
               width: "100px",

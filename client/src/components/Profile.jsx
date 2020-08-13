@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FundTwoTone } from "@ant-design/icons";
-import { Card, Avatar, List, Row, Col, Button } from "antd";
+import { Card,  List, Row, Col, Button } from "antd";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
 
@@ -23,8 +23,7 @@ const styles = {
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
-  const [redirect, setRedirect] = useState(false)
-    let workoutArr;
+  const [redirect, setRedirect] = useState(false);
 
   const userID = localStorage.getItem("userID");
   useEffect(() => {
@@ -33,20 +32,20 @@ function Profile() {
         id: userID,
       },
     }).then((res) => {
+      let workoutArr;
       workoutArr = res.data.workouts;
       workoutArr = [...workoutArr].reverse();
       res.data.workouts = workoutArr;
       setUserInfo(res.data);
     });
-  }, []);
+  });
 
-  const redirectTeam=()=>{
-    setRedirect(true)
+  const redirectTeam = () => {
+    setRedirect(true);
+  };
+  if (redirect === true) {
+    return <Redirect to="/team" />;
   }
-  if(redirect === true){
-    return <Redirect to="/team"/>
-  }
-
 
   return (
     <div>
@@ -84,7 +83,7 @@ function Profile() {
               height: "75px",
               fontSize: "18px",
               marginTop: "15px",
-              marginRight:"39%"
+              marginRight: "39%",
             }}
           >
             Back to team page
@@ -97,25 +96,29 @@ function Profile() {
             style={styles.list}
             itemLayout="horizontal"
             dataSource={userInfo.workouts}
+            pagination={{pageSize: 7, 
+              // position:"top"
+            }}
             renderItem={(item) => (
               <List.Item>
                 <List.Item.Meta
-                  avatar={
-                    <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
-                  }
+                  // avatar={
+                  //   <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
+                  // }
                   title={
-                    <a href="https://ant.design">
-                      {item.date_completed.split("T")[0]}
-                    </a>
+                    // <a href="https://ant.design">
+                      item.date_completed.split("T")[0]
+                    /* </a> */
                   }
                   description={
                     item.completed_workout === true
-                      ? "Workout Done"
-                      : "You didn't do your workout"
+                      ? "🔥"
+                      : "❌"
                   }
                 />
               </List.Item>
             )}
+            
           />
         </Col>
       </Row>

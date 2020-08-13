@@ -29,6 +29,13 @@ function TeamView() {
     },
   ];
 
+function App() {
+  // const [teamInfo, setTeamInfo] = useState({});
+
+
+  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+  return <animated.div style={props}>How's Your Team Doing?</animated.div>;
+}
   useEffect(() => {
     let todaySetter = new Date();
     todaySetter = date.format(todaySetter, "YYYY-MM-DD").trim();
@@ -47,10 +54,11 @@ function TeamView() {
             res.data[i].workouts[res.data[i].workouts.length - 1]
               .completed_workout === true
           ) {
-            res.data[i].completed_today = "WORKOUT COMPLETED";
+            res.data[i].completed_today = "🔥";
           } else {
-            res.data[i].completed_today = "WORKOUT NOT DONE";
+            res.data[i].completed_today = "❌";
           }
+          res.data[i].key=res.data[i]._id
         }
         setAllUsers(res.data);
       })
