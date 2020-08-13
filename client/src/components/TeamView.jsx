@@ -58,6 +58,7 @@ function TeamView() {
           // Add new column in column array above for consecutive days
           let counter=0
           let consecutiveDays=0
+          // For loop steps through mongodb database in reverse order since the most recent workouts are the last entries in the db.
           for (let j=res.data[i].workouts.length-1;j>0;--j){
             
           }
