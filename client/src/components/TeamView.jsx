@@ -57,6 +57,7 @@ function TeamView() {
           // If either are false, exit the for loop, add the consecutive days counter to the res.body object. 
           // Add new column in column array above for consecutive days
           let counter=0
+          let consecutiveDays=0
           for (let j=res.data[i].workouts.length-1;j>0;--j){
             
           }
