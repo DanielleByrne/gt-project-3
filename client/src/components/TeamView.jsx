@@ -1,69 +1,76 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "antd";
 import { useSpring, animated } from "react-spring";
-import NewMessage from "./NewMessage"
-import Messages from "./Messages"
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-  },
-  {
-    title: "Consecutive Workouts",
-    dataIndex: "consecutive",
-  },
-  {
-    title: "Today's Workout",
-    dataIndex: "today",
-  },
-];
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-  },
-];
+import Messages from "./Messages";
+import Axios from "axios";
+import date from "date-and-time";
+function TeamView() {
+  const [allUsers, setAllUsers] = useState([]);
+  const [today, setToday] = useState();
 
-const styles = {
-  table: {
-    marginTop: "45px",
-    width: "75%",
-    marginLeft: "15%",
-  },
-};
+  console.log("date formatted", today);
+  const styles = {
+    table: {
+      marginTop: "45px",
+      width: "75%",
+      marginLeft: "15%",
+    },
+  };
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "email",
+    },
+    // {
+    //   title: "Consecutive Workouts",
+    //   dataIndex: "consecutive",
+    // },
+    {
+      title: "Today's Workout",
+      dataIndex: "completed_today",
+    },
+  ];
 
-function App() {
-  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
-  return <animated.div style={props}>How's Your Team Doing?</animated.div>;
-}
+  useEffect(() => {
+    let todaySetter = new Date();
+    todaySetter = date.format(todaySetter, "YYYY-MM-DD");
+    setToday(todaySetter);
 
-class TeamView extends Component {
-  render() {
-    return (
-      <div>
-        <div style={styles.table}>
-          <App></App>
-          <Table columns={columns} dataSource={data} size="middle" />
-        </div>
-        <Messages />
-        {/* <NewMessage /> */}
+    console.log("GETTING USERS");
+    Axios.get("/api/user")
+      .then((res) => {
+        console.log("res.data",res.data)
+
+        for(let i=0;i<res.data.length;i++){
+          if(res.data[i].workouts.length>0 && res.data[i].workouts[0].date_completed.split("T")[0]===today && res.data[i].workouts[0].completed_workout===true){
+            res.data[i].completed_today="WORKOUT COMPLETED"
+          }else{
+            res.data[i].completed_today="WORKOUT NOT DONE"
+          }
+        }
+        setAllUsers(res.data);
+      })
+      .catch((err) => console.log("usersErr", err));
+  }, []);
+
+  // const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+  // return <animated.div style={props}>How's Your Team Doing?</animated.div>;
+
+  return (
+    <div>
+      <div style={styles.table}>
+        <Table
+          columns={columns}
+          dataSource={allUsers}
+          size="middle"
+          // scroll={{ y: 240 }}
+          pagination={{ pageSize: 5 }}
+        />
       </div>
-    );
-  }
+      <Messages />
+      {/* <NewMessage /> */}
+    </div>
+  );
 }
 
 export default TeamView;
