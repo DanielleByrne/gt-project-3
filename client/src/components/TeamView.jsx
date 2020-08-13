@@ -6,9 +6,7 @@ import Axios from "axios";
 import date from "date-and-time";
 function TeamView() {
   const [allUsers, setAllUsers] = useState([]);
-  const [today, setToday] = useState();
 
-  console.log("date formatted", today);
   const styles = {
     table: {
       marginTop: "45px",
@@ -33,21 +31,28 @@ function TeamView() {
 
   useEffect(() => {
     let todaySetter = new Date();
-    todaySetter = date.format(todaySetter, "YYYY-MM-DD");
-    setToday(todaySetter);
+    todaySetter = date.format(todaySetter, "YYYY-MM-DD").trim();
 
     console.log("GETTING USERS");
     Axios.get("/api/user")
       .then((res) => {
-        console.log("res.data",res.data)
+        console.log("res.data", res.data);
 
-        for(let i=0;i<res.data.length;i++){
-          if(res.data[i].workouts.length>0 && res.data[i].workouts[0].date_completed.split("T")[0]===today && res.data[i].workouts[0].completed_workout===true){
-            res.data[i].completed_today="WORKOUT COMPLETED"
-          }else{
-            res.data[i].completed_today="WORKOUT NOT DONE"
+        for (let i = 0; i < res.data.length; i++) {
+          if (
+            res.data[i].workouts.length > 0 &&
+            res.data[i].workouts[
+              res.data[i].workouts.length - 1
+            ].date_completed.split("T")[0] === todaySetter &&
+            res.data[i].workouts[res.data[i].workouts.length - 1]
+              .completed_workout === true
+          ) {
+            res.data[i].completed_today = "WORKOUT COMPLETED";
+          } else {
+            res.data[i].completed_today = "WORKOUT NOT DONE";
           }
         }
+        console.log("res.data after check", res.data);
         setAllUsers(res.data);
       })
       .catch((err) => console.log("usersErr", err));
