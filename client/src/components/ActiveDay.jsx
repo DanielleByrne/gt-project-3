@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FireTwoTone } from "@ant-design/icons";
+// import { FireTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
 import { Card, Button, Icon } from "antd";
 import ReactSpring from "./Animations/ReactSpring/ReactSpring"

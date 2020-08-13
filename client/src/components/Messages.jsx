@@ -10,6 +10,7 @@ function Messages() {
 
   useEffect(() => {
     Axios.get("/api/messages").then((res) => {
+      console.log(res.data.data);
       setMessagesArr(res.data.data);
     });
   }, []);
@@ -32,7 +33,6 @@ function Messages() {
         throw err;
       });
     Axios.get("/api/messages").then((res) => {
-      console.log(res.data.data);
       setMessagesArr(res.data.data);
     });
   }
@@ -46,21 +46,21 @@ function Messages() {
         size="large"
         onSearch={(value) => handleMessageSubmit(value)}
       />
-      <div scroll={{y:240}}>
-      {messagesArr.map((message) => (
-        <Card>
-          <div>
-            {message.email} <br />
-          </div>
-          <div>{message.message}</div>
-          <small>
+      <div scroll={{ y: 240 }}>
+        {messagesArr.map((message) => (
+          <Card key={message._id}>
+            <div>
+              {message.email} <br />
+            </div>
+            <div>{message.message}</div>
             <small>
-              at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}
-              {message.time_posted.split("T")[0]}
+              <small>
+                at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}
+                {message.time_posted.split("T")[0]}
+              </small>
             </small>
-          </small>
-        </Card>
-      ))}
+          </Card>
+        ))}
       </div>
     </div>
   );
