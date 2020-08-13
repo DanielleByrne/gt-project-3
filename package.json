@@ -26,6 +26,7 @@
   "homepage": "https://github.com/DanielleByrne/gt-project-3#readme",
   "dependencies": {
     "concurrently": "^5.3.0",
+    "date-and-time": "^0.14.0",
     "express": "^4.17.1",
     "firebase": "^7.17.2",
     "if-env": "^1.0.4",
