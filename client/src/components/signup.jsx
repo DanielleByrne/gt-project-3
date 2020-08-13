@@ -109,7 +109,6 @@ class SignUp extends Component {
           <input
             style={{
               margin: "10px",
-              margin: "10px",
               backgroundColor: "lightcoral",
               width: "100px",
               height: "35px",

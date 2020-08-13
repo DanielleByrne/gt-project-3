@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { FireTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
-import { Card, Button, Icon } from "antd";
+import { Card, Button } from "antd";
 import ReactSpring from "./Animations/ReactSpring/ReactSpring"
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
