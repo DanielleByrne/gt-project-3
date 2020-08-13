@@ -23,7 +23,8 @@ const styles = {
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
-  let workoutArr;
+  const [redirect, setRedirect] = useState(false)
+    let workoutArr;
 
   const userID = localStorage.getItem("userID");
   useEffect(() => {
@@ -38,6 +39,14 @@ function Profile() {
       setUserInfo(res.data);
     });
   }, []);
+
+  const redirectTeam=()=>{
+    setRedirect(true)
+    console.log("redirectTeam")
+  }
+  if(redirect === true){
+    return <Redirect to="/team"/>
+  }
 
 
   return (
@@ -64,7 +73,7 @@ function Profile() {
             />
           </Card>
           <Button
-            onClick={<Redirect to="/team"/>}
+            onClick={redirectTeam}
             type="primary"
             size="large"
             icon={<FundTwoTone twoToneColor="#ED6A5E" />}
