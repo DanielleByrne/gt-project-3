@@ -18,23 +18,9 @@ const styles = {
   },
 };
 
-const data = [
-  {
-    title: "Ant Design Title 1",
-  },
-  {
-    title: "Ant Design Title 2",
-  },
-  {
-    title: "Ant Design Title 3",
-  },
-  {
-    title: "Ant Design Title 4",
-  },
-];
-
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
+  let workoutArr;
 
   const userID = localStorage.getItem("userID");
   useEffect(() => {
@@ -43,10 +29,12 @@ function Profile() {
         id: userID,
       },
     }).then((res) => {
+      workoutArr = res.data.workouts;
+      workoutArr = [...workoutArr].reverse();
+      res.data.workouts = workoutArr;
       setUserInfo(res.data);
-      console.log("res",res.data);
     });
-  },[]);
+  }, []);
 
   return (
     <div>
@@ -68,7 +56,7 @@ function Profile() {
               //     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               //   }
               title={userInfo.email}
-              description="This is the description"
+              description={"This is the description"}
             />
           </Card>
         </Col>
@@ -78,15 +66,23 @@ function Profile() {
           <List
             style={styles.list}
             itemLayout="horizontal"
-            dataSource={data}
+            dataSource={userInfo.workouts}
             renderItem={(item) => (
               <List.Item>
                 <List.Item.Meta
                   avatar={
                     <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
                   }
-                  title={<a href="https://ant.design">{item.title}</a>}
-                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                  title={
+                    <a href="https://ant.design">
+                      {item.date_completed.split("T")[0]}
+                    </a>
+                  }
+                  description={
+                    item.completed_workout === true
+                      ? "Workout Done"
+                      : "You didn't do your workout"
+                  }
                 />
               </List.Item>
             )}

@@ -4,27 +4,26 @@ import { ReactComponent as Strongicon } from "./strong.svg";
 import { ReactComponent as Clock } from "./clock.svg";
 import "./ReactSpring.css";
 
-const ReactSpring = props => {
-  const [toggle, handleClick] = useState(false);
+const ReactSpring = (props) => {
+  const [toggle, set] = useState(false);
   const transitions = useTransition(toggle, null, {
     from: { position: "absolute", opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
 
-
   // added from Yesbutton code as ref
   //name click function on ActiveDay.jsx handleWorkoutClick
-  // const handleClick = () => {
-  //   toggle(!state);
-  //   setTimeout(() => {
-  //     props.handleWorkoutClick();
-  //   }, 2000);
-  // };
-
+  const handleClickTwo = () => {
+    set(!toggle);
+    setTimeout(() => {
+      props.handleWorkedOutClick();
+    }, 1500);
+  };
 
   return (
-    <>
+    <div>
+      {/* <div state={state} toggle={toggle}> */}
       <button
         type="primary"
         size="large"
@@ -39,7 +38,8 @@ const ReactSpring = props => {
         }}
         // {set} --> {handleClick} (if you change to set, change handleClick
         // in [toggle, handleClick] needs to change too.)
-        onClick={handleClick}
+        // onClick={set}
+        onClick={handleClickTwo}
       >
         {" "}
         {transitions.map(({ item, key, props }) =>
@@ -55,7 +55,7 @@ const ReactSpring = props => {
         )}
         <p id="buttonText">Workout complete!</p>
       </button>
-    </>
+    </div>
   );
 };
 

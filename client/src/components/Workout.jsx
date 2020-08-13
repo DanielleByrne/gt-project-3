@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Card, Button, Icon } from 'antd';
-import { StarTwoTone } from '@ant-design/icons';
-import { BookTwoTone } from '@ant-design/icons';
-import { FundTwoTone } from '@ant-design/icons';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { Card, Button, Icon } from "antd";
+import { StarTwoTone } from "@ant-design/icons";
+import { BookTwoTone } from "@ant-design/icons";
+import { FundTwoTone } from "@ant-design/icons";
+import { Redirect } from "react-router-dom";
+import Axios from "axios";
 import Yesbutton from './Animations/Yesbutton';
 import Nobutton from './Animations/Nobutton';
-import Axios from 'axios';
 
 class Workout extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Workout extends Component {
     this.state = {
       redirectNo: false,
       redirectYes: false,
-      redirectTeam: false
+      redirectTeam: false,
     };
   }
 
@@ -27,8 +27,8 @@ class Workout extends Component {
   }
 
   handleYesClick() {
-    console.log('Yes Clicked');
-    console.log(localStorage.getItem('userID'));
+    console.log("Yes Clicked");
+    console.log(localStorage.getItem("userID"));
     this.setState({ redirectYes: true });
     const userID = localStorage.getItem('userID');
     Axios.post('/api/workout', {
@@ -36,15 +36,15 @@ class Workout extends Component {
         userID: userID
       }
     })
-      .then(res => {
-        console.log('Axios Complete', res);
-        localStorage.setItem('currentWorkout', res.data._id);
+      .then((res) => {
+        console.log("Axios Complete", res);
+        localStorage.setItem("currentWorkout", res.data._id);
       })
-      .catch(err => console.log('Axios route error', err));
+      .catch((err) => console.log("Axios route error", err));
   }
 
   handleStackUpButton() {
-    console.log('Stack Button Clicked');
+    console.log("Stack Button Clicked");
     this.setState({ redirectTeam: true });
   }
 
@@ -67,18 +67,21 @@ class Workout extends Component {
           <Yesbutton handleYesClick={this.handleYesClick} />
           <Nobutton handleNoClick={this.handleNoClick} />
           {/* <Button
+        <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
+          <h1>Is today an active day?</h1>
+          <Button
             onClick={this.handleYesClick}
             type="primary"
             size="large"
             icon={<StarTwoTone twoToneColor="#ED6A5E" />}
             style={{
-              backgroundColor: 'darksalmon',
-              padding: '10px',
-              borderRadius: '12px',
-              verticalAlign: 'middle',
-              display: 'table-cell',
-              width: '100px',
-              height: '50px'
+              backgroundColor: "darksalmon",
+              padding: "10px",
+              borderRadius: "12px",
+              verticalAlign: "middle",
+              display: "table-cell",
+              width: "100px",
+              height: "50px",
             }}
           >
             Yes
@@ -115,10 +118,10 @@ class Workout extends Component {
             style={{
               backgroundColor: 'darksalmon',
               // padding: "20px",
-              borderRadius: '12px',
-              width: '300px',
-              height: '100px',
-              fontSize: '25px'
+              borderRadius: "12px",
+              width: "300px",
+              height: "100px",
+              fontSize: "25px",
             }}
           >
             See how you stack up!

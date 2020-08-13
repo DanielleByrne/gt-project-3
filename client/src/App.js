@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Axios from "axios";
+// import Axios from "axios";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Home from "./components/Home";
-import Login from "./components/login";
+// import Login from "./components/login";
 import Workout from "./components/Workout";
 import fire from "./config/Fire";
 import { Layout } from "antd";
@@ -22,16 +22,19 @@ import { LogoutOutlined } from "@ant-design/icons";
 import Profile from "./components/Profile";
 import TeamView from "./components/TeamView";
 import ActiveDay from "./components/ActiveDay";
+import { UserOutlined } from "@ant-design/icons";
+import NoMatch from "./components/NoMatch";
 import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
-// import Clicktest from "./components/Animations/Clicktest";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.logout = this.logout.bind(this);
+    this.handleProfileClick = this.handleProfileClick.bind(this);
     this.state = {
       user: {},
       logoutRedirect: false,
+      profileRedirect: false,
     };
   }
 
@@ -48,6 +51,11 @@ class App extends Component {
   //     }
   //   });
   // };
+  handleProfileClick() {
+    console.log("Profile button clicked");
+    this.setState({ profileRedirect: true });
+  }
+
   logout() {
     fire.auth().signOut();
     localStorage.clear();
@@ -73,6 +81,15 @@ class App extends Component {
 
   render() {
     const { Header } = Layout;
+    if (this.state.profileRedirect) {
+      this.setState({ profileRedirect: false });
+      console.log("You are going to be redirected.");
+      return (
+        <Router>
+          <Redirect to="/profile" />
+        </Router>
+      );
+    }
     if (this.state.logoutRedirect == true) {
       this.setState({ logoutRedirect: false });
       return (
@@ -87,20 +104,32 @@ class App extends Component {
           <Router>
             <Layout>
               <Header className="heading">
-                <h1 className="title">Healthy Competition</h1>
-
+                <Link to="/" className="title">
+                  Healthy Competition
+                </Link>
                 <Button
                   icon={<LogoutOutlined />}
                   style={{
-                    marginLeft: "90%",
-                    backgroundColor: "coral",
-                    marginBottom: "20%",
+                    backgroundColor: "lightsteelblue",
+                    marginTop: "15px",
                     color: "white",
                     float: "right",
                   }}
                   onClick={this.logout}
                 >
                   Log Out
+                </Button>
+                <Button
+                  icon={<UserOutlined />}
+                  style={{
+                    backgroundColor: "darksalmon",
+                    color: "white",
+                    float: "right",
+                    marginTop: "15px",
+                  }}
+                  onClick={this.handleProfileClick}
+                >
+                  Profile
                 </Button>
               </Header>
             </Layout>
@@ -154,6 +183,8 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/team" component={TeamView} />
             <Route exact path="/activeday" component={ActiveDay} />
+            <Route component= {NoMatch}/>
+
           </Switch>
         </Router>
       </div>
