@@ -44,7 +44,7 @@ class ActiveDay extends Component {
           <h1>Get after it!</h1>
           {/* After click function complete --> */}
           <ReactSpring handleWorkedOutClick={this.handleWorkedOutClick}/>
-          <Button
+          {/* <Button
             onClick={this.handleWorkedOutClick}
             type="primary"
             size="large"
@@ -60,7 +60,7 @@ class ActiveDay extends Component {
             }}
           >
             I worked out today!
-          </Button>
+          </Button> */}
 
           <p>
             Success isn’t always about greatness. It’s about consistency.
