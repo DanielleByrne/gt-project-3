@@ -1,10 +1,20 @@
 const router = require("express").Router();
 const db = require("../models/index");
 
+router.get("/api/user", function (req, res) {
+  db.User.find({})
+    .populate("workouts")
+    .then((usersFound) => res.json(usersFound))
+    .catch((err) => console.log(err));
+});
+
 //Get user who logged in (save uuid)
 router.post("/api/user", function (req, res) {
   // console.log("req.params", req)
-  db.User.findOne({ email: req.body.params.email, password: req.body.params.password })
+  db.User.findOne({
+    email: req.body.params.email,
+    password: req.body.params.password,
+  })
     .then((usersFound) => {
       res.json({
         error: false,
@@ -22,11 +32,13 @@ router.post("/api/user", function (req, res) {
     });
 });
 // GET USER INFO FOR PROFILE PAGE
-router.post("/api/userProfile",function(req,res){
-  db.User.findOne({_id: req.body.params.id}).populate("workouts").then((userFound)=>{
-    res.json(userFound)
-  })
-})
+router.post("/api/userProfile", function (req, res) {
+  db.User.findOne({ _id: req.body.params.id })
+    .populate("workouts")
+    .then((userFound) => {
+      res.json(userFound);
+    });
+});
 
 //Create user (using that cronjon?)
 router.post("/api/signup", function (req, res) {
@@ -68,10 +80,6 @@ router.get("/api/user/:id", function (req, res) {
       });
     });
 });
-
-
-
-
 
 // PUT ROUTE for creating a workout for user (updating their workout array with a push)
 // Find the user by ID
