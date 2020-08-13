@@ -3,6 +3,7 @@ import fire from "../config/Fire";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { Spring } from "react-spring/renderprops";
+import { Row, Col} from 'antd';
 // import { app } from "firebase";
 
 class SignUp extends Component {
@@ -50,6 +51,8 @@ class SignUp extends Component {
     }
     return (
       <div>
+      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+      <Col className="gutter-row" span={24}>
         <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
           {(props) => (
             <div style={props}>
@@ -123,6 +126,8 @@ class SignUp extends Component {
             value="Sign Up"
           ></input>
         </form>
+        </Col>
+        </Row>
       </div>
     );
   }

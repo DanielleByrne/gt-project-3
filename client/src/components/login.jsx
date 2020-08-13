@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import fire from "../config/Fire";
 import { Redirect, Link } from "react-router-dom";
+import { Row, Col} from 'antd';
 import { Spring } from "react-spring/renderprops";
 import axios from "axios";
 // import { Form, Input, Button, Checkbox } from "antd";
@@ -33,7 +34,7 @@ class Login extends Component {
         },
       })
       .then((response) => {
-        console.log(response.data.data)
+        console.log(response.data.data);
         localStorage.setItem("userID", response.data.data._id);
       })
       .catch((err) => {
@@ -60,6 +61,8 @@ class Login extends Component {
     }
     return (
       <div>
+      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+      <Col className="gutter-row" span={24}>
         <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
           {(props) => (
             <div style={props}>
@@ -116,7 +119,6 @@ class Login extends Component {
           ></input>
           {/* </label> */}
           <br></br>
-
           <input
             style={{
               margin: "10px",
@@ -138,9 +140,11 @@ class Login extends Component {
           <Link to={`/signup`} activeClassName="active">
             Register Here
           </Link>
-
           <br></br>
         </form>
+        
+        </Col>
+        </Row>
       </div>
     );
   }

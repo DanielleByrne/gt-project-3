@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FundTwoTone } from "@ant-design/icons";
-import { Card,  List, Row, Col, Button } from "antd";
+import { Card, Avatar, List, Row, Col, Button } from "antd";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
 
@@ -9,7 +9,7 @@ const { Meta } = Card;
 const styles = {
   card: {
     justifyContent: "center",
-    marginLeft: "10%",
+    marginLeft: "20%",
     marginTop: "30px",
     width: "300px",
   },
@@ -50,8 +50,8 @@ function Profile() {
   return (
     <div>
       {/* THIS IS THE USER CARD */}
-      <Row>
-        <Col span={12}>
+      <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
+        <Col className ="gutter-row" span={12}>
           <Card
             // style={{ width: 300 }}
             style={styles.card}
@@ -69,34 +69,36 @@ function Profile() {
               title={userInfo.email}
               description={"This is the description"}
             />
+            <Button
+              onClick={redirectTeam}
+              type="primary"
+              size="large"
+              icon={<FundTwoTone twoToneColor="#ED6A5E" />}
+              style={{
+                backgroundColor: "darksalmon",
+                // padding: "20px",
+                borderRadius: "12px",
+                width: "250px",
+                height: "75px",
+                fontSize: "18px",
+                marginTop: "15px",
+                marginRight: "39%",
+              }}
+            >
+              Back to team page
+            </Button>
           </Card>
-          <Button
-            onClick={redirectTeam}
-            type="primary"
-            size="large"
-            icon={<FundTwoTone twoToneColor="#ED6A5E" />}
-            style={{
-              backgroundColor: "darksalmon",
-              // padding: "20px",
-              borderRadius: "12px",
-              width: "250px",
-              height: "75px",
-              fontSize: "18px",
-              marginTop: "15px",
-              marginRight: "39%",
-            }}
-          >
-            Back to team page
-          </Button>
         </Col>
         {/* this is a list of their workouts  */}
         {/* Map over/input data from userInfo.workouts to get the cards to load below */}
-        <Col span={12}>
+        <Col className ="gutter-row" span={12}>
           <List
+          className ="workoutList"
             style={styles.list}
             itemLayout="horizontal"
             dataSource={userInfo.workouts}
-            pagination={{pageSize: 7, 
+            pagination={{
+              pageSize: 7,
               // position:"top"
             }}
             renderItem={(item) => (
@@ -107,18 +109,13 @@ function Profile() {
                   // }
                   title={
                     // <a href="https://ant.design">
-                      item.date_completed.split("T")[0]
+                    item.date_completed.split("T")[0]
                     /* </a> */
                   }
-                  description={
-                    item.completed_workout === true
-                      ? "🔥"
-                      : "❌"
-                  }
+                  description={item.completed_workout === true ? "🔥" : "❌"}
                 />
               </List.Item>
             )}
-            
           />
         </Col>
       </Row>
