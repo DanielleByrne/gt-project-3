@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Avatar, List, Row, Col } from "antd";
+import { Card, Avatar, List, Row, Col, Pagination } from "antd";
 import Axios from "axios";
 const { Meta } = Card;
 
@@ -67,25 +67,29 @@ function Profile() {
             style={styles.list}
             itemLayout="horizontal"
             dataSource={userInfo.workouts}
+            pagination={{pageSize: 7, 
+              // position:"top"
+            }}
             renderItem={(item) => (
               <List.Item>
                 <List.Item.Meta
-                  avatar={
-                    <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
-                  }
+                  // avatar={
+                  //   <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
+                  // }
                   title={
-                    <a href="https://ant.design">
-                      {item.date_completed.split("T")[0]}
-                    </a>
+                    // <a href="https://ant.design">
+                      item.date_completed.split("T")[0]
+                    /* </a> */
                   }
                   description={
                     item.completed_workout === true
-                      ? "Workout Done"
-                      : "You didn't do your workout"
+                      ? "🔥"
+                      : "❌"
                   }
                 />
               </List.Item>
             )}
+            
           />
         </Col>
       </Row>
