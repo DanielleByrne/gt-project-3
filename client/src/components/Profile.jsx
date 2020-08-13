@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Card, Avatar, List, Row, Col } from "antd";
+import { FundTwoTone } from "@ant-design/icons";
+import { Card, Avatar, List, Row, Col, Button } from "antd";
+import { Redirect } from "react-router-dom";
 import Axios from "axios";
+
 const { Meta } = Card;
 
 const styles = {
@@ -36,6 +39,7 @@ function Profile() {
     });
   }, []);
 
+
   return (
     <div>
       {/* THIS IS THE USER CARD */}
@@ -59,6 +63,24 @@ function Profile() {
               description={"This is the description"}
             />
           </Card>
+          <Button
+            onClick={<Redirect to="/team"/>}
+            type="primary"
+            size="large"
+            icon={<FundTwoTone twoToneColor="#ED6A5E" />}
+            style={{
+              backgroundColor: "darksalmon",
+              // padding: "20px",
+              borderRadius: "12px",
+              width: "250px",
+              height: "75px",
+              fontSize: "18px",
+              marginTop: "15px",
+              marginRight:"7%"
+            }}
+          >
+            Back to team page
+          </Button>
         </Col>
         {/* this is a list of their workouts  */}
         {/* Map over/input data from userInfo.workouts to get the cards to load below */}
