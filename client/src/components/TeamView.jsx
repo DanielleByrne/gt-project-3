@@ -52,7 +52,6 @@ function TeamView() {
             res.data[i].completed_today = "WORKOUT NOT DONE";
           }
         }
-        console.log("res.data after check", res.data);
         setAllUsers(res.data);
       })
       .catch((err) => console.log("usersErr", err));
