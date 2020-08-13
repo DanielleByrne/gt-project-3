@@ -41,16 +41,19 @@ function Messages() {
 
   return (
     <div>
-      <h3>Chat With Your Team</h3>
+      <h4>Chat With Your Team</h4>
       <Search
         placeholder="Write your message here"
         enterButton="Send"
         size="large"
+        style={{width:"50%"}}
         onSearch={(value) => handleMessageSubmit(value)}
       />
-
+  
       {messagesArr.map((message) => (
-        <Card>
+        <Card
+        style={{width:"50%", marginLeft:"25%", marginTop: "20px"}}
+        >
           <div>
             {message.email} <br />
           </div>
