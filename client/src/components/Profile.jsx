@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FundTwoTone } from "@ant-design/icons";
-import { Card, Avatar, List, Row, Col, Button } from "antd";
+import { Card,  List, Row, Col, Button } from "antd";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
 
