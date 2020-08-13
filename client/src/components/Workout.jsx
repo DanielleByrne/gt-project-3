@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Card, Button } from "antd";
-// import { StarTwoTone } from "@ant-design/icons";
-// import { BookTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
