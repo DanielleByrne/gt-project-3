@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { FireTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
-import { Card, Button} from "antd";
+import { Card, Button, Icon } from "antd";
+import ReactSpring from "./Animations/ReactSpring/ReactSpring"
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
 
@@ -41,7 +42,9 @@ class ActiveDay extends Component {
       <div>
         <Card style={{ width: 500, marginLeft: "32%", marginTop: "150px" }}>
           <h1>Get after it!</h1>
-          <Button
+          {/* After click function complete --> */}
+          <ReactSpring handleWorkedOutClick={this.handleWorkedOutClick}/>
+          {/* <Button
             onClick={this.handleWorkedOutClick}
             type="primary"
             size="large"
@@ -57,7 +60,7 @@ class ActiveDay extends Component {
             }}
           >
             I worked out today!
-          </Button>
+          </Button> */}
 
           <p>
             Success isn’t always about greatness. It’s about consistency.
