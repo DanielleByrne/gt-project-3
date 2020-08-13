@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Card } from "antd";
 import "antd/dist/antd.css";
-import { Input } from "antd";
+import { Input, Table } from "antd";
 const { Search } = Input;
+
 
 function Messages() {
   const [messagesArr, setMessagesArr] = useState([]);
@@ -52,6 +53,7 @@ function Messages() {
   
       {messagesArr.map((message) => (
         <Card
+        // scroll={{y:240}}
         style={{width:"50%", marginLeft:"25%", marginTop: "20px"}}
         >
           <div>
