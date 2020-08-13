@@ -17,17 +17,23 @@ import "./App.css";
 // import Login from "./components/Login";
 // import fire from "./config/Fire";
 import SignUp from "./components/signup";
-import { Button, Icon } from "antd";
+import { Button } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import Profile from "./components/Profile";
 import TeamView from "./components/TeamView";
 import ActiveDay from "./components/ActiveDay";
 import { UserOutlined } from "@ant-design/icons";
 import NoMatch from "./components/NoMatch";
+
 // import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
 // import NoMatchAnimate from "./components/Animations/NoMatchAnimate";
 
+
+import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
+const { Header } = Layout;
+
 class App extends Component {
+  
   constructor(props) {
     super(props);
     this.logout = this.logout.bind(this);
@@ -81,7 +87,7 @@ class App extends Component {
   }
 
   render() {
-    const { Header } = Layout;
+    
     if (this.state.profileRedirect) {
       this.setState({ profileRedirect: false });
       console.log("You are going to be redirected.");
@@ -91,7 +97,7 @@ class App extends Component {
         </Router>
       );
     }
-    if (this.state.logoutRedirect == true) {
+    if (this.state.logoutRedirect === true) {
       this.setState({ logoutRedirect: false });
       return (
         <Router>
