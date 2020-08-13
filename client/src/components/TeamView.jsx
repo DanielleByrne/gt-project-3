@@ -37,7 +37,6 @@ function TeamView() {
     Axios.get("/api/user")
       .then((res) => {
         console.log("res.data", res.data);
-
         for (let i = 0; i < res.data.length; i++) {
           if (
             res.data[i].workouts.length > 0 &&
@@ -52,14 +51,25 @@ function TeamView() {
             res.data[i].completed_today = "WORKOUT NOT DONE";
           }
           res.data[i].key=res.data[i]._id
+          // Consecutive workout section
+          // initialize counter to 0 at each user(already done on line )=>add one to counter create new date in for loop below, subtract counter. Check against
+          // workout at index j (res.data[i].workouts[j]). If that is true and completed_workout is true, add one to a consecutive days counter.
+          // If either are false, exit the for loop, add the consecutive days counter to the res.body object. 
+          // Add new column in column array above for consecutive days
+          let counter=0
+          for (let j=res.data[i].workouts.length-1;j>0;--j){
+            
+          }
         }
         setAllUsers(res.data);
       })
       .catch((err) => console.log("usersErr", err));
   }, []);
+// CONSECUTIVE DAYS PSEUDOCODE
+// Step through workouts in reverse order, if the days actually step backwards
+// and the completed workout is true, add one to a counter until conditional is false
+  
 
-  // const props = useSpring({ opacity: 1, from: { opacity: 0 } });
-  // return <animated.div style={props}>How's Your Team Doing?</animated.div>;
 
   return (
     <div>
