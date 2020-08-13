@@ -42,7 +42,6 @@ function Profile() {
 
   const redirectTeam=()=>{
     setRedirect(true)
-    console.log("redirectTeam")
   }
   if(redirect === true){
     return <Redirect to="/team"/>
