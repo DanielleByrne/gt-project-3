@@ -23,8 +23,7 @@ const styles = {
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
-  const [redirect, setRedirect] = useState(false)
-    let workoutArr;
+  const [redirect, setRedirect] = useState(false);
 
   const userID = localStorage.getItem("userID");
   useEffect(() => {
@@ -33,20 +32,20 @@ function Profile() {
         id: userID,
       },
     }).then((res) => {
+      let workoutArr;
       workoutArr = res.data.workouts;
       workoutArr = [...workoutArr].reverse();
       res.data.workouts = workoutArr;
       setUserInfo(res.data);
     });
-  }, []);
+  });
 
-  const redirectTeam=()=>{
-    setRedirect(true)
+  const redirectTeam = () => {
+    setRedirect(true);
+  };
+  if (redirect === true) {
+    return <Redirect to="/team" />;
   }
-  if(redirect === true){
-    return <Redirect to="/team"/>
-  }
-
 
   return (
     <div>
@@ -84,7 +83,7 @@ function Profile() {
               height: "75px",
               fontSize: "18px",
               marginTop: "15px",
-              marginRight:"7%"
+              marginRight: "39%",
             }}
           >
             Back to team page
