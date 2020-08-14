@@ -9,7 +9,7 @@ const { Meta } = Card;
 const styles = {
   card: {
     justifyContent: "center",
-    marginLeft: "10%",
+    // marginLeft: "30px",
     maxWidth: "300px",
     marginTop: "30px",
     boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
@@ -18,7 +18,7 @@ const styles = {
   list: {
     width: "50%",
     marginTop: "30px",
-    marginLeft: "25%",
+    // marginLeft: "25%",
   },
 };
 
@@ -53,6 +53,7 @@ function Profile() {
       {/* THIS IS THE USER CARD */}
       <Row  justify="center" align="middle">
         <Col xs={24} s={12} md={12} lg={12} xl={12} >
+          <Row justify="center">
           <Card
             // style={{ width: 300 }}
             style={styles.card}
@@ -89,10 +90,12 @@ function Profile() {
               Back to team page
             </Button>
           </Card>
+          </Row>
         </Col>
         {/* this is a list of their workouts  */}
         {/* Map over/input data from userInfo.workouts to get the cards to load below */}
         <Col id="workoutList"  xs={24} s={12} md={12} lg={12} xl={12}>
+          <Row justify="center">
           <List
             header={<div style={{fontSize: "24px"}}>Your Stats</div>}
             style={styles.list}
@@ -118,6 +121,7 @@ function Profile() {
               </List.Item>
             )}
           />
+          </Row>
         </Col>
       </Row>
     </div>
