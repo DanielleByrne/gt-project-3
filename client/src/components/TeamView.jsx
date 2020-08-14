@@ -19,10 +19,10 @@ function TeamView() {
       title: "Name",
       dataIndex: "email",
     },
-    // {
-    //   title: "Consecutive Workouts",
-    //   dataIndex: "consecutive",
-    // },
+    {
+      title: "Consecutive Workouts",
+      dataIndex: "consecutive",
+    },
     {
       title: "Today's Workout",
       dataIndex: "completed_today",
@@ -56,11 +56,23 @@ function TeamView() {
           // workout at index j (res.data[i].workouts[j]). If that is true and completed_workout is true, add one to a consecutive days counter.
           // If either are false, exit the for loop, add the consecutive days counter to the res.body object. 
           // Add new column in column array above for consecutive days
+          //**Where is completed_workout coming from? if so, is it defined? */
           let counter=0
           let consecutiveDays=0
           // For loop steps through mongodb database in reverse order since the most recent workouts are the last entries in the db.
           for (let j=res.data[i].workouts.length-1;j>0;--j){
-            
+            //check workout at index j against 
+            //JD: ***if workout at index j (compares against counter?) and completed workout is true then... */
+            console.log("workouts of j", res.data[i].workouts[j])
+            console.log(res.data[i].workouts[j].date_completed.split("T")[0] === todaySetter - counter);
+            console.log("Stepping back in days" , todaySetter-counter)
+            if(res.data[i].workouts[j].date_completed.split("T")[0] === todaySetter - counter && res.data[i].workouts[j].completed_workout === true){
+              //****JD: Increment consecutiveDays */
+              counter ++
+              consecutiveDays = consecutiveDays++
+             
+              // console.log(consecutiveDays);
+            }
           }
         }
         setAllUsers(res.data);
