@@ -11,7 +11,7 @@ function TeamView() {
     table: {
       marginTop: "45px",
       width: "75%",
-      marginLeft: "15%",
+      marginLeft: "15%"
     },
   };
   const columns = [
