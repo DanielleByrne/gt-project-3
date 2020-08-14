@@ -50,10 +50,9 @@ function Profile() {
   const handleDeleteWorkout= (workoutId) => {
     console.log(workoutId);
     Axios
-      .delete(`/api/workout`, { _id: workoutId})
+      .delete(`/api/workout`, {data: { _id: workoutId}})
       .then((response) => {
         console.log(response.data);
-        this.setUserInfo();
       })
       .catch((err) => {
         console.log(err);
