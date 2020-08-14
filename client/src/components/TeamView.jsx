@@ -21,7 +21,7 @@ function TeamView() {
     },
     {
       title: "Consecutive Workouts",
-      dataIndex: "consecutive",
+      dataIndex: "consecutiveDays",
     },
     {
       title: "Today's Workout",
@@ -29,21 +29,20 @@ function TeamView() {
     },
   ];
 
-function App() {
-  // const [teamInfo, setTeamInfo] = useState({});
+  function App() {
+    // const [teamInfo, setTeamInfo] = useState({});
 
-
-  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
-  return <animated.div style={props}>How's Your Team Doing?</animated.div>;
-}
+    const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+    return <animated.div style={props}>How's Your Team Doing?</animated.div>;
+  }
   useEffect(() => {
     let todaySetter = new Date();
     todaySetter = date.format(todaySetter, "YYYY-MM-DD").trim();
 
-    console.log("GETTING USERS");
+    // console.log("GETTING USERS");
     Axios.get("/api/user")
       .then((res) => {
-        console.log("res.data", res.data);
+        // console.log("res.data", res.data);
         for (let i = 0; i < res.data.length; i++) {
           if (
             res.data[i].workouts.length > 0 &&
@@ -57,28 +56,33 @@ function App() {
           } else {
             res.data[i].completed_today = "❌";
           }
-          res.data[i].key=res.data[i]._id
-          // Consecutive workout section
-          // initialize counter to 0 at each user(already done on line )=>add one to counter create new date in for loop below, subtract counter. Check against
-          // workout at index j (res.data[i].workouts[j]). If that is true and completed_workout is true, add one to a consecutive days counter.
-          // If either are false, exit the for loop, add the consecutive days counter to the res.body object. 
-          // Add new column in column array above for consecutive days
-          //**Where is completed_workout coming from? if so, is it defined? */
-          let counter=0
-          let consecutiveDays=0
+          res.data[i].key = res.data[i]._id;
+
+          let counter = 0;
+          let consecutiveDays = 0;
+
           // For loop steps through mongodb database in reverse order since the most recent workouts are the last entries in the db.
-          for (let j=res.data[i].workouts.length-1;j>0;--j){
-            //check workout at index j against 
-            //JD: ***if workout at index j (compares against counter?) and completed workout is true then... */
-            console.log("workouts of j", res.data[i].workouts[j])
-            console.log(res.data[i].workouts[j].date_completed.split("T")[0] === todaySetter - counter);
-            console.log("Stepping back in days" , todaySetter-counter)
-            if(res.data[i].workouts[j].date_completed.split("T")[0] === todaySetter - counter && res.data[i].workouts[j].completed_workout === true){
+          for (let j = res.data[i].workouts.length - 1; j >= 0; --j) {
+            let todayDt = new Date();
+            todayDt.setDate(todayDt.getDate() - counter);
+            todayDt = date.format(todayDt, "YYYY-MM-DD").trim();
+            console.log(j, todayDt)
+            console.log(counter)
+            if (
+              res.data[i].workouts[j].date_completed.split("T")[0] ===
+                todayDt &&
+              res.data[i].workouts[j].completed_workout === true
+            ) {
               //****JD: Increment consecutiveDays */
-              counter ++
-              consecutiveDays = consecutiveDays++
-             
-              // console.log(consecutiveDays);
+              counter++;
+              consecutiveDays++;
+              res.data[i].consecutiveDays = consecutiveDays;
+              console.log(
+                "Current consecutive Days for user " + res.data[i].email,
+                consecutiveDays
+              );
+            }else{
+              j=-1
             }
           }
         }
@@ -86,11 +90,9 @@ function App() {
       })
       .catch((err) => console.log("usersErr", err));
   }, []);
-// CONSECUTIVE DAYS PSEUDOCODE
-// Step through workouts in reverse order, if the days actually step backwards
-// and the completed workout is true, add one to a counter until conditional is false
-  
-
+  // CONSECUTIVE DAYS PSEUDOCODE
+  // Step through workouts in reverse order, if the days actually step backwards
+  // and the completed workout is true, add one to a counter until conditional is false
 
   return (
     <div>
