@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/DanielleByrne/gt-project-3#readme",
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@vx/gradient": "0.0.198",
     "concurrently": "^5.3.0",
     "date-and-time": "^0.14.0",

@@ -28,6 +28,10 @@ import NoMatch from "./components/NoMatch";
 // import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
 // import NoMatchAnimate from "./components/Animations/NoMatchAnimate";
 
+
+
+import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
+
 const { Header } = Layout;
 
 class App extends Component {
