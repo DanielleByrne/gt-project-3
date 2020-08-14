@@ -64,8 +64,8 @@ class Workout extends Component {
       <div>
         <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
           <h1>Is today an active day?</h1>
-          <Yesbutton handleYesClick={this.handleYesClick} />
-          <Nobutton handleNoClick={this.handleNoClick} />
+          <Yesbutton handleYesClick={this.handleYesClick}/>
+          <Nobutton handleNoClick={this.handleNoClick}/>
           {/* <Button
         <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
           <h1>Is today an active day?</h1>
