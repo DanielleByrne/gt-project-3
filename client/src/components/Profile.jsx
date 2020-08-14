@@ -47,18 +47,17 @@ function Profile() {
     return <Redirect to="/team" />;
   }
 
-  const handleDeleteWorkout= (event) => {
-    console.log(event);
-    console.log("why");
-    // Axios
-    //   .delete(`/api/workout`, { _id: id })
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     this.setUserInfo();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+  const handleDeleteWorkout= (workoutId) => {
+    console.log(workoutId);
+    Axios
+      .delete(`/api/workout`, { _id: workoutId})
+      .then((response) => {
+        console.log(response.data);
+        this.setUserInfo();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
 
