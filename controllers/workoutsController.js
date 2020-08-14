@@ -94,6 +94,26 @@ router.put("/api/workoutUpdate", function (req, res) {
     });
 });
 
+//Delete account by user ID
+router.delete("/api/workout/:id", function (req, res) {
+  db.User.destroy(req.params)
+    .then((deletedAccount) => {
+      res.json({
+        error: false,
+        data: deletedWorkout,
+        message: "Successfully deleted workout.",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: true,
+        data: null,
+        message: "Failed to delete workout.",
+      });
+    });
+});
+
 module.exports = router;
 
 //create workout with name of each user (manually) so we can push easier and see in robo easier?

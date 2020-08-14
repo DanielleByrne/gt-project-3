@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FundTwoTone } from "@ant-design/icons";
+import { FundTwoTone, DeleteTwoTone } from "@ant-design/icons";
 import { Card, Avatar, List, Row, Col, Button } from "antd";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
@@ -99,9 +99,6 @@ function Profile() {
             renderItem={(item) => (
               <List.Item>
                 <List.Item.Meta
-                  avatar={
-                    <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
-                  }
                   title={
                     <a href="https://ant.design">
                       {item.date_completed.split("T")[0]}
@@ -112,7 +109,13 @@ function Profile() {
                       ? "Workout Done"
                       : "You didn't do your workout"
                   }
-                />
+                  avatar={
+                    // <Avatar.group>
+                    // <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
+                    <DeleteTwoTone />
+                    /* </Avatar.group> */
+                  }
+                  />
               </List.Item>
             )}
           />
