@@ -144,7 +144,7 @@ class App extends Component {
 
             <div className="site-page-header-ghost-wrapper">
               <PageHeader
-              title="Healthy Competition"
+                // title="Healthy Competition"
                 style={{ backgroundColor: "darksalmon", color: "white" }}
                 extra={[
                   <Button
@@ -158,6 +158,9 @@ class App extends Component {
                   </Button>,
                 ]}
               >
+                <Link to={"/"} className="title"  style={{fontSize: "36px"}}>
+                  Healthy Competition
+                </Link>
               </PageHeader>
             </div>
             {/* </Col>
@@ -206,10 +209,11 @@ class App extends Component {
           {/* <Login /> */}
           {/* {this.state.user ? <Home /> : <Login />} */}
           <div className="site-page-header-ghost-wrapper">
-            <PageHeader
-              style={{ backgroundColor: "darksalmon" }}
-              title="Healthy Competition"
-            ></PageHeader>
+            <PageHeader style={{ backgroundColor: "darksalmon" }}>
+            <Link to={"/"} className="title" style={{fontSize: "36px"}}>
+              Healthy Competition
+            </Link>
+            </PageHeader>
           </div>
           <Switch>
             <Route exact path="/" component={Home} />

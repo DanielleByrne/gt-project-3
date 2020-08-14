@@ -36,9 +36,10 @@ a:hover {
 
 /* @media only screen and (max-width: 768px){
   .workoutList {
-    margin-top: "400px"
+    margin-top: "400px";
+    color: pink
   }
-} */
+}  */
 
 /* @media (min-width: 576px) {
   .workoutList {
