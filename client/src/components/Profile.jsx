@@ -9,15 +9,16 @@ const { Meta } = Card;
 const styles = {
   card: {
     justifyContent: "center",
-    marginLeft: "10%",
+    // marginLeft: "30px",
+    maxWidth: "300px",
     marginTop: "30px",
-    width: "300px",
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
   },
 
   list: {
     width: "50%",
     marginTop: "30px",
-    // marginLeft: "45%",
+    // marginLeft: "25%",
   },
 };
 
@@ -63,8 +64,9 @@ function Profile() {
   return (
     <div>
       {/* THIS IS THE USER CARD */}
-      <Row>
-        <Col span={12}>
+      <Row  justify="center" align="middle">
+        <Col xs={24} s={12} md={12} lg={12} xl={12} >
+          <Row justify="center">
           <Card
             // style={{ width: 300 }}
             style={styles.card}
@@ -82,34 +84,38 @@ function Profile() {
               title={userInfo.email}
               description={"This is the description"}
             />
+            <Button
+              onClick={redirectTeam}
+              type="primary"
+              size="large"
+              icon={<FundTwoTone twoToneColor="#ED6A5E" />}
+              style={{
+                backgroundColor: "darksalmon",
+                // padding: "20px",
+                borderRadius: "12px",
+                width: "250px",
+                height: "75px",
+                fontSize: "18px",
+                marginTop: "15px",
+                marginRight: "39%",
+              }}
+            >
+              Back to team page
+            </Button>
           </Card>
-          <Button
-            onClick={redirectTeam}
-            type="primary"
-            size="large"
-            icon={<FundTwoTone twoToneColor="#ED6A5E" />}
-            style={{
-              backgroundColor: "darksalmon",
-              // padding: "20px",
-              borderRadius: "12px",
-              width: "250px",
-              height: "75px",
-              fontSize: "18px",
-              marginTop: "15px",
-              marginRight: "39%",
-            }}
-          >
-            Back to team page
-          </Button>
+          </Row>
         </Col>
         {/* this is a list of their workouts  */}
         {/* Map over/input data from userInfo.workouts to get the cards to load below */}
-        <Col span={12}>
+        <Col id="workoutList"  xs={24} s={12} md={12} lg={12} xl={12}>
+          <Row justify="center">
           <List
+            header={<div style={{fontSize: "24px"}}>Your Stats</div>}
             style={styles.list}
             itemLayout="horizontal"
             dataSource={userInfo.workouts}
-            pagination={{pageSize: 7, 
+            pagination={{
+              pageSize: 7,
               // position:"top"
             }}
             renderItem={(item) => (
@@ -117,7 +123,7 @@ function Profile() {
                 <List.Item.Meta
                   title={
                     // <a href="https://ant.design">
-                      item.date_completed.split("T")[0]
+                    item.date_completed.split("T")[0]
                     /* </a> */
                   }
                   description={
@@ -138,8 +144,8 @@ function Profile() {
                   />
               </List.Item>
             )}
-            
           />
+          </Row>
         </Col>
       </Row>
     </div>

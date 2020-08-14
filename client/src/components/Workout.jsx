@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button } from "antd";
+import { Card, Button, Row, Col } from "antd";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
@@ -61,9 +61,15 @@ class Workout extends Component {
       return <Redirect to="/team" />;
     }
     return (
+
       <div>
-        <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
-          <h1>Is today an active day?</h1>
+      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+      <Col className="gutter-row" span={24}>
+        {/* <Card  */}
+        {/* // style={{ width: 500, marginLeft: '34%', marginTop: '150px' }} */}
+        
+        {/* > */}
+          <h1 style ={{marginTop: "50px"}}>Is today an active day?</h1>
           <Yesbutton handleYesClick={this.handleYesClick}/>
           <Nobutton handleNoClick={this.handleNoClick}/>
           {/* <Button
@@ -126,8 +132,10 @@ class Workout extends Component {
           >
             See how you stack up!
           </Button>
-        </Card>
-      </div>
+          {/* </Card> */}
+        </Col>
+        </Row>
+        </div> 
     );
   }
 }
