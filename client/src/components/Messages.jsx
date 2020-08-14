@@ -10,7 +10,7 @@ function Messages() {
 
   useEffect(() => {
     Axios.get("/api/messages").then((res) => {
-      console.log(res.data.data);
+      // console.log(res.data.data);
       setMessagesArr(res.data.data);
     });
   }, []);
