@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const db = require("../models/index");
-
+const date = require("date-and-time");
 //Get all workouts
 router.get("/api/workout", function (req, res) {
   db.Workout.find({})
@@ -47,31 +47,57 @@ router.get("/api/workout/:id", function (req, res) {
 router.post("/api/workout", function (req, res) {
   console.log("Create workout route hit", req.body.params.userID);
   const userID = req.body.params.userID;
-  db.Workout.create({})
-    //   .populate("workouts")
-    .then((createdWorkout) => {
-      console.log("CREATED WORKOUT", createdWorkout);
-      res.json(createdWorkout);
-      // GET USER ID HERE AND PASS INTO findOneAndUpdate
-      db.User.findOneAndUpdate(
-        { _id: userID },
-        {
-          $push: { workouts: { _id: createdWorkout._id } },
-        },
-        { new: true }
-      )
-        .then((response) => {
-          console.log("User workout pushed", response);
-        })
-        .catch((err) => console.log("put route error"));
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: true,
-        data: null,
-        message: "Failed to create workout.",
-      });
+  let dt = new Date();
+  dt = date.format(dt, "YYYY-MM-DD").trim();
+  db.User.findOne({ _id: userID })
+    .populate("workouts")
+    .then((userFound) => {
+      let recentWorkoutDate;
+      if (userFound.workouts.length >= 1) {
+        console.log("DT", dt);
+        recentWorkoutDate = new Date(
+          userFound.workouts[userFound.workouts.length - 1].date_completed + ""
+        );
+        recentWorkoutDate = date.format(recentWorkoutDate, "YYYY-MM-DD").trim();
+        console.log("RECENT WORKOUT FORMATTED", recentWorkoutDate);
+      } else {
+        recentWorkoutDate = null;
+      }
+
+      if (recentWorkoutDate !== null && recentWorkoutDate === dt) {
+        res.json({
+          message: "Workout already made today",
+        });
+        console.log("No workout needed to be made");
+      } else {
+        console.log("ELSE HIT, CREATING AND PUTTING WORKOUT");
+        db.Workout.create({})
+          //   .populate("workouts")
+          .then((createdWorkout) => {
+            console.log("CREATED WORKOUT", createdWorkout);
+            res.json(createdWorkout);
+            // GET USER ID HERE AND PASS INTO findOneAndUpdate
+            db.User.findOneAndUpdate(
+              { _id: userID },
+              {
+                $push: { workouts: { _id: createdWorkout._id } },
+              },
+              { new: true }
+            )
+              .then((response) => {
+                console.log("User workout pushed", response);
+              })
+              .catch((err) => console.log("put route error"));
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json({
+              error: true,
+              data: null,
+              message: "Failed to create workout.",
+            });
+          });
+      }
     });
 });
 
