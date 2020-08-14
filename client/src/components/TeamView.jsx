@@ -4,6 +4,7 @@ import { useSpring, animated } from "react-spring";
 import Messages from "./Messages";
 import Axios from "axios";
 import date from "date-and-time";
+import { Row, Col } from "antd";
 function TeamView() {
   const [allUsers, setAllUsers] = useState([]);
 
@@ -11,7 +12,7 @@ function TeamView() {
     table: {
       marginTop: "45px",
       width: "75%",
-      marginLeft: "15%"
+      marginLeft: "15%",
     },
   };
   const columns = [
@@ -66,8 +67,8 @@ function TeamView() {
             let todayDt = new Date();
             todayDt.setDate(todayDt.getDate() - counter);
             todayDt = date.format(todayDt, "YYYY-MM-DD").trim();
-            console.log(j, todayDt)
-            console.log(counter)
+            console.log(j, todayDt);
+            console.log(counter);
             if (
               res.data[i].workouts[j].date_completed.split("T")[0] ===
                 todayDt &&
@@ -81,8 +82,8 @@ function TeamView() {
                 "Current consecutive Days for user " + res.data[i].email,
                 consecutiveDays
               );
-            }else{
-              j=-1
+            } else {
+              j = -1;
             }
           }
         }
@@ -96,17 +97,23 @@ function TeamView() {
 
   return (
     <div>
-      <div style={styles.table}>
-        <Table
-          columns={columns}
-          dataSource={allUsers}
-          size="middle"
-          // scroll={{ y: 240 }}
-          pagination={{ pageSize: 5 }}
-        />
-      </div>
-      <Messages />
-      {/* <NewMessage /> */}
+      <Row>
+        <Col span={12}>
+          <div style={styles.table}>
+            <Table
+              columns={columns}
+              dataSource={allUsers}
+              size="middle"
+              // scroll={{ y: 240 }}
+              pagination={{ pageSize: 5 }}
+            />
+          </div>
+        </Col>
+        <Col span={12}>
+          <Messages />
+        </Col>
+        {/* <NewMessage /> */}
+      </Row>
     </div>
   );
 }
