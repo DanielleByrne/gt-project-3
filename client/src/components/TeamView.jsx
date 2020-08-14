@@ -97,7 +97,7 @@ function TeamView() {
 
   return (
     <div>
-      <Row>
+      <Row justify="center">
         <Col span={12}>
           <div style={styles.table}>
             <Table
@@ -109,9 +109,11 @@ function TeamView() {
             />
           </div>
         </Col>
+
         <Col span={12}>
           <Messages />
         </Col>
+
         {/* <NewMessage /> */}
       </Row>
     </div>
