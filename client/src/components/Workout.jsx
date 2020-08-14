@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Card, Button } from "antd";
-// import { StarTwoTone } from "@ant-design/icons";
-// import { BookTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
-import Yesbutton from './Animations/Yesbutton';
-import Nobutton from './Animations/Nobutton';
+import Yesbutton from "./Animations/Yesbutton";
+import Nobutton from "./Animations/Nobutton";
 
 class Workout extends Component {
   constructor(props) {
@@ -22,7 +20,7 @@ class Workout extends Component {
   }
 
   handleNoClick() {
-    console.log('No Clicked');
+    console.log("No Clicked");
     this.setState({ redirectNo: true });
   }
 
@@ -30,15 +28,17 @@ class Workout extends Component {
     console.log("Yes Clicked");
     console.log(localStorage.getItem("userID"));
     this.setState({ redirectYes: true });
-    const userID = localStorage.getItem('userID');
-    Axios.post('/api/workout', {
+    const userID = localStorage.getItem("userID");
+    Axios.post("/api/workout", {
       params: {
-        userID: userID
-      }
+        userID: userID,
+      },
     })
       .then((res) => {
         console.log("Axios Complete", res);
-        localStorage.setItem("currentWorkout", res.data._id);
+        if (res.data._id) {
+          localStorage.setItem("currentWorkout", res.data._id);
+        }
       })
       .catch((err) => console.log("Axios route error", err));
   }
@@ -62,7 +62,7 @@ class Workout extends Component {
     }
     return (
       <div>
-        <Card style={{ width: 500, marginLeft: '34%', marginTop: '150px' }}>
+        <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
           <h1>Is today an active day?</h1>
           <Yesbutton handleYesClick={this.handleYesClick}/>
           <Nobutton handleNoClick={this.handleNoClick}/>
@@ -108,7 +108,7 @@ class Workout extends Component {
 
           <p>
             Success isn’t always about greatness. It’s about consistency.
-            Consistent hard work gains success. Greatness will come.{' '}
+            Consistent hard work gains success. Greatness will come.{" "}
           </p>
           <Button
             onClick={this.handleStackUpButton}
@@ -116,7 +116,7 @@ class Workout extends Component {
             size="large"
             icon={<FundTwoTone twoToneColor="#ED6A5E" />}
             style={{
-              backgroundColor: 'darksalmon',
+              backgroundColor: "darksalmon",
               // padding: "20px",
               borderRadius: "12px",
               width: "300px",

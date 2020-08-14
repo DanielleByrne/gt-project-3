@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  font-family: 'Baloo Tamma 2', cursive;
+  font-family: "Baloo Tamma 2", cursive;
 }
 
 .title {
@@ -14,7 +14,11 @@
   font-size: 30px;
 }
 
-  
-  a:hover {
-     color: black
-  }
+a:hover {
+  color: black;
+}
+
+.scrollable {
+  height: 300px;
+  overflow-y: scroll;
+}

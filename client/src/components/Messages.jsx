@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Card } from "antd";
 import "antd/dist/antd.css";
-import { Input } from "antd";
+import { Input} from "antd";
 const { Search } = Input;
 
 function Messages() {
@@ -10,7 +10,7 @@ function Messages() {
 
   useEffect(() => {
     Axios.get("/api/messages").then((res) => {
-      console.log(res.data.data);
+      // console.log(res.data.data);
       setMessagesArr(res.data.data);
     });
   }, []);
@@ -37,30 +37,38 @@ function Messages() {
     });
   }
 
+
+
   return (
     <div>
-      <h3>Chat With Your Team</h3>
+      <h4>Chat With Your Team</h4>
       <Search
         placeholder="Write your message here"
         enterButton="Send"
         size="large"
+        style={{ width: "50%" }}
         onSearch={(value) => handleMessageSubmit(value)}
       />
       <div scroll={{ y: 240 }}>
-        {messagesArr.map((message) => (
-          <Card key={message._id}>
-            <div>
-              {message.email} <br />
-            </div>
-            <div>{message.message}</div>
-            <small>
+        <div className="scrollable">
+          {messagesArr.map((message) => (
+            <Card
+              // scroll={{y:240}}
+              style={{ width: "50%", marginLeft: "25%", marginTop: "20px" }}
+            >
+              <div>
+                {message.email} <br />
+              </div>
+              <div>{message.message}</div>
               <small>
-                at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}
-                {message.time_posted.split("T")[0]}
+                <small>
+                  at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}
+                  {message.time_posted.split("T")[0]}
+                </small>
               </small>
-            </small>
-          </Card>
-        ))}
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );

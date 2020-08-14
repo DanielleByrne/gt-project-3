@@ -109,19 +109,21 @@ function Profile() {
             style={styles.list}
             itemLayout="horizontal"
             dataSource={userInfo.workouts}
+            pagination={{pageSize: 7, 
+              // position:"top"
+            }}
             renderItem={(item) => (
               <List.Item>
                 <List.Item.Meta
-                  
                   title={
-                    <a href="https://ant.design">
-                      {item.date_completed.split("T")[0]}
-                    </a>
+                    // <a href="https://ant.design">
+                      item.date_completed.split("T")[0]
+                    /* </a> */
                   }
                   description={
                     item.completed_workout === true
-                      ? "Workout Done"
-                      : "You didn't do your workout"
+                      ? "🔥"
+                      : "❌"
                   }
                   avatar={
                     // <Avatar.group>
@@ -136,6 +138,7 @@ function Profile() {
                   />
               </List.Item>
             )}
+            
           />
         </Col>
       </Row>
