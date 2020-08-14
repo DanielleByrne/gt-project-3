@@ -47,17 +47,18 @@ function Profile() {
     return <Redirect to="/team" />;
   }
 
-  const handleDeleteWorkout= (id) => {
-    console.log(`Delete workout clicked`)
-    Axios
-      .delete(`/api/workout/${id}`)
-      .then((response) => {
-        console.log(response.data);
-        this.setUserInfo();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const handleDeleteWorkout= (event) => {
+    console.log(event);
+    console.log("why");
+    // Axios
+    //   .delete(`/api/workout`, { _id: id })
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     this.setUserInfo();
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
 
@@ -113,6 +114,7 @@ function Profile() {
             renderItem={(item) => (
               <List.Item>
                 <List.Item.Meta
+                  
                   title={
                     <a href="https://ant.design">
                       {item.date_completed.split("T")[0]}
@@ -127,7 +129,10 @@ function Profile() {
                     // <Avatar.group>
                     // <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
                     <DeleteTwoTone
-                    onClick= {handleDeleteWorkout} />
+                    key={item._id}
+                    onClick= {()=>{handleDeleteWorkout(item._id)}}
+                     />
+                    //item_id
                     /* </Avatar.group> */
                   }
                   />

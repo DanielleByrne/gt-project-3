@@ -95,9 +95,9 @@ router.put("/api/workoutUpdate", function (req, res) {
 });
 
 //Delete account by user ID
-router.delete("/api/workout/:id", function (req, res) {
-  db.User.destroy(req.params)
-    .then((deletedAccount) => {
+router.delete("/api/workout", function (req, res) {
+  db.Workout.destroy({ _id: workoutId })
+    .then((deletedWorkout) => {
       res.json({
         error: false,
         data: deletedWorkout,
