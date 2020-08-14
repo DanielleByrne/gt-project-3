@@ -1,12 +1,12 @@
 @import "~antd/dist/antd.css";
 
-body{
+body {
+  background-image: url(../src/Untitled.jpg);
 }
 
 .App {
   text-align: center;
   font-family: "Baloo Tamma 2", cursive;
-
 }
 
 .title {
@@ -30,8 +30,6 @@ a:hover {
 .ant-page-header-heading-title {
   color: white;
 }
-
-
 
 /* 
 @media only screen and (max-width: 768px){
