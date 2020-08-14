@@ -9,16 +9,16 @@ const { Meta } = Card;
 const styles = {
   card: {
     justifyContent: "center",
-    marginLeft: "20%",
+    marginLeft: "10%",
+    maxWidth: "300px",
     marginTop: "30px",
-    width: "300px",
     boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
   },
 
   list: {
     width: "50%",
     marginTop: "30px",
-    // marginLeft: "45%",
+    marginLeft: "25%",
   },
 };
 
@@ -51,8 +51,8 @@ function Profile() {
   return (
     <div>
       {/* THIS IS THE USER CARD */}
-      <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
-        <Col className ="gutter-row" span={12}>
+      <Row  justify="center" align="middle">
+        <Col xs={24} s={12} md={12} lg={12} xl={12} >
           <Card
             // style={{ width: 300 }}
             style={styles.card}
@@ -92,9 +92,9 @@ function Profile() {
         </Col>
         {/* this is a list of their workouts  */}
         {/* Map over/input data from userInfo.workouts to get the cards to load below */}
-        <Col className ="gutter-row" span={12}>
+        <Col id="workoutList"  xs={24} s={12} md={12} lg={12} xl={12}>
           <List
-          className ="workoutList"
+            header={<div style={{fontSize: "24px"}}>Your Stats</div>}
             style={styles.list}
             itemLayout="horizontal"
             dataSource={userInfo.workouts}
