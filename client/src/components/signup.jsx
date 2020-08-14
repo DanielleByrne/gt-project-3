@@ -3,6 +3,7 @@ import fire from "../config/Fire";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { Spring } from "react-spring/renderprops";
+import { Row, Col, Card } from "antd";
 // import { app } from "firebase";
 
 class SignUp extends Component {
@@ -27,7 +28,7 @@ class SignUp extends Component {
       .post("/api/signup", { email, password })
       .then((response) => {
         console.log(response.data);
-        localStorage.setItem("userID", response.data.data._id)
+        localStorage.setItem("userID", response.data.data._id);
       })
       .catch((err) => {
         console.log(err);
@@ -50,79 +51,93 @@ class SignUp extends Component {
     }
     return (
       <div>
-        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-          {(props) => (
-            <div style={props}>
-              <h2 style={{ marginTop: "20px" }}>Create an Account</h2>
-            </div>
-          )}
-        </Spring>
-        {/* <h2 style={{ marginTop: "20px" }}>Create an Account: </h2> */}
-        <form
-          onSubmit={(event) => {
-            this.signUpEmailPassword(event);
-          }}
-          ref={(form) => {
-            this.loginForm = form;
-          }}
-        >
-          {/* <label className="">
-            Email */}
-          <input
-            style={{
-              width: "50%",
-              margin: "10px",
-              marginTop: "20px",
-              border: " 1px solid lightsteelblue",
-              height: "35px",
-            }}
-            className=""
-            name="email"
-            type="email"
-            ref={(input) => {
-              this.emailInput = input;
-            }}
-            placeholder="Email"
-          ></input>
-          {/* </label> */}
-          {/* <label className="">
-            Password */}
-          <input
-            style={{
-              width: "50%",
-              margin: "10px",
-              marginTop: "20px",
-              // border: " 1px solid #ECFEE8",
-              border: "1px solid lightsteelblue",
-              height: "35px",
-            }}
-            className=""
-            name="password"
-            type="password"
-            ref={(input) => {
-              this.passwordInput = input;
-            }}
-            placeholder="Password"
-          ></input>
-          <br></br>
-          {/* </label> */}
-          <input
-            style={{
-              margin: "10px",
-              backgroundColor: "lightcoral",
-              width: "100px",
-              height: "35px",
-              color: "white",
-              border: "1px solid #ECFEE8",
-              borderRadius: "12px",
-            }}
-            type="submit"
-            className="button"
-            // I CHANGED THE VALUE OF THE BUTTON TO SIGN UP I DON'T KNOW IF THAT MESSES ANYTHING UP
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col className="gutter-row" span={24}>
+            {/* <Card
+              style={{
+                width: 300,
+                justifyContent:"center",
+                marginLeft: "40%",
+                boxShadow:
+                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+              }} */}
 
-            value="Sign Up"
-          ></input>
-        </form>
+            <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+              {(props) => (
+                <div style={props}>
+                  <h2 style={{ marginTop: "20px" }}>Create an Account</h2>
+                </div>
+              )}
+            </Spring>
+            {/* <h2 style={{ marginTop: "20px" }}>Create an Account: </h2> */}
+            <form
+              onSubmit={(event) => {
+                this.signUpEmailPassword(event);
+              }}
+              ref={(form) => {
+                this.loginForm = form;
+              }}
+            >
+              {/* <label className="">
+            Email */}
+              <input
+                style={{
+                  width: "50%",
+                  margin: "10px",
+                  marginTop: "20px",
+                  border: " 1px solid lightsteelblue",
+                  height: "35px",
+                }}
+                className=""
+                name="email"
+                type="email"
+                ref={(input) => {
+                  this.emailInput = input;
+                }}
+                placeholder="Email"
+              ></input>
+              {/* </label> */}
+              {/* <label className="">
+            Password */}
+              <input
+                style={{
+                  width: "50%",
+                  margin: "10px",
+                  marginTop: "20px",
+                  // border: " 1px solid #ECFEE8",
+                  border: "1px solid lightsteelblue",
+                  height: "35px",
+                }}
+                className=""
+                name="password"
+                type="password"
+                ref={(input) => {
+                  this.passwordInput = input;
+                }}
+                placeholder="Password"
+              ></input>
+              <br></br>
+              {/* </label> */}
+              <input
+                style={{
+                  margin: "10px",
+                  backgroundColor: "lightcoral",
+                  width: "100px",
+                  height: "35px",
+                  color: "white",
+                  border: "1px solid #ECFEE8",
+                  borderRadius: "12px",
+                }}
+                type="submit"
+                className="button"
+                // I CHANGED THE VALUE OF THE BUTTON TO SIGN UP I DON'T KNOW IF THAT MESSES ANYTHING UP
+
+                value="Sign Up"
+              ></input>
+            </form>
+            {/* </Card> */}
+          </Col>
+        </Row>
       </div>
     );
   }

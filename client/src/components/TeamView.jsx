@@ -11,7 +11,7 @@ function TeamView() {
     table: {
       marginTop: "45px",
       width: "75%",
-      marginLeft: "15%",
+      marginLeft: "15%"
     },
   };
   const columns = [
@@ -19,32 +19,30 @@ function TeamView() {
       title: "Name",
       dataIndex: "email",
     },
-    // {
-    //   title: "Consecutive Workouts",
-    //   dataIndex: "consecutive",
-    // },
+    {
+      title: "Consecutive Workouts",
+      dataIndex: "consecutiveDays",
+    },
     {
       title: "Today's Workout",
       dataIndex: "completed_today",
     },
   ];
 
-function App() {
-  // const [teamInfo, setTeamInfo] = useState({});
+  function App() {
+    // const [teamInfo, setTeamInfo] = useState({});
 
-
-  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
-  return <animated.div style={props}>How's Your Team Doing?</animated.div>;
-}
+    const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+    return <animated.div style={props}>How's Your Team Doing?</animated.div>;
+  }
   useEffect(() => {
     let todaySetter = new Date();
     todaySetter = date.format(todaySetter, "YYYY-MM-DD").trim();
 
-    console.log("GETTING USERS");
+    // console.log("GETTING USERS");
     Axios.get("/api/user")
       .then((res) => {
-        console.log("res.data", res.data);
-
+        // console.log("res.data", res.data);
         for (let i = 0; i < res.data.length; i++) {
           if (
             res.data[i].workouts.length > 0 &&
@@ -58,15 +56,43 @@ function App() {
           } else {
             res.data[i].completed_today = "❌";
           }
-          res.data[i].key=res.data[i]._id
+          res.data[i].key = res.data[i]._id;
+
+          let counter = 0;
+          let consecutiveDays = 0;
+
+          // For loop steps through mongodb database in reverse order since the most recent workouts are the last entries in the db.
+          for (let j = res.data[i].workouts.length - 1; j >= 0; --j) {
+            let todayDt = new Date();
+            todayDt.setDate(todayDt.getDate() - counter);
+            todayDt = date.format(todayDt, "YYYY-MM-DD").trim();
+            console.log(j, todayDt)
+            console.log(counter)
+            if (
+              res.data[i].workouts[j].date_completed.split("T")[0] ===
+                todayDt &&
+              res.data[i].workouts[j].completed_workout === true
+            ) {
+              //****JD: Increment consecutiveDays */
+              counter++;
+              consecutiveDays++;
+              res.data[i].consecutiveDays = consecutiveDays;
+              console.log(
+                "Current consecutive Days for user " + res.data[i].email,
+                consecutiveDays
+              );
+            }else{
+              j=-1
+            }
+          }
         }
         setAllUsers(res.data);
       })
       .catch((err) => console.log("usersErr", err));
   }, []);
-
-  // const props = useSpring({ opacity: 1, from: { opacity: 0 } });
-  // return <animated.div style={props}>How's Your Team Doing?</animated.div>;
+  // CONSECUTIVE DAYS PSEUDOCODE
+  // Step through workouts in reverse order, if the days actually step backwards
+  // and the completed workout is true, add one to a counter until conditional is false
 
   return (
     <div>

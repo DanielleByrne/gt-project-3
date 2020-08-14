@@ -10,7 +10,7 @@ function Messages() {
 
   useEffect(() => {
     Axios.get("/api/messages").then((res) => {
-      console.log(res.data.data);
+      // console.log(res.data.data);
       setMessagesArr(res.data.data);
     });
   }, []);
@@ -41,7 +41,7 @@ function Messages() {
 
   return (
     <div>
-      <h4>Chat With Your Team</h4>
+      <h4 style={{marginTop: "30px"}}>Chat With Your Team</h4>
       <Search
         placeholder="Write your message here"
         enterButton="Send"

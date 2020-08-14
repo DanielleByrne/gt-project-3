@@ -17,7 +17,7 @@ import "./App.css";
 // import Login from "./components/Login";
 // import fire from "./config/Fire";
 import SignUp from "./components/signup";
-import { Button } from "antd";
+import { Button, Col, Row, PageHeader } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import Profile from "./components/Profile";
 import TeamView from "./components/TeamView";
@@ -29,10 +29,12 @@ import NoMatch from "./components/NoMatch";
 // import NoMatchAnimate from "./components/Animations/NoMatchAnimate";
 
 
+
+import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
+
 const { Header } = Layout;
 
 class App extends Component {
-  
   constructor(props) {
     super(props);
     this.logout = this.logout.bind(this);
@@ -86,7 +88,6 @@ class App extends Component {
   }
 
   render() {
-    
     if (this.state.profileRedirect) {
       this.setState({ profileRedirect: false });
       console.log("You are going to be redirected.");
@@ -108,37 +109,66 @@ class App extends Component {
       return (
         <div className="App">
           <Router>
-            <Layout>
-              <Header className="heading">
-                <Link to="/" className="title">
+            {/* <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+              <Col className="gutter-row" span={32}> */}
+            {/* <Layout>
+                  <Header className="heading">
+                    <Link to="/" className="title"
+                    style ={{marginLeft: "15%"}}>
+                      Healthy Competition
+                    </Link>
+                    <Button
+                      icon={<LogoutOutlined />}
+                      style={{
+                        backgroundColor: "lightsteelblue",
+                        marginTop: "15px",
+                        color: "white",
+                        float: "right",
+                      }}
+                      onClick={this.logout}
+                    >
+                      Log Out
+                    </Button>
+                    <Button
+                      icon={<UserOutlined />}
+                      style={{
+                        backgroundColor: "darksalmon",
+                        color: "white",
+                        float: "right",
+                        marginTop: "15px",
+                      }}
+                      onClick={this.handleProfileClick}
+                    >
+                      Profile
+                    </Button>
+                   
+      
+                  </Header>
+                </Layout> */}
+
+            <div className="site-page-header-ghost-wrapper">
+              <PageHeader
+                // title="Healthy Competition"
+                style={{ backgroundColor: "darksalmon", color: "white" }}
+                extra={[
+                  <Button
+                    icon={<UserOutlined />}
+                    onClick={this.handleProfileClick}
+                  >
+                    Profile
+                  </Button>,
+                  <Button icon={<LogoutOutlined />} onClick={this.logout}>
+                    Log Out
+                  </Button>,
+                ]}
+              >
+                <Link to={"/"} className="title"  style={{fontSize: "36px"}}>
                   Healthy Competition
                 </Link>
-                <Button
-                  icon={<LogoutOutlined />}
-                  style={{
-                    backgroundColor: "lightsteelblue",
-                    marginTop: "15px",
-                    color: "white",
-                    float: "right",
-                  }}
-                  onClick={this.logout}
-                >
-                  Log Out
-                </Button>
-                <Button
-                  icon={<UserOutlined />}
-                  style={{
-                    backgroundColor: "darksalmon",
-                    color: "white",
-                    float: "right",
-                    marginTop: "15px",
-                  }}
-                  onClick={this.handleProfileClick}
-                >
-                  Profile
-                </Button>
-              </Header>
-            </Layout>
+              </PageHeader>
+            </div>
+            {/* </Col>
+            </Row> */}
 
             <Switch>
               <Route exact path="/" component={Home} />
@@ -147,7 +177,7 @@ class App extends Component {
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/team" component={TeamView} />
               <Route exact path="/activeday" component={ActiveDay} />
-              <Route component= {NoMatch}/>
+              <Route component={NoMatch} />
               {/* <Route exact path = "/testspring" component = {NoMatchAnimate}/> */}
               {/* render= if lift state */}
               {/* <Route exact path = "/clicktest" component = {Clicktest}/> */}
@@ -159,7 +189,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Layout>
+          {/* <Layout>
             <Header className="heading">
               <Link to={"/"} className="title">
                 Healthy Competition
@@ -179,10 +209,16 @@ class App extends Component {
                 </Button>
               ) : null}
             </Header>
-          </Layout>
+          </Layout> */}
           {/* <Login /> */}
           {/* {this.state.user ? <Home /> : <Login />} */}
-
+          <div className="site-page-header-ghost-wrapper">
+            <PageHeader style={{ backgroundColor: "darksalmon" }}>
+            <Link to={"/"} className="title" style={{fontSize: "36px"}}>
+              Healthy Competition
+            </Link>
+            </PageHeader>
+          </div>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/workout" component={Workout} />
@@ -190,8 +226,7 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/team" component={TeamView} />
             <Route exact path="/activeday" component={ActiveDay} />
-            <Route component= {NoMatch}/>
-
+            <Route component={NoMatch} />
           </Switch>
         </Router>
       </div>
