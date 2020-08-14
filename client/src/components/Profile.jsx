@@ -47,6 +47,20 @@ function Profile() {
     return <Redirect to="/team" />;
   }
 
+  const handleDeleteWorkout= (id) => {
+    console.log(`Delete workout clicked`)
+    Axios
+      .delete(`/api/workout/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        this.setUserInfo();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
   return (
     <div>
       {/* THIS IS THE USER CARD */}
@@ -112,7 +126,8 @@ function Profile() {
                   avatar={
                     // <Avatar.group>
                     // <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
-                    <DeleteTwoTone />
+                    <DeleteTwoTone
+                    onClick= {handleDeleteWorkout} />
                     /* </Avatar.group> */
                   }
                   />
