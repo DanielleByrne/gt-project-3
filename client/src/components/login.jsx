@@ -49,6 +49,8 @@ class Login extends Component {
       })
       .catch((error) => {
         console.log(error);
+        window.alert("Username or password does not match our records. Please try again.")
+        this.loginForm.reset();
       });
   }
 
