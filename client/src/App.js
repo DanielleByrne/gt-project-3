@@ -28,8 +28,6 @@ import NoMatch from "./components/NoMatch";
 // import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
 // import NoMatchAnimate from "./components/Animations/NoMatchAnimate";
 
-
-
 import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
 
 const { Header } = Layout;
@@ -145,7 +143,6 @@ class App extends Component {
       
                   </Header>
                 </Layout> */}
-
             <div className="site-page-header-ghost-wrapper">
               <PageHeader
                 // title="Healthy Competition"
@@ -162,7 +159,7 @@ class App extends Component {
                   </Button>,
                 ]}
               >
-                <Link to={"/"} className="title"  style={{fontSize: "36px"}}>
+                <Link to={"/"} className="title" style={{ fontSize: "36px" }}>
                   Healthy Competition
                 </Link>
               </PageHeader>
@@ -214,9 +211,9 @@ class App extends Component {
           {/* {this.state.user ? <Home /> : <Login />} */}
           <div className="site-page-header-ghost-wrapper">
             <PageHeader style={{ backgroundColor: "darksalmon" }}>
-            <Link to={"/"} className="title" style={{fontSize: "36px"}}>
-              Healthy Competition
-            </Link>
+              <Link to={"/"} className="title" style={{ fontSize: "36px" }}>
+                Healthy Competition
+              </Link>
             </PageHeader>
           </div>
           <Switch>
