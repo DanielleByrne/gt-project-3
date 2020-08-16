@@ -3,7 +3,6 @@ import fire from "../config/Fire";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { Spring } from "react-spring/renderprops";
-// import { app } from "firebase";
 
 class SignUp extends Component {
   constructor(props) {
@@ -13,16 +12,12 @@ class SignUp extends Component {
       redirect: false,
     };
   }
-  // fire.auth().signOut(); code needed to sign out of page. easily attached to button
 
-  // Sign up function
-  // takes email and password with signup (may be able to store more data with setValue)
-  // similar to login once user is created, redirect will be set to true and user will be redirected.
   signUpEmailPassword(event) {
     event.preventDefault();
     const email = this.emailInput.value;
     const password = this.passwordInput.value;
-    // CREATES NEW USER, SAVES USER ID TO LOCAL STORAGE
+
     axios
       .post("/api/signup", { email, password })
       .then((response) => {
@@ -45,7 +40,6 @@ class SignUp extends Component {
 
   render() {
     if (this.state.redirect === true) {
-      // If user is authenticated redirect to a diff page below
       return <Redirect to="/workout" />;
     }
     return (
@@ -57,7 +51,6 @@ class SignUp extends Component {
             </div>
           )}
         </Spring>
-        {/* <h2 style={{ marginTop: "20px" }}>Create an Account: </h2> */}
         <form
           onSubmit={(event) => {
             this.signUpEmailPassword(event);
@@ -66,8 +59,6 @@ class SignUp extends Component {
             this.loginForm = form;
           }}
         >
-          {/* <label className="">
-            Email */}
           <input
             style={{
               width: "50%",
@@ -84,15 +75,11 @@ class SignUp extends Component {
             }}
             placeholder="Email"
           ></input>
-          {/* </label> */}
-          {/* <label className="">
-            Password */}
           <input
             style={{
               width: "50%",
               margin: "10px",
               marginTop: "20px",
-              // border: " 1px solid #ECFEE8",
               border: "1px solid lightsteelblue",
               height: "35px",
             }}
@@ -105,7 +92,6 @@ class SignUp extends Component {
             placeholder="Password"
           ></input>
           <br></br>
-          {/* </label> */}
           <input
             style={{
               margin: "10px",
@@ -118,8 +104,6 @@ class SignUp extends Component {
             }}
             type="submit"
             className="button"
-            // I CHANGED THE VALUE OF THE BUTTON TO SIGN UP I DON'T KNOW IF THAT MESSES ANYTHING UP
-
             value="Sign Up"
           ></input>
         </form>
