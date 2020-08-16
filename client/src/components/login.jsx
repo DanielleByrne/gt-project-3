@@ -125,7 +125,7 @@ class Login extends Component {
                 <input
                   style={{
                     margin: "10px",
-                    backgroundColor: "lightcoral",
+                    backgroundColor: "darksalmon",
                     width: "100px",
                     height: "35px",
                     color: "white",

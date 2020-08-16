@@ -20,7 +20,7 @@ function TeamView() {
       dataIndex: "email",
     },
     {
-      title: "Consecutive Workouts",
+      title: "Streak",
       dataIndex: "consecutiveDays",
     },
     {
@@ -103,6 +103,7 @@ function TeamView() {
           size="middle"
           // scroll={{ y: 240 }}
           pagination={{ pageSize: 5 }}
+          
         />
       </div>
       <Messages />

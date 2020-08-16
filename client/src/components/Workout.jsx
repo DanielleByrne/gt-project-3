@@ -61,18 +61,17 @@ class Workout extends Component {
       return <Redirect to="/team" />;
     }
     return (
-
       <div>
-      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-      <Col className="gutter-row" span={24}>
-        {/* <Card  */}
-        {/* // style={{ width: 500, marginLeft: '34%', marginTop: '150px' }} */}
-        
-        {/* > */}
-          <h1 style ={{marginTop: "50px"}}>Is today an active day?</h1>
-          <Yesbutton handleYesClick={this.handleYesClick}/>
-          <Nobutton handleNoClick={this.handleNoClick}/>
-          {/* <Button
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col className="gutter-row" span={24}>
+            {/* <Card  */}
+            {/* // style={{ width: 500, marginLeft: '34%', marginTop: '150px' }} */}
+
+            {/* > */}
+            <h1 style={{ marginTop: "50px" }}>Is today an active day?</h1>
+            <Yesbutton handleYesClick={this.handleYesClick} />
+            <Nobutton handleNoClick={this.handleNoClick} />
+            {/* <Button
         <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
           <h1>Is today an active day?</h1>
           <Button
@@ -111,31 +110,30 @@ class Workout extends Component {
           >
             No
           </Button> */}
-
-          <p>
-            Success isn’t always about greatness. It’s about consistency.
-            Consistent hard work gains success. Greatness will come.{" "}
-          </p>
-          <Button
-            onClick={this.handleStackUpButton}
-            type="primary"
-            size="large"
-            icon={<FundTwoTone twoToneColor="#ED6A5E" />}
-            style={{
-              backgroundColor: "darksalmon",
-              // padding: "20px",
-              borderRadius: "12px",
-              width: "300px",
-              height: "100px",
-              fontSize: "25px",
-            }}
-          >
-            See how you stack up!
-          </Button>
-          {/* </Card> */}
-        </Col>
+            <aside>
+              <p>Success isn’t always about greatness. It’s about consistency.</p>
+              <p>Consistent hard work gains success. Greatness will come.</p>
+            </aside>
+            <Button
+              onClick={this.handleStackUpButton}
+              type="primary"
+              size="large"
+              icon={<FundTwoTone twoToneColor="#ED6A5E" />}
+              style={{
+                backgroundColor: "darksalmon",
+                // padding: "20px",
+                borderRadius: "12px",
+                width: "300px",
+                height: "100px",
+                fontSize: "25px",
+              }}
+            >
+              See how you stack up!
+            </Button>
+            {/* </Card> */}
+          </Col>
         </Row>
-        </div> 
+      </div>
     );
   }
 }
