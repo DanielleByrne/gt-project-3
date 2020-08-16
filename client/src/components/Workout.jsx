@@ -111,8 +111,10 @@ class Workout extends Component {
             No
           </Button> */}
             <aside>
-              <p>Success isn’t always about greatness. It’s about consistency.</p>
-              <p>Consistent hard work gains success. Greatness will come.</p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>Success isn’t always about greatness. </p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>It’s about consistency.</p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>Consistent hard work gains success. </p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>Greatness will come.</p>
             </aside>
             <Button
               onClick={this.handleStackUpButton}
