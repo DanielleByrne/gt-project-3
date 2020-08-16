@@ -10,13 +10,9 @@ function Messages() {
 
   useEffect(() => {
     Axios.get("/api/messages").then((res) => {
-      // console.log(res.data.data);
       setMessagesArr(res.data.data);
     });
   }, []);
-  // ISSUES WITH THIS: I THINK IT WOULD ONLY UPDATE IF YOU ARE THE PERSON CHATTING.
-  // REFRESH MAY NEED TO BE DONE IN REAL TIME TO GET OTHER PEOPLES MESSAGES
-  // MAYBE USE CRON HERE?
   function handleMessageSubmit(msg) {
     console.log("Send button clicked");
     const userEmail = localStorage.getItem("email");
@@ -38,7 +34,6 @@ function Messages() {
   }
 
 
-
   return (
     <div>
       <h4>Chat With Your Team</h4>
@@ -53,7 +48,6 @@ function Messages() {
         <div className="scrollable">
           {messagesArr.map((message) => (
             <Card
-              // scroll={{y:240}}
               style={{ width: "50%", marginLeft: "25%", marginTop: "20px" }}
             >
               <div>
