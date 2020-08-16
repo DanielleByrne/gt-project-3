@@ -12,7 +12,8 @@ const styles = {
     // marginLeft: "30px",
     maxWidth: "300px",
     marginTop: "30px",
-    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+    boxShadow:
+      "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
   },
 
   list: {
@@ -48,103 +49,104 @@ function Profile() {
     return <Redirect to="/team" />;
   }
 
-  const handleDeleteWorkout= (workoutId) => {
+  const handleDeleteWorkout = (workoutId) => {
     console.log(workoutId);
-    Axios
-      .delete(`/api/workout`, {data: { _id: workoutId}})
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    var deleteConfirmation = window.confirm(
+      "Are you sure you'd like to delete this workout?"
+    );
+    if (deleteConfirmation) {
+      Axios.delete(`/api/workout`, { data: { _id: workoutId } })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
-
 
   return (
     <div>
       {/* THIS IS THE USER CARD */}
-      <Row  justify="center" align="middle">
-        <Col xs={24} s={12} md={12} lg={12} xl={12} >
+      <Row justify="center" align="middle">
+        <Col xs={24} s={12} md={12} lg={12} xl={12}>
           <Row justify="center">
-          <Card
-            // style={{ width: 300 }}
-            style={styles.card}
-            cover={
-              <img
-                alt="User"
-                src="https://www.dts.edu/wp-content/uploads/sites/6/2018/04/Blank-Profile-Picture.jpg"
-              />
-            }
-          >
-            <Meta
-              //   avatar={
-              //     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-              //   }
-              title={userInfo.email}
-              description={"This is the description"}
-            />
-            <Button
-              onClick={redirectTeam}
-              type="primary"
-              size="large"
-              icon={<FundTwoTone twoToneColor="#ED6A5E" />}
-              style={{
-                backgroundColor: "darksalmon",
-                // padding: "20px",
-                borderRadius: "12px",
-                width: "250px",
-                height: "75px",
-                fontSize: "18px",
-                marginTop: "15px",
-                marginRight: "39%",
-              }}
+            <Card
+              // style={{ width: 300 }}
+              style={styles.card}
+              cover={
+                <img
+                  alt="User"
+                  src="https://www.dts.edu/wp-content/uploads/sites/6/2018/04/Blank-Profile-Picture.jpg"
+                />
+              }
             >
-              Back to team page
-            </Button>
-          </Card>
+              <Meta
+                //   avatar={
+                //     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                //   }
+                title={userInfo.email}
+                // description={"This is the description"}
+              />
+              <Button
+                onClick={redirectTeam}
+                type="primary"
+                size="large"
+                icon={<FundTwoTone twoToneColor="#ED6A5E" />}
+                style={{
+                  backgroundColor: "darksalmon",
+                  // padding: "20px",
+                  borderRadius: "12px",
+                  width: "250px",
+                  height: "75px",
+                  fontSize: "18px",
+                  marginTop: "15px",
+                  marginRight: "39%",
+                }}
+              >
+                Back to team page
+              </Button>
+            </Card>
           </Row>
         </Col>
         {/* this is a list of their workouts  */}
         {/* Map over/input data from userInfo.workouts to get the cards to load below */}
-        <Col id="workoutList"  xs={24} s={12} md={12} lg={12} xl={12}>
+        <Col id="workoutList" xs={24} s={12} md={12} lg={12} xl={12}>
           <Row justify="center">
-          <List
-            header={<div style={{fontSize: "24px"}}>Your Stats</div>}
-            style={styles.list}
-            itemLayout="horizontal"
-            dataSource={userInfo.workouts}
-            pagination={{
-              pageSize: 7,
-              // position:"top"
-            }}
-            renderItem={(item) => (
-              <List.Item>
-                <List.Item.Meta
-                  title={
-                    // <a href="https://ant.design">
-                    item.date_completed.split("T")[0]
-                    /* </a> */
-                  }
-                  description={
-                    item.completed_workout === true
-                      ? "🔥"
-                      : "❌"
-                  }
-                  avatar={
-                    // <Avatar.group>
-                    // <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
-                    <DeleteTwoTone
-                    key={item._id}
-                    onClick= {()=>{handleDeleteWorkout(item._id)}}
-                     />
-                    //item_id
-                    /* </Avatar.group> */
-                  }
+            <List
+              header={<div style={{ fontSize: "24px" }}>Your Stats</div>}
+              style={styles.list}
+              itemLayout="horizontal"
+              dataSource={userInfo.workouts}
+              pagination={{
+                pageSize: 7,
+                position: "top",
+              }}
+              renderItem={(item) => (
+                <List.Item>
+                  <List.Item.Meta
+                    title={
+                      // <a href="https://ant.design">
+                      item.date_completed.split("T")[0]
+                      /* </a> */
+                    }
+                    description={item.completed_workout === true ? "🔥" : "❌"}
+                    avatar={
+                      // <Avatar.group>
+                      // <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
+                      <DeleteTwoTone
+                        key={item._id}
+                        onClick={() => {
+                          handleDeleteWorkout(item._id);
+                        }}
+                      />
+                      //item_id
+                      /* </Avatar.group> */
+                    }
                   />
-              </List.Item>
-            )}
-          />
+                </List.Item>
+              )}
+            />
           </Row>
         </Col>
       </Row>

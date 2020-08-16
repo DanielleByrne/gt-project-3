@@ -40,6 +40,7 @@ const Nobutton = props => {
           verticalAlign: 'middle',
           textAlign: 'center',
           display: 'table-cell',
+          border: "1px solid #1890ff",
           width: '100px',
           height: '50px',
           color: 'white',

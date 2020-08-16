@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Card } from "antd";
 import "antd/dist/antd.css";
-import { Input} from "antd";
+import { Input } from "antd";
 const { Search } = Input;
 
 function Messages() {
@@ -37,11 +37,9 @@ function Messages() {
     });
   }
 
-
-
   return (
     <div>
-      <h4 style={{marginTop: "30px"}}>Chat With Your Team</h4>
+      <h4 style={{ marginTop: "30px" }}>Chat With Your Team</h4>
       <Search
         placeholder="Write your message here"
         enterButton="Send"
@@ -56,16 +54,16 @@ function Messages() {
               // scroll={{y:240}}
               style={{ width: "50%", marginLeft: "25%", marginTop: "20px" }}
             >
-              <div>
-                {message.email} <br />
+              <div style={{ fontSize: "20px" }}>
+                {message.email}:<br />
               </div>
-              <div>{message.message}</div>
-              <small>
-                <small>
+              <div style={{ fontSize: "16px" }}>{message.message}</div>
+              <medium>
+                <medium>
                   at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}
                   {message.time_posted.split("T")[0]}
-                </small>
-              </small>
+                </medium>
+              </medium>
             </Card>
           ))}
         </div>

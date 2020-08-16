@@ -1,4 +1,3 @@
-
 // THIS COMPONENT IS NOT NECESSARY
 
 import React from "react";
@@ -9,13 +8,13 @@ const { Search } = Input;
 
 const NewMessage = () => {
   function handleMessageSubmit(msg) {
-    console.log("Send button clicked")
+    console.log("Send button clicked");
     const userEmail = localStorage.getItem("email");
     const data = {
       email: userEmail,
       message: msg,
     };
-    console.log(data)
+    console.log(data);
     Axios.post("/api/messages", data)
       .then((newMessage) => {
         console.log("Message posted");
@@ -28,10 +27,11 @@ const NewMessage = () => {
   return (
     <div>
       <Search
+        className="newMessageField"
         placeholder="Write your message here"
         enterButton="Send"
         size="large"
-        style ={{width: "50%", justifyContent: "center"}}
+        style={{ width: "50%", justifyContent: "center" }}
         onSearch={(value) => handleMessageSubmit(value)}
       />
       ;

@@ -103,6 +103,7 @@ function TeamView() {
           size="middle"
           // scroll={{ y: 240 }}
           pagination={{ pageSize: 5 }}
+          
         />
       </div>
       <Messages />

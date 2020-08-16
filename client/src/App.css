@@ -1,7 +1,7 @@
 @import "~antd/dist/antd.css";
 
 body {
-  background-image: url(../src/Untitled.jpg);
+  background-image: url("../src/background.png");
 }
 
 .App {
@@ -31,15 +31,9 @@ a:hover {
   color: white;
 }
 
-/* 
-@media only screen and (max-width: 768px){
-  #workoutList {
-    margin-top: "400px";
-  }
-}  */
 
-/* @media (min-width: 576px) {
-  .workoutList {
-    margin-top: 70000px;
+@media only screen and (max-width: 600px) {
+  body {
+    background-image: url("https://wallpapercave.com/wp/wp3469892.jpg");
   }
-} */
+}
