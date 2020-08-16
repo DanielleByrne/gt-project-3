@@ -86,7 +86,7 @@ function Profile() {
                 //     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 //   }
                 title={userInfo.email}
-                description={"This is the description"}
+                // description={"This is the description"}
               />
               <Button
                 onClick={redirectTeam}
