@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import ReactDOM from 'react-dom';
 import { useSpring, animated } from 'react-spring';
 import { BookTwoTone } from '@ant-design/icons';
 import '../Workout';
@@ -21,10 +20,7 @@ const Yesbutton = props => {
 
   return (
     <div>
-   {/* <div state={state} toggle={toggle}> */}
       <animated.button
-        // onClick={this.handleNoClick}
-        // onClick={() => toggle(!state)}
         onClick={handleClick}
         type="primary"
         size="large"
@@ -56,13 +52,3 @@ const Yesbutton = props => {
 };
 
 export default Yesbutton;
-/*
-0 % { transform: scale(1); }
-25 % { transform: scale(.97); }
-35 % { transform: scale(.9); }
-45 % { transform: scale(1.1); }
-55 % { transform: scale(.9); }
-65 % { transform: scale(1.1); }
-75 % { transform: scale(1.03); }
-100 % { transform: scale(1); }
-`*/
