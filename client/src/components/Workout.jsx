@@ -68,46 +68,6 @@ class Workout extends Component {
           <Yesbutton handleYesClick={this.handleYesClick}/>
           <Nobutton handleNoClick={this.handleNoClick}/>
           </Row>
-          {/* <Button
-        <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
-          <h1>Is today an active day?</h1>
-          <Button
-            onClick={this.handleYesClick}
-            type="primary"
-            size="large"
-            icon={<StarTwoTone twoToneColor="#ED6A5E" />}
-            style={{
-              backgroundColor: "darksalmon",
-              padding: "10px",
-              borderRadius: "12px",
-              verticalAlign: "middle",
-              display: "table-cell",
-              width: "100px",
-              height: "50px",
-            }}
-          >
-            Yes
-          </Button>
-          <Button
-            onClick={this.handleNoClick}
-            type="primary"
-            size="large"
-            icon={<BookTwoTone twoToneColor="#ED6A5E" />}
-            style={{
-              backgroundColor: 'darksalmon',
-              padding: '10px',
-              borderRadius: '12px',
-              margin: '20px',
-              verticalAlign: 'middle',
-              textAlign: 'center',
-              display: 'table-cell',
-              width: '100px',
-              height: '50px'
-            }}
-          >
-            No
-          </Button> */}
-
           <p>
             Success isn’t always about greatness. It’s about consistency.
             Consistent hard work gains success. Greatness will come.{" "}
