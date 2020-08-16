@@ -12,8 +12,7 @@ const ReactSpring = (props) => {
     leave: { opacity: 0 },
   });
 
-  // added from Yesbutton code as ref
-  //name click function on ActiveDay.jsx handleWorkoutClick
+
   const handleClickTwo = () => {
     set(!toggle);
     setTimeout(() => {
@@ -23,7 +22,6 @@ const ReactSpring = (props) => {
 
   return (
     <div>
-      {/* <div state={state} toggle={toggle}> */}
       <button
         type="primary"
         size="large"
@@ -36,9 +34,6 @@ const ReactSpring = (props) => {
           marginBottom: "20px",
           fontSize: "25px",
         }}
-        // {set} --> {handleClick} (if you change to set, change handleClick
-        // in [toggle, handleClick] needs to change too.)
-        // onClick={set}
         onClick={handleClickTwo}
       >
         {" "}
