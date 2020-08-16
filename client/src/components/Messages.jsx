@@ -7,7 +7,7 @@ const { Search } = Input;
 
 function Messages() {
   const [messagesArr, setMessagesArr] = useState([]);
-
+  const [searchText, setSearchText] = useState();
   useEffect(() => {
     Axios.get("/api/messages").then((res) => {
       // console.log(res.data.data);
@@ -35,6 +35,11 @@ function Messages() {
     Axios.get("/api/messages").then((res) => {
       setMessagesArr(res.data.data);
     });
+    setSearchText("")
+  }
+
+  function handleMessageChange(e) {
+    setSearchText(e.target.value);
   }
 
   return (
@@ -45,7 +50,9 @@ function Messages() {
         enterButton="Send"
         size="large"
         style={{ width: "50%" }}
+        value={searchText}
         onSearch={(value) => handleMessageSubmit(value)}
+        onChange={(event) => handleMessageChange(event)}
       />
       <div scroll={{ y: 240 }}>
         <div className="scrollable">
