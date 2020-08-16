@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FundTwoTone, DeleteTwoTone } from "@ant-design/icons";
-import { Card, Avatar, List, Row, Col, Button } from "antd";
+import { Card, List, Row, Col, Button } from "antd";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
 
@@ -9,7 +9,6 @@ const { Meta } = Card;
 const styles = {
   card: {
     justifyContent: "center",
-    // marginLeft: "30px",
     maxWidth: "300px",
     marginTop: "30px",
     boxShadow:
@@ -19,7 +18,6 @@ const styles = {
   list: {
     width: "50%",
     marginTop: "30px",
-    // marginLeft: "25%",
   },
 };
 
@@ -66,13 +64,11 @@ function Profile() {
   };
 
   return (
-    <div>
-      {/* THIS IS THE USER CARD */}
+  <div>
       <Row justify="center" align="middle">
         <Col xs={24} s={12} md={12} lg={12} xl={12}>
           <Row justify="center">
             <Card
-              // style={{ width: 300 }}
               style={styles.card}
               cover={
                 <img
@@ -82,11 +78,8 @@ function Profile() {
               }
             >
               <Meta
-                //   avatar={
-                //     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                //   }
+ 
                 title={userInfo.email}
-                // description={"This is the description"}
               />
               <Button
                 onClick={redirectTeam}
@@ -95,7 +88,6 @@ function Profile() {
                 icon={<FundTwoTone twoToneColor="#ED6A5E" />}
                 style={{
                   backgroundColor: "darksalmon",
-                  // padding: "20px",
                   borderRadius: "12px",
                   width: "250px",
                   height: "75px",
@@ -109,8 +101,6 @@ function Profile() {
             </Card>
           </Row>
         </Col>
-        {/* this is a list of their workouts  */}
-        {/* Map over/input data from userInfo.workouts to get the cards to load below */}
         <Col id="workoutList" xs={24} s={12} md={12} lg={12} xl={12}>
           <Row justify="center">
             <List
@@ -126,22 +116,17 @@ function Profile() {
                 <List.Item>
                   <List.Item.Meta
                     title={
-                      // <a href="https://ant.design">
                       item.date_completed.split("T")[0]
-                      /* </a> */
                     }
                     description={item.completed_workout === true ? "🔥" : "❌"}
                     avatar={
-                      // <Avatar.group>
-                      // <Avatar src="https://st2.depositphotos.com/1006689/9982/v/950/depositphotos_99827450-stock-illustration-biceps-flex-arm-vector-icon.jpg" />
                       <DeleteTwoTone
                         key={item._id}
                         onClick={() => {
                           handleDeleteWorkout(item._id);
                         }}
                       />
-                      //item_id
-                      /* </Avatar.group> */
+
                     }
                   />
                 </List.Item>

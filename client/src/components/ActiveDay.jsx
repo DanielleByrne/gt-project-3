@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-// import { FireTwoTone } from "@ant-design/icons";
 import { FundTwoTone } from "@ant-design/icons";
-import { Card, Button, Row, Col } from "antd";
+import {Button, Row, Col } from "antd";
 import ReactSpring from "./Animations/ReactSpring/ReactSpring"
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
@@ -42,30 +41,9 @@ class ActiveDay extends Component {
       <div>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
       <Col className="gutter-row" span={24}>
-        {/* <Card  */}
-        {/* // style={{ width: 500, marginLeft: "32%", marginTop: "150px" }}
-        > */}
           <h1 style={{marginTop:"50px"}}>Get after it!</h1>
-          {/* After click function complete --> */}
           <ReactSpring handleWorkedOutClick={this.handleWorkedOutClick}/>
-          {/* <Button
-            onClick={this.handleWorkedOutClick}
-            type="primary"
-            size="large"
-            icon={<FireTwoTone twoToneColor="#ED6A5E" />}
-            style={{
-              backgroundColor: "darksalmon",
-              padding: "20px",
-              borderRadius: "12px",
-              width: "300px",
-              height: "100px",
-              marginBottom: "20px",
-              fontSize: "25px",
-            }}
-          >
-            I worked out today!
-          </Button> */}
-
+       
           <p>
             Success isn’t always about greatness. It’s about consistency.
             Consistent hard work gains success. Greatness will come.{" "}
@@ -77,7 +55,6 @@ class ActiveDay extends Component {
             icon={<FundTwoTone twoToneColor="#f18f8e" />}
             style={{
               backgroundColor: "darksalmon",
-              // padding: "20px",
               borderRadius: "12px",
               width: "300px",
               height: "100px",
@@ -87,7 +64,6 @@ class ActiveDay extends Component {
           >
             See how you stack up!
           </Button>
-        {/* </Card> */}
         </Col>
         </Row>
       </div>

@@ -30,19 +30,16 @@ function TeamView() {
   ];
 
   function App() {
-    // const [teamInfo, setTeamInfo] = useState({});
-
-    const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+    const props = useSpring({ opacity: 1, from: { opacity: 0 }, marginTop:"0",fontSize:"20px" });
     return <animated.div style={props}>How's Your Team Doing?</animated.div>;
   }
+  
   useEffect(() => {
     let todaySetter = new Date();
     todaySetter = date.format(todaySetter, "YYYY-MM-DD").trim();
 
-    // console.log("GETTING USERS");
     Axios.get("/api/user")
       .then((res) => {
-        // console.log("res.data", res.data);
         for (let i = 0; i < res.data.length; i++) {
           if (
             res.data[i].workouts.length > 0 &&
@@ -61,7 +58,6 @@ function TeamView() {
           let counter = 0;
           let consecutiveDays = 0;
 
-          // For loop steps through mongodb database in reverse order since the most recent workouts are the last entries in the db.
           for (let j = res.data[i].workouts.length - 1; j >= 0; --j) {
             let todayDt = new Date();
             todayDt.setDate(todayDt.getDate() - counter);
@@ -73,7 +69,6 @@ function TeamView() {
                 todayDt &&
               res.data[i].workouts[j].completed_workout === true
             ) {
-              //****JD: Increment consecutiveDays */
               counter++;
               consecutiveDays++;
               res.data[i].consecutiveDays = consecutiveDays;
@@ -90,24 +85,18 @@ function TeamView() {
       })
       .catch((err) => console.log("usersErr", err));
   }, []);
-  // CONSECUTIVE DAYS PSEUDOCODE
-  // Step through workouts in reverse order, if the days actually step backwards
-  // and the completed workout is true, add one to a counter until conditional is false
-
   return (
     <div>
       <div style={styles.table}>
+        <App/>
         <Table
           columns={columns}
           dataSource={allUsers}
           size="middle"
-          // scroll={{ y: 240 }}
-          pagination={{ pageSize: 5 }}
-          
+          pagination={{ pageSize: 5 }}        
         />
       </div>
       <Messages />
-      {/* <NewMessage /> */}
     </div>
   );
 }
