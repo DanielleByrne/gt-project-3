@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Row } from "antd";
+import {Button, Row, Col } from "antd";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
@@ -50,8 +50,6 @@ class Workout extends Component {
 
   render() {
     if (this.state.redirectNo === true) {
-      // If user is authenticated redirect to a diff page below
-      //this isn't working how i want it to be
       return <Redirect to="/profile" />;
     } else if (this.state.redirectYes === true) {
       return <Redirect to="/activeday" />;
@@ -62,33 +60,36 @@ class Workout extends Component {
     }
     return (
       <div>
-        <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
-          <h1>Is today an active day?</h1>
-          <Row justify="center">
-          <Yesbutton handleYesClick={this.handleYesClick}/>
-          <Nobutton handleNoClick={this.handleNoClick}/>
-          </Row>
-          <p>
-            Success isn’t always about greatness. It’s about consistency.
-            Consistent hard work gains success. Greatness will come.{" "}
-          </p>
-          <Button
-            onClick={this.handleStackUpButton}
-            type="primary"
-            size="large"
-            icon={<FundTwoTone twoToneColor="#ED6A5E" />}
-            style={{
-              backgroundColor: "darksalmon",
-              // padding: "20px",
-              borderRadius: "12px",
-              width: "300px",
-              height: "100px",
-              fontSize: "25px",
-            }}
-          >
-            See how you stack up!
-          </Button>
-        </Card>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col className="gutter-row" span={24}>
+            <h1 style={{ marginTop: "50px" }}>Is today an active day?</h1>
+            <Row justify="center">
+            <Yesbutton handleYesClick={this.handleYesClick} />
+            <Nobutton handleNoClick={this.handleNoClick} />
+            </Row>
+            <aside>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>Success isn’t always about greatness. </p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>It’s about consistency.</p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>Consistent hard work gains success. </p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>Greatness will come.</p>
+            </aside>
+            <Button
+              onClick={this.handleStackUpButton}
+              type="primary"
+              size="large"
+              icon={<FundTwoTone twoToneColor="#ED6A5E" />}
+              style={{
+                backgroundColor: "darksalmon",
+                borderRadius: "12px",
+                width: "300px",
+                height: "100px",
+                fontSize: "25px",
+              }}
+            >
+              See how you stack up!
+            </Button>
+          </Col>
+        </Row>
       </div>
     );
   }

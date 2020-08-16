@@ -33,6 +33,8 @@ const ReactSpring = (props) => {
           height: "100px",
           marginBottom: "20px",
           fontSize: "25px",
+          color: "white", 
+          border: "1px solid #1890ff"
         }}
         onClick={handleClickTwo}
       >

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FundTwoTone } from "@ant-design/icons";
-import { Card, Button } from "antd";
+import {Button, Row, Col } from "antd";
 import ReactSpring from "./Animations/ReactSpring/ReactSpring"
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
@@ -39,8 +39,9 @@ class ActiveDay extends Component {
     }
     return (
       <div>
-        <Card style={{ width: 500, marginLeft: "32%", marginTop: "150px" }}>
-          <h1>Get after it!</h1>
+      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+      <Col className="gutter-row" span={24}>
+          <h1 style={{marginTop:"50px"}}>Get after it!</h1>
           <ReactSpring handleWorkedOutClick={this.handleWorkedOutClick}/>
        
           <p>
@@ -58,11 +59,13 @@ class ActiveDay extends Component {
               width: "300px",
               height: "100px",
               fontSize: "25px",
+  
             }}
           >
             See how you stack up!
           </Button>
-        </Card>
+        </Col>
+        </Row>
       </div>
     );
   }

@@ -3,6 +3,7 @@ import fire from "../config/Fire";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { Spring } from "react-spring/renderprops";
+import { Row, Col } from "antd";
 
 class SignUp extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class SignUp extends Component {
       .post("/api/signup", { email, password })
       .then((response) => {
         console.log(response.data);
-        localStorage.setItem("userID", response.data.data._id)
+        localStorage.setItem("userID", response.data.data._id);
       })
       .catch((err) => {
         console.log(err);
@@ -44,69 +45,73 @@ class SignUp extends Component {
     }
     return (
       <div>
-        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-          {(props) => (
-            <div style={props}>
-              <h2 style={{ marginTop: "20px" }}>Create an Account</h2>
-            </div>
-          )}
-        </Spring>
-        <form
-          onSubmit={(event) => {
-            this.signUpEmailPassword(event);
-          }}
-          ref={(form) => {
-            this.loginForm = form;
-          }}
-        >
-          <input
-            style={{
-              width: "50%",
-              margin: "10px",
-              marginTop: "20px",
-              border: " 1px solid lightsteelblue",
-              height: "35px",
-            }}
-            className=""
-            name="email"
-            type="email"
-            ref={(input) => {
-              this.emailInput = input;
-            }}
-            placeholder="Email"
-          ></input>
-          <input
-            style={{
-              width: "50%",
-              margin: "10px",
-              marginTop: "20px",
-              border: "1px solid lightsteelblue",
-              height: "35px",
-            }}
-            className=""
-            name="password"
-            type="password"
-            ref={(input) => {
-              this.passwordInput = input;
-            }}
-            placeholder="Password"
-          ></input>
-          <br></br>
-          <input
-            style={{
-              margin: "10px",
-              backgroundColor: "lightcoral",
-              width: "100px",
-              height: "35px",
-              color: "white",
-              border: "1px solid #ECFEE8",
-              borderRadius: "12px",
-            }}
-            type="submit"
-            className="button"
-            value="Sign Up"
-          ></input>
-        </form>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col className="gutter-row" span={24}>
+            <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+              {(props) => (
+                <div style={props}>
+                  <h2 style={{ marginTop: "20px" }}>Create an Account</h2>
+                </div>
+              )}
+            </Spring>
+            <form
+              onSubmit={(event) => {
+                this.signUpEmailPassword(event);
+              }}
+              ref={(form) => {
+                this.loginForm = form;
+              }}
+            >
+              <input
+                style={{
+                  width: "50%",
+                  margin: "10px",
+                  marginTop: "20px",
+                  border: " 1px solid lightsteelblue",
+                  height: "35px",
+                }}
+                className=""
+                name="email"
+                type="email"
+                ref={(input) => {
+                  this.emailInput = input;
+                }}
+                placeholder="Email"
+              ></input>
+              <input
+                style={{
+                  width: "50%",
+                  margin: "10px",
+                  marginTop: "20px",
+                  border: "1px solid lightsteelblue",
+                  height: "35px",
+                }}
+                className=""
+                name="password"
+                type="password"
+                ref={(input) => {
+                  this.passwordInput = input;
+                }}
+                placeholder="Password"
+              ></input>
+              <br></br>
+              <input
+                style={{
+                  margin: "10px",
+                  backgroundColor: "darksalmon",
+                  width: "100px",
+                  height: "35px",
+                  color: "white",
+                  border: "1px solid #ECFEE8",
+                  borderRadius: "12px",
+                }}
+                type="submit"
+                className="button"
+                value="Sign Up"
+              ></input>
+            </form>
+          </Col>
+        </Row>
       </div>
     );
   }

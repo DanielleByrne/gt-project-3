@@ -1,5 +1,9 @@
 @import "~antd/dist/antd.css";
 
+body {
+  background-image: url("../src/background.png");
+}
+
 .App {
   text-align: center;
   font-family: "Baloo Tamma 2", cursive;
@@ -21,4 +25,15 @@ a:hover {
 .scrollable {
   height: 300px;
   overflow-y: scroll;
+}
+
+.ant-page-header-heading-title {
+  color: white;
+}
+
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-image: url("https://wallpapercave.com/wp/wp3469892.jpg");
+  }
 }

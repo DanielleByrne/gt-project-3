@@ -11,7 +11,7 @@ function TeamView() {
     table: {
       marginTop: "45px",
       width: "75%",
-      marginLeft: "15%",
+      marginLeft: "15%"
     },
   };
   const columns = [
@@ -30,8 +30,7 @@ function TeamView() {
   ];
 
   function App() {
-
-    const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+    const props = useSpring({ opacity: 1, from: { opacity: 0 }, marginTop:"0",fontSize:"20px" });
     return <animated.div style={props}>How's Your Team Doing?</animated.div>;
   }
   
@@ -89,12 +88,12 @@ function TeamView() {
   return (
     <div>
       <div style={styles.table}>
+        <App/>
         <Table
           columns={columns}
           dataSource={allUsers}
           size="middle"
-          // scroll={{ y: 240 }}
-          pagination={{ pageSize: 5 }}
+          pagination={{ pageSize: 5 }}        
         />
       </div>
       <Messages />
