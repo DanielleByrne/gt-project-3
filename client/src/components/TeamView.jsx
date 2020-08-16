@@ -20,7 +20,7 @@ function TeamView() {
       dataIndex: "email",
     },
     {
-      title: "Consecutive Workouts",
+      title: "Streak",
       dataIndex: "consecutiveDays",
     },
     {
