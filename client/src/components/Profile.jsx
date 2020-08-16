@@ -120,7 +120,13 @@ function Profile() {
               dataSource={userInfo.workouts}
               pagination={{
                 pageSize: 7,
-                // position:"top"
+                position: "top",
+              }}
+              style={{
+                backgroundColor: "white",
+                paddingRight: "10px",
+                paddingLeft: "10px",
+                marginTop: "5px",
               }}
               renderItem={(item) => (
                 <List.Item>
