@@ -46,6 +46,8 @@ function TeamView() {
     Axios.get("/api/user")
       .then((res) => {
         for (let i = 0; i < res.data.length; i++) {
+          let newEmail=res.data[i].email.split("@")[0]
+          res.data[i].email=newEmail
           if (
             res.data[i].workouts.length > 0 &&
             res.data[i].workouts[
