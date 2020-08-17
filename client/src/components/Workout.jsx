@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Button, Row, Col } from "antd";
+import { Button, Row, Col } from "antd";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
@@ -59,14 +59,27 @@ class Workout extends Component {
     if (this.state.redirectTeam === true) {
       return <Redirect to="/team" />;
     }
+
+    const styles = {
+      paragraph: {
+        fontSize: "15px",
+        marginBottom: "0px",
+      }, button : {
+        backgroundColor: "darksalmon",
+        borderRadius: "12px",
+        width: "300px",
+        height: "100px",
+        fontSize: "25px",
+      }
+    };
     return (
       <div>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col className="gutter-row" span={24}>
             <h1 style={{ marginTop: "50px" }}>Is today an active day?</h1>
             <Row justify="center">
-            <Yesbutton handleYesClick={this.handleYesClick} />
-            <Nobutton handleNoClick={this.handleNoClick} />
+              <Yesbutton handleYesClick={this.handleYesClick} />
+              <Nobutton handleNoClick={this.handleNoClick} />
             </Row>
             <Quote />
             <Button
@@ -74,13 +87,7 @@ class Workout extends Component {
               type="primary"
               size="large"
               icon={<FundTwoTone twoToneColor="#ED6A5E" />}
-              style={{
-                backgroundColor: "darksalmon",
-                borderRadius: "12px",
-                width: "300px",
-                height: "100px",
-                fontSize: "25px",
-              }}
+              style={styles.button}
             >
               See how you stack up!
             </Button>

@@ -38,6 +38,16 @@ class ActiveDay extends Component {
     if (this.state.redirectToProfile) {
       return <Redirect to="profile" />;
     }
+
+    const styles = {
+      button: {
+        backgroundColor: "darksalmon",
+        borderRadius: "12px",
+        width: "300px",
+        height: "100px",
+        fontSize: "25px",
+      },
+    };
     return (
       <div>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
@@ -50,13 +60,7 @@ class ActiveDay extends Component {
               type="primary"
               size="large"
               icon={<FundTwoTone twoToneColor="#f18f8e" />}
-              style={{
-                backgroundColor: "darksalmon",
-                borderRadius: "12px",
-                width: "300px",
-                height: "100px",
-                fontSize: "25px",
-              }}
+              style={styles.button}
             >
               See how you stack up!
             </Button>

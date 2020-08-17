@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import fire from "../config/Fire";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
 import { Spring } from "react-spring/renderprops";
 import { Row, Col } from "antd";
@@ -43,6 +43,16 @@ class SignUp extends Component {
     if (this.state.redirect === true) {
       return <Redirect to="/workout" />;
     }
+
+    const styles = {
+      inputBox: {
+        width: "50%",
+        margin: "10px",
+        marginTop: "20px",
+        border: " 1px solid lightsteelblue",
+        height: "35px",
+      },
+    };
     return (
       <div>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
@@ -63,13 +73,7 @@ class SignUp extends Component {
               }}
             >
               <input
-                style={{
-                  width: "50%",
-                  margin: "10px",
-                  marginTop: "20px",
-                  border: " 1px solid lightsteelblue",
-                  height: "35px",
-                }}
+                style={styles.inputBox}
                 className=""
                 name="email"
                 type="email"
@@ -79,13 +83,7 @@ class SignUp extends Component {
                 placeholder="Email"
               ></input>
               <input
-                style={{
-                  width: "50%",
-                  margin: "10px",
-                  marginTop: "20px",
-                  border: "1px solid lightsteelblue",
-                  height: "35px",
-                }}
+                style={styles.inputBox}
                 className=""
                 name="password"
                 type="password"
@@ -109,6 +107,13 @@ class SignUp extends Component {
                 className="button"
                 value="Sign Up"
               ></input>
+              <br></br>
+              <label>Already Have An Account?</label>
+              <br></br>
+              <Link to={`/`} activeClassName="active">
+                Login Here
+              </Link>
+              <br></br>
             </form>
           </Col>
         </Row>

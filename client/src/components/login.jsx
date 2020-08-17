@@ -41,16 +41,25 @@ class Login extends Component {
       })
       .catch((error) => {
         console.log(error);
-        window.alert("Username or password does not match our records. Please try again.")
+        window.alert(
+          "Username or password does not match our records. Please try again."
+        );
         this.loginForm.reset();
       });
   }
-
 
   render() {
     if (this.state.redirect === true || localStorage.getItem("email")) {
       return <Redirect to="/workout" />;
     }
+    const styles = {
+      inputBox: {
+        width: "50%",
+        margin: "10px",
+        height: "35px",
+        border: " 1px solid lightsteelblue",
+      },
+    };
     return (
       <div>
         <div className="loginPage">
@@ -73,13 +82,7 @@ class Login extends Component {
                 }}
               >
                 <input
-                  style={{
-                    width: "50%",
-                    margin: "10px",
-                    marginTop: "20px",
-                    height: "35px",
-                    border: " 1px solid lightsteelblue",
-                  }}
+                  style={(styles.inputBox)}
                   className=""
                   name="email"
                   type="email"
@@ -90,12 +93,7 @@ class Login extends Component {
                 ></input>
                 <br></br>
                 <input
-                  style={{
-                    width: "50%",
-                    margin: "10px",
-                    border: " 1px solid lightsteelblue",
-                    height: "35px",
-                  }}
+                  style={styles.inputBox}
                   className=""
                   name="password"
                   type="password"
