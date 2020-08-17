@@ -19,11 +19,22 @@ const styles = {
     width: "50%",
     marginTop: "30px",
   },
+
+  button: {
+    backgroundColor: "darksalmon",
+    borderRadius: "12px",
+    width: "250px",
+    height: "75px",
+    fontSize: "18px",
+    marginTop: "15px",
+    marginRight: "39%",
+  },
 };
 
 function Profile() {
   const [userInfo, setUserInfo] = useState({});
   const [redirect, setRedirect] = useState(false);
+  const [markComplete, setMarkComplete] = useState(false);
 
   const userID = localStorage.getItem("userID");
   useEffect(() => {
@@ -47,6 +58,12 @@ function Profile() {
     return <Redirect to="/team" />;
   }
 
+  const redirectToActive = () => {
+    setMarkComplete(true);
+  };
+  if (markComplete === true) {
+    return <Redirect to="/activeday" />;
+  }
   const handleDeleteWorkout = (workoutId) => {
     console.log(workoutId);
     var deleteConfirmation = window.confirm(
@@ -64,7 +81,7 @@ function Profile() {
   };
 
   return (
-  <div>
+    <div>
       <Row justify="center" align="middle">
         <Col xs={24} s={12} md={12} lg={12} xl={12}>
           <Row justify="center">
@@ -77,26 +94,23 @@ function Profile() {
                 />
               }
             >
-              <Meta
- 
-                title={userInfo.email}
-              />
+              <Meta title={userInfo.email} />
               <Button
                 onClick={redirectTeam}
                 type="primary"
                 size="large"
                 icon={<FundTwoTone twoToneColor="#ED6A5E" />}
-                style={{
-                  backgroundColor: "darksalmon",
-                  borderRadius: "12px",
-                  width: "250px",
-                  height: "75px",
-                  fontSize: "18px",
-                  marginTop: "15px",
-                  marginRight: "39%",
-                }}
+                style={styles.button}
               >
                 Back to team page
+              </Button>
+              <Button
+                onClick={redirectToActive}
+                type="primary"
+                size="large"
+                style={styles.button}
+              >
+                Complete Today's Workout
               </Button>
             </Card>
           </Row>
@@ -115,9 +129,7 @@ function Profile() {
               renderItem={(item) => (
                 <List.Item>
                   <List.Item.Meta
-                    title={
-                      item.date_completed.split("T")[0]
-                    }
+                    title={item.date_completed.split("T")[0]}
                     description={item.completed_workout === true ? "🔥" : "❌"}
                     avatar={
                       <DeleteTwoTone
@@ -126,7 +138,6 @@ function Profile() {
                           handleDeleteWorkout(item._id);
                         }}
                       />
-
                     }
                   />
                 </List.Item>
