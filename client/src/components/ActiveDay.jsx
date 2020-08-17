@@ -4,6 +4,7 @@ import { Button, Row, Col } from "antd";
 import ReactSpring from "./Animations/ReactSpring/ReactSpring";
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
+import Quote from "./Quote"
 
 class ActiveDay extends Component {
   constructor(props) {
@@ -43,12 +44,7 @@ class ActiveDay extends Component {
           <Col className="gutter-row" span={24}>
             <h1 style={{ marginTop: "50px" }}>Get after it!</h1>
             <ReactSpring handleWorkedOutClick={this.handleWorkedOutClick} />
-
-            <p style={{fontSize:"15px", marginBottom:"0px"}}>Success isn’t always about greatness. </p>
-            <p style={{fontSize:"15px", marginBottom:"0px"}}>It’s about consistency.</p>
-            <p style={{fontSize:"15px", marginBottom:"0px"}}>Consistent hard work gains success. </p>
-            <p style={{fontSize:"15px", marginBottom:"0px"}}>Greatness will come. </p>
-
+            <Quote />
             <Button
               onClick={this.handleStackUpButton}
               type="primary"
