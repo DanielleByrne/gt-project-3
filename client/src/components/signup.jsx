@@ -43,6 +43,16 @@ class SignUp extends Component {
     if (this.state.redirect === true) {
       return <Redirect to="/workout" />;
     }
+
+    const styles = {
+      inputBox: {
+        width: "50%",
+        margin: "10px",
+        marginTop: "20px",
+        border: " 1px solid lightsteelblue",
+        height: "35px",
+      },
+    };
     return (
       <div>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
@@ -63,13 +73,7 @@ class SignUp extends Component {
               }}
             >
               <input
-                style={{
-                  width: "50%",
-                  margin: "10px",
-                  marginTop: "20px",
-                  border: " 1px solid lightsteelblue",
-                  height: "35px",
-                }}
+                style={styles.inputBox}
                 className=""
                 name="email"
                 type="email"
@@ -79,13 +83,7 @@ class SignUp extends Component {
                 placeholder="Email"
               ></input>
               <input
-                style={{
-                  width: "50%",
-                  margin: "10px",
-                  marginTop: "20px",
-                  border: "1px solid lightsteelblue",
-                  height: "35px",
-                }}
+                style={styles.inputBox}
                 className=""
                 name="password"
                 type="password"
