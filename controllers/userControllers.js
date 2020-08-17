@@ -10,7 +10,6 @@ router.get("/api/user", function (req, res) {
 
 //Get user who logged in (save uuid)
 router.post("/api/user", function (req, res) {
-  // console.log("req.params", req)
   db.User.findOne({
     email: req.body.params.email,
     password: req.body.params.password,
