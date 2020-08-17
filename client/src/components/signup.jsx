@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import fire from "../config/Fire";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
 import { Spring } from "react-spring/renderprops";
 import { Row, Col } from "antd";
@@ -109,6 +109,13 @@ class SignUp extends Component {
                 className="button"
                 value="Sign Up"
               ></input>
+              <br></br>
+              <label>Already Have An Account?</label>
+              <br></br>
+              <Link to={`/`} activeClassName="active">
+                Login Here
+              </Link>
+              <br></br>
             </form>
           </Col>
         </Row>

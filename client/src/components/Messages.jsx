@@ -31,7 +31,7 @@ function Messages() {
     Axios.get("/api/messages").then((res) => {
       setMessagesArr(res.data.data);
     });
-    setSearchText("")
+    setSearchText("");
   }
 
   function handleMessageChange(e) {
