@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import Axios from "axios";
 import Yesbutton from "./Animations/Yesbutton";
 import Nobutton from "./Animations/Nobutton";
+import Quote from "./Quote"
 
 class Workout extends Component {
   constructor(props) {
@@ -80,14 +81,7 @@ class Workout extends Component {
               <Yesbutton handleYesClick={this.handleYesClick} />
               <Nobutton handleNoClick={this.handleNoClick} />
             </Row>
-
-            <p style={styles.paragraph}>
-              Success isn’t always about greatness.{" "}
-            </p>
-            <p style={styles.paragraph}>It’s about consistency.</p>
-            <p style={styles.paragraph}>Consistent hard work gains success. </p>
-            <p style={styles.paragraph}>Greatness will come.</p>
-
+            <Quote />
             <Button
               onClick={this.handleStackUpButton}
               type="primary"
