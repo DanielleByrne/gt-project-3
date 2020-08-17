@@ -11,7 +11,7 @@ function TeamView() {
     table: {
       marginTop: "45px",
       width: "75%",
-      marginLeft: "15%"
+      marginLeft: "15%",
     },
   };
   const columns = [
@@ -30,10 +30,15 @@ function TeamView() {
   ];
 
   function App() {
-    const props = useSpring({ opacity: 1, from: { opacity: 0 }, marginTop:"0",fontSize:"20px" });
+    const props = useSpring({
+      opacity: 1,
+      from: { opacity: 0 },
+      marginTop: "0",
+      fontSize: "20px",
+    });
     return <animated.div style={props}>How's Your Team Doing?</animated.div>;
   }
-  
+
   useEffect(() => {
     let todaySetter = new Date();
     todaySetter = date.format(todaySetter, "YYYY-MM-DD").trim();
@@ -41,6 +46,8 @@ function TeamView() {
     Axios.get("/api/user")
       .then((res) => {
         for (let i = 0; i < res.data.length; i++) {
+          let newEmail = res.data[i].email.split("@")[0];
+          res.data[i].email = newEmail;
           if (
             res.data[i].workouts.length > 0 &&
             res.data[i].workouts[
@@ -62,8 +69,8 @@ function TeamView() {
             let todayDt = new Date();
             todayDt.setDate(todayDt.getDate() - counter);
             todayDt = date.format(todayDt, "YYYY-MM-DD").trim();
-            console.log(j, todayDt)
-            console.log(counter)
+            console.log(j, todayDt);
+            console.log(counter);
             if (
               res.data[i].workouts[j].date_completed.split("T")[0] ===
                 todayDt &&
@@ -76,8 +83,8 @@ function TeamView() {
                 "Current consecutive Days for user " + res.data[i].email,
                 consecutiveDays
               );
-            }else{
-              j=-1
+            } else {
+              j = -1;
             }
           }
         }
@@ -88,12 +95,12 @@ function TeamView() {
   return (
     <div>
       <div style={styles.table}>
-        <App/>
+        <App />
         <Table
           columns={columns}
           dataSource={allUsers}
           size="middle"
-          pagination={{ pageSize: 5 }}        
+          pagination={{ pageSize: 5 }}
         />
       </div>
       <Messages />
