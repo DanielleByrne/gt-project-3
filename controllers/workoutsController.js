@@ -45,7 +45,6 @@ router.get("/api/workout/:id", function (req, res) {
 //Create workout (using that cronjon?) for each specific user ID
 //How can we connect body to the ID ? req.body is just date/complete so it's created on a users
 router.post("/api/workout", function (req, res) {
-  console.log("Create workout route hit", req.body.params.userID);
   const userID = req.body.params.userID;
   let dt = new Date();
   dt = date.format(dt, "YYYY-MM-DD").trim();
@@ -54,12 +53,10 @@ router.post("/api/workout", function (req, res) {
     .then((userFound) => {
       let recentWorkoutDate;
       if (userFound.workouts.length >= 1) {
-        console.log("DT", dt);
         recentWorkoutDate = new Date(
           userFound.workouts[userFound.workouts.length - 1].date_completed + ""
         );
         recentWorkoutDate = date.format(recentWorkoutDate, "YYYY-MM-DD").trim();
-        console.log("RECENT WORKOUT FORMATTED", recentWorkoutDate);
       } else {
         recentWorkoutDate = null;
       }
@@ -68,13 +65,10 @@ router.post("/api/workout", function (req, res) {
         res.json({
           message: "Workout already made today",
         });
-        console.log("No workout needed to be made");
       } else {
-        console.log("ELSE HIT, CREATING AND PUTTING WORKOUT");
         db.Workout.create({})
           //   .populate("workouts")
           .then((createdWorkout) => {
-            console.log("CREATED WORKOUT", createdWorkout);
             res.json(createdWorkout);
             // GET USER ID HERE AND PASS INTO findOneAndUpdate
             db.User.findOneAndUpdate(
@@ -85,7 +79,6 @@ router.post("/api/workout", function (req, res) {
               { new: true }
             )
               .then((response) => {
-                console.log("User workout pushed", response);
               })
               .catch((err) => console.log("put route error"));
           })
@@ -122,9 +115,7 @@ router.put("/api/workoutUpdate", function (req, res) {
 
 //Delete account by user ID
 router.delete("/api/workout", function (req, res) {
-  console.log(req.body);
   let workoutId = req.body._id
-  console.log(workoutId);
   db.Workout.deleteOne({ _id: workoutId })
     .then((deletedWorkout) => {
       res.json({
