@@ -34,6 +34,7 @@ a:hover {
 
 @media only screen and (max-width: 600px) {
   body {
-    background-image: url("https://wallpapercave.com/wp/wp3469892.jpg");
+    background-image: none;
+    background-color: white;
   }
 }
