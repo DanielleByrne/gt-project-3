@@ -1,7 +1,9 @@
 @import "~antd/dist/antd.css";
 
 body {
-  background-image: url("../src/background.png");
+  background-image: url("../src/finalbackground.png");
+  background-position: center;
+  background-size: cover;
 }
 
 .App {
@@ -30,7 +32,6 @@ a:hover {
 .ant-page-header-heading-title {
   color: white;
 }
-
 
 @media only screen and (max-width: 600px) {
   body {
