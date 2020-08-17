@@ -58,6 +58,19 @@ class Workout extends Component {
     if (this.state.redirectTeam === true) {
       return <Redirect to="/team" />;
     }
+
+    const styles = {
+      paragraph: {
+        fontSize: "15px",
+        marginBottom: "0px",
+      }, button : {
+        backgroundColor: "darksalmon",
+        borderRadius: "12px",
+        width: "300px",
+        height: "100px",
+        fontSize: "25px",
+      }
+    };
     return (
       <div>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
@@ -67,32 +80,20 @@ class Workout extends Component {
               <Yesbutton handleYesClick={this.handleYesClick} />
               <Nobutton handleNoClick={this.handleNoClick} />
             </Row>
-            <aside>
-              <p style={{ fontSize: "15px", marginBottom: "0px" }}>
-                Success isn’t always about greatness.{" "}
-              </p>
-              <p style={{ fontSize: "15px", marginBottom: "0px" }}>
-                It’s about consistency.
-              </p>
-              <p style={{ fontSize: "15px", marginBottom: "0px" }}>
-                Consistent hard work gains success.{" "}
-              </p>
-              <p style={{ fontSize: "15px", marginBottom: "0px" }}>
-                Greatness will come.
-              </p>
-            </aside>
+
+            <p style={styles.paragraph}>
+              Success isn’t always about greatness.{" "}
+            </p>
+            <p style={styles.paragraph}>It’s about consistency.</p>
+            <p style={styles.paragraph}>Consistent hard work gains success. </p>
+            <p style={styles.paragraph}>Greatness will come.</p>
+
             <Button
               onClick={this.handleStackUpButton}
               type="primary"
               size="large"
               icon={<FundTwoTone twoToneColor="#ED6A5E" />}
-              style={{
-                backgroundColor: "darksalmon",
-                borderRadius: "12px",
-                width: "300px",
-                height: "100px",
-                fontSize: "25px",
-              }}
+              style={styles.button}
             >
               See how you stack up!
             </Button>
