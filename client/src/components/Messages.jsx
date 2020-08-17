@@ -39,13 +39,21 @@ function Messages() {
   }
 
   return (
-    <div>
-      <h4 style={{ marginTop: "30px" }}>Chat With Your Team</h4>
+    <div
+      style={{
+        border: "solid #DCC0C0 1px",
+        borderRadius: "25px",
+        margin: "2rem",
+        boxShadow: "inset 0 0 10px #EBDADA",
+        padding:"1rem"
+      }}
+    >
+      <h4 style={{}}>Chat With Your Team</h4>
       <Search
         placeholder="Write your message here"
         enterButton="Send"
         size="large"
-        style={{ width: "50%" }}
+        style={{ width: "70%" }}
         value={searchText}
         onSearch={(value) => handleMessageSubmit(value)}
         onChange={(event) => handleMessageChange(event)}
@@ -54,12 +62,14 @@ function Messages() {
         <div className="scrollable">
           {messagesArr.map((message) => (
             <Card
-              style={{ width: "50%", marginLeft: "25%", marginTop: "20px" }}
+              style={{ width: "75%", marginLeft: "12.5%", marginTop: "20px" }}
             >
               <div style={{ fontSize: "20px" }}>
                 {message.email}:<br />
               </div>
-              <div style={{ fontSize: "16px" }}>{message.message}</div>
+              <div style={{ fontSize: "16px" }}>
+                <p>{message.message}</p>
+              </div>
               <medium>
                 <medium>
                   at {message.time_posted.split("T")[1].slice(0, 5)} on{" "}

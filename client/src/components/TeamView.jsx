@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "antd";
+import { Table, Row, Col } from "antd";
 import { useSpring, animated } from "react-spring";
 import Messages from "./Messages";
 import Axios from "axios";
@@ -87,16 +87,22 @@ function TeamView() {
   }, []);
   return (
     <div>
-      <div style={styles.table}>
-        <App />
-        <Table
-          columns={columns}
-          dataSource={allUsers}
-          size="middle"
-          pagination={{ pageSize: 5 }}
-        />
-      </div>
-      <Messages />
+      <Row>
+        <Col span={12}>
+          <div style={styles.table}>
+            <App />
+            <Table
+              columns={columns}
+              dataSource={allUsers}
+              size="middle"
+              pagination={{ pageSize: 5 }}
+            />
+          </div>
+        </Col>
+        <Col span={12}>
+          <Messages style={{ width: "100%", overflowX: "hidden" }} />
+        </Col>
+      </Row>
     </div>
   );
 }
