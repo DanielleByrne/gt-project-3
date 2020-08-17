@@ -84,6 +84,7 @@ function TeamView() {
                 consecutiveDays
               );
             } else {
+              res.data[i].consecutiveDays = consecutiveDays;
               j = -1;
             }
           }
