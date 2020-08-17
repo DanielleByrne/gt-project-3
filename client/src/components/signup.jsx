@@ -3,8 +3,7 @@ import fire from "../config/Fire";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { Spring } from "react-spring/renderprops";
-import { Row, Col, Card } from "antd";
-// import { app } from "firebase";
+import { Row, Col } from "antd";
 
 class SignUp extends Component {
   constructor(props) {
@@ -14,16 +13,12 @@ class SignUp extends Component {
       redirect: false,
     };
   }
-  // fire.auth().signOut(); code needed to sign out of page. easily attached to button
 
-  // Sign up function
-  // takes email and password with signup (may be able to store more data with setValue)
-  // similar to login once user is created, redirect will be set to true and user will be redirected.
   signUpEmailPassword(event) {
     event.preventDefault();
     const email = this.emailInput.value;
     const password = this.passwordInput.value;
-    // CREATES NEW USER, SAVES USER ID TO LOCAL STORAGE
+
     axios
       .post("/api/signup", { email, password })
       .then((response) => {
@@ -46,22 +41,12 @@ class SignUp extends Component {
 
   render() {
     if (this.state.redirect === true) {
-      // If user is authenticated redirect to a diff page below
       return <Redirect to="/workout" />;
     }
     return (
       <div>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col className="gutter-row" span={24}>
-            {/* <Card
-              style={{
-                width: 300,
-                justifyContent:"center",
-                marginLeft: "40%",
-                boxShadow:
-                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-              }} */}
-
             <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
               {(props) => (
                 <div style={props}>
@@ -69,7 +54,6 @@ class SignUp extends Component {
                 </div>
               )}
             </Spring>
-            {/* <h2 style={{ marginTop: "20px" }}>Create an Account: </h2> */}
             <form
               onSubmit={(event) => {
                 this.signUpEmailPassword(event);
@@ -78,8 +62,6 @@ class SignUp extends Component {
                 this.loginForm = form;
               }}
             >
-              {/* <label className="">
-            Email */}
               <input
                 style={{
                   width: "50%",
@@ -96,15 +78,11 @@ class SignUp extends Component {
                 }}
                 placeholder="Email"
               ></input>
-              {/* </label> */}
-              {/* <label className="">
-            Password */}
               <input
                 style={{
                   width: "50%",
                   margin: "10px",
                   marginTop: "20px",
-                  // border: " 1px solid #ECFEE8",
                   border: "1px solid lightsteelblue",
                   height: "35px",
                 }}
@@ -117,7 +95,6 @@ class SignUp extends Component {
                 placeholder="Password"
               ></input>
               <br></br>
-              {/* </label> */}
               <input
                 style={{
                   margin: "10px",
@@ -130,12 +107,9 @@ class SignUp extends Component {
                 }}
                 type="submit"
                 className="button"
-                // I CHANGED THE VALUE OF THE BUTTON TO SIGN UP I DON'T KNOW IF THAT MESSES ANYTHING UP
-
                 value="Sign Up"
               ></input>
             </form>
-            {/* </Card> */}
           </Col>
         </Row>
       </div>

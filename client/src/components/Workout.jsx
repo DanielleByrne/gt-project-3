@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Row, Col } from "antd";
+import {Button, Row, Col } from "antd";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
@@ -50,8 +50,6 @@ class Workout extends Component {
 
   render() {
     if (this.state.redirectNo === true) {
-      // If user is authenticated redirect to a diff page below
-      //this isn't working how i want it to be
       return <Redirect to="/profile" />;
     } else if (this.state.redirectYes === true) {
       return <Redirect to="/activeday" />;
@@ -64,55 +62,16 @@ class Workout extends Component {
       <div>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col className="gutter-row" span={24}>
-            {/* <Card  */}
-            {/* // style={{ width: 500, marginLeft: '34%', marginTop: '150px' }} */}
-
-            {/* > */}
             <h1 style={{ marginTop: "50px" }}>Is today an active day?</h1>
+            <Row justify="center">
             <Yesbutton handleYesClick={this.handleYesClick} />
             <Nobutton handleNoClick={this.handleNoClick} />
-            {/* <Button
-        <Card style={{ width: 500, marginLeft: "34%", marginTop: "150px" }}>
-          <h1>Is today an active day?</h1>
-          <Button
-            onClick={this.handleYesClick}
-            type="primary"
-            size="large"
-            icon={<StarTwoTone twoToneColor="#ED6A5E" />}
-            style={{
-              backgroundColor: "darksalmon",
-              padding: "10px",
-              borderRadius: "12px",
-              verticalAlign: "middle",
-              display: "table-cell",
-              width: "100px",
-              height: "50px",
-            }}
-          >
-            Yes
-          </Button>
-          <Button
-            onClick={this.handleNoClick}
-            type="primary"
-            size="large"
-            icon={<BookTwoTone twoToneColor="#ED6A5E" />}
-            style={{
-              backgroundColor: 'darksalmon',
-              padding: '10px',
-              borderRadius: '12px',
-              margin: '20px',
-              verticalAlign: 'middle',
-              textAlign: 'center',
-              display: 'table-cell',
-              width: '100px',
-              height: '50px'
-            }}
-          >
-            No
-          </Button> */}
+            </Row>
             <aside>
-              <p>Success isn’t always about greatness. It’s about consistency.</p>
-              <p>Consistent hard work gains success. Greatness will come.</p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>Success isn’t always about greatness. </p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>It’s about consistency.</p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>Consistent hard work gains success. </p>
+              <p style={{fontSize:"15px", marginBottom:"0px"}}>Greatness will come.</p>
             </aside>
             <Button
               onClick={this.handleStackUpButton}
@@ -121,7 +80,6 @@ class Workout extends Component {
               icon={<FundTwoTone twoToneColor="#ED6A5E" />}
               style={{
                 backgroundColor: "darksalmon",
-                // padding: "20px",
                 borderRadius: "12px",
                 width: "300px",
                 height: "100px",
@@ -130,7 +88,6 @@ class Workout extends Component {
             >
               See how you stack up!
             </Button>
-            {/* </Card> */}
           </Col>
         </Row>
       </div>

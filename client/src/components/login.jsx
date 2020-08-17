@@ -4,9 +4,6 @@ import { Redirect, Link } from "react-router-dom";
 import { Row, Col } from "antd";
 import { Spring } from "react-spring/renderprops";
 import axios from "axios";
-// import { Form, Input, Button, Checkbox } from "antd";
-// import { UserOutlined, LockOutlined } from "@ant-design/icons";
-// import { app } from "firebase";
 
 class Login extends Component {
   constructor(props) {
@@ -17,11 +14,6 @@ class Login extends Component {
     };
   }
 
-  // fire.auth().signOut();
-
-  // SignIn
-  // takes email and password from login and authenticates
-  // If authenticated redirect is set to true allowing line 41 to work.
   logInEmailPassword(event) {
     event.preventDefault();
     const email = this.emailInput.value;
@@ -54,11 +46,9 @@ class Login extends Component {
       });
   }
 
-  // Basic form included below. Email and password required.
+
   render() {
     if (this.state.redirect === true || localStorage.getItem("email")) {
-      // If user is authenticated redirect to a diff page below
-      //this isn't working how i want it to be
       return <Redirect to="/workout" />;
     }
     return (
@@ -73,7 +63,6 @@ class Login extends Component {
                   </div>
                 )}
               </Spring>
-              {/* <h2 style={{ marginTop: "20px" }}>Welcome back!</h2> */}
               <h3>Login to your account:</h3>
               <form
                 onSubmit={(event) => {
@@ -83,8 +72,6 @@ class Login extends Component {
                   this.loginForm = form;
                 }}
               >
-                {/* <label className=""> */}
-
                 <input
                   style={{
                     width: "50%",
@@ -101,10 +88,7 @@ class Login extends Component {
                   }}
                   placeholder="Email"
                 ></input>
-                {/* </label> */}
                 <br></br>
-                {/* <label className=""> */}
-
                 <input
                   style={{
                     width: "50%",
@@ -120,7 +104,6 @@ class Login extends Component {
                   }}
                   placeholder="Password"
                 ></input>
-                {/* </label> */}
                 <br></br>
                 <input
                   style={{
@@ -139,7 +122,6 @@ class Login extends Component {
                 <br></br>
                 <label>Don't Have An Account?</label>
                 <br></br>
-                {/* <a href="/signup">Register Here</a> */}
                 <Link to={`/signup`} activeClassName="active">
                   Register Here
                 </Link>

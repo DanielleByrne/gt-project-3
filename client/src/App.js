@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import Axios from "axios";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,16 +7,11 @@ import {
   Redirect,
 } from "react-router-dom";
 import Home from "./components/Home";
-// import Login from "./components/login";
 import Workout from "./components/Workout";
 import fire from "./config/Fire";
-import { Layout } from "antd";
 import "./App.css";
-// import Home from "./components/Home";
-// import Login from "./components/Login";
-// import fire from "./config/Fire";
 import SignUp from "./components/signup";
-import { Button, Col, Row, PageHeader } from "antd";
+import { Button, PageHeader } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import Profile from "./components/Profile";
 import TeamView from "./components/TeamView";
@@ -25,12 +19,6 @@ import ActiveDay from "./components/ActiveDay";
 import { UserOutlined } from "@ant-design/icons";
 import NoMatch from "./components/NoMatch";
 
-// import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
-// import NoMatchAnimate from "./components/Animations/NoMatchAnimate";
-
-import ReactSpring from "./components/Animations/ReactSpring/ReactSpring";
-
-const { Header } = Layout;
 
 class App extends Component {
   constructor(props) {
@@ -44,19 +32,6 @@ class App extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.removeAuthListener = fire.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       this.setState({
-  //         authenticated: true,
-  //       });
-  //     } else {
-  //       this.setState({
-  //         authenticated: false,
-  //       });
-  //     }
-  //   });
-  // };
   handleProfileClick() {
     console.log("Profile button clicked");
     this.setState({ profileRedirect: true });
@@ -74,7 +49,6 @@ class App extends Component {
         this.setState({ user });
         const emailPrefix = user.email.split("@");
         localStorage.setItem("email", emailPrefix[0]);
-        // setUser(user);
       } else {
         this.setState({ user: null });
       }
@@ -107,45 +81,8 @@ class App extends Component {
       return (
         <div className="App">
           <Router>
-            {/* <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-              <Col className="gutter-row" span={32}> */}
-            {/* <Layout>
-                  <Header className="heading">
-                    <Link to="/" className="title"
-                    style ={{marginLeft: "15%"}}>
-                      Healthy Competition
-                    </Link>
-                    <Button
-                      icon={<LogoutOutlined />}
-                      style={{
-                        backgroundColor: "lightsteelblue",
-                        marginTop: "15px",
-                        color: "white",
-                        float: "right",
-                      }}
-                      onClick={this.logout}
-                    >
-                      Log Out
-                    </Button>
-                    <Button
-                      icon={<UserOutlined />}
-                      style={{
-                        backgroundColor: "darksalmon",
-                        color: "white",
-                        float: "right",
-                        marginTop: "15px",
-                      }}
-                      onClick={this.handleProfileClick}
-                    >
-                      Profile
-                    </Button>
-                   
-      
-                  </Header>
-                </Layout> */}
             <div className="site-page-header-ghost-wrapper">
               <PageHeader
-                // title="Healthy Competition"
                 style={{ backgroundColor: "darksalmon", color: "white" }}
                 extra={[
                   <Button
@@ -164,9 +101,6 @@ class App extends Component {
                 </Link>
               </PageHeader>
             </div>
-            {/* </Col>
-            </Row> */}
-
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/workout" component={Workout} />
@@ -175,9 +109,6 @@ class App extends Component {
               <Route exact path="/team" component={TeamView} />
               <Route exact path="/activeday" component={ActiveDay} />
               <Route component={NoMatch} />
-              {/* <Route exact path = "/testspring" component = {NoMatchAnimate}/> */}
-              {/* render= if lift state */}
-              {/* <Route exact path = "/clicktest" component = {Clicktest}/> */}
             </Switch>
           </Router>
         </div>
@@ -186,29 +117,6 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          {/* <Layout>
-            <Header className="heading">
-              <Link to={"/"} className="title">
-                Healthy Competition
-              </Link>
-              {this.state.user ? (
-                <Button
-                  icon={<LogoutOutlined />}
-                  style={{
-                    marginLeft: "90%",
-                    backgroundColor: "lightsteelblue",
-                    marginBottom: "20%",
-                    color: "white",
-                  }}
-                  onClick={this.logout}
-                >
-                  Log Out
-                </Button>
-              ) : null}
-            </Header>
-          </Layout> */}
-          {/* <Login /> */}
-          {/* {this.state.user ? <Home /> : <Login />} */}
           <div className="site-page-header-ghost-wrapper">
             <PageHeader style={{ backgroundColor: "darksalmon" }}>
               <Link to={"/"} className="title" style={{ fontSize: "36px" }}>
