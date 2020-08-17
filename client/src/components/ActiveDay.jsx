@@ -59,7 +59,6 @@ class ActiveDay extends Component {
               width: "300px",
               height: "100px",
               fontSize: "25px",
-  
             }}
           >
             See how you stack up!

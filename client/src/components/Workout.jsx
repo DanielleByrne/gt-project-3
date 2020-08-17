@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Button, Row, Col } from "antd";
+import { Button, Row, Col } from "antd";
 import { FundTwoTone } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
@@ -64,14 +64,22 @@ class Workout extends Component {
           <Col className="gutter-row" span={24}>
             <h1 style={{ marginTop: "50px" }}>Is today an active day?</h1>
             <Row justify="center">
-            <Yesbutton handleYesClick={this.handleYesClick} />
-            <Nobutton handleNoClick={this.handleNoClick} />
+              <Yesbutton handleYesClick={this.handleYesClick} />
+              <Nobutton handleNoClick={this.handleNoClick} />
             </Row>
             <aside>
-              <p style={{fontSize:"15px", marginBottom:"0px"}}>Success isn’t always about greatness. </p>
-              <p style={{fontSize:"15px", marginBottom:"0px"}}>It’s about consistency.</p>
-              <p style={{fontSize:"15px", marginBottom:"0px"}}>Consistent hard work gains success. </p>
-              <p style={{fontSize:"15px", marginBottom:"0px"}}>Greatness will come.</p>
+              <p style={{ fontSize: "15px", marginBottom: "0px" }}>
+                Success isn’t always about greatness.{" "}
+              </p>
+              <p style={{ fontSize: "15px", marginBottom: "0px" }}>
+                It’s about consistency.
+              </p>
+              <p style={{ fontSize: "15px", marginBottom: "0px" }}>
+                Consistent hard work gains success.{" "}
+              </p>
+              <p style={{ fontSize: "15px", marginBottom: "0px" }}>
+                Greatness will come.
+              </p>
             </aside>
             <Button
               onClick={this.handleStackUpButton}
