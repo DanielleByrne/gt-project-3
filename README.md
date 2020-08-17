@@ -1,25 +1,19 @@
 # HealthyCompetition App
 [Deployed app](https://hidden-scrubland-71359.herokuapp.com/)
 
+[GitHub Repo](https://github.com/DanielleByrne/gt-project-3)
+
 ## Description 
+Are you having trouble sticking to your New Year’s Resolution to get in shape?  With HealthyCompetition, you are placed i a community of like-minded people and compete over time to see who is the fittest in your group.  
 
-Your GitHub profile is an extremely important aspect of your public identity as a developer. A well-crafted one allows you to show off your work to other developers as well as potential employers. An important component of your GitHub profile—and one that many new developers often overlook—is the README.md file.
+HealthyCompetition is an easy-to-navigate workout tracker that allows the user to simply mark whether or not a workout has been completed that day and compare the number of days they worked out to others on the application. We developed an application that builds a sense of community and accountability when it comes to working out. We cut the fuss out of other workout applications with our beautiful and  intuitive interface. 
 
-The quality of a README often differentiates a good project from a bad project. A good one takes advantage of the opportunity to explain and showcase what your application does, justify the technologies used, and even talk about some of the challenges you faced and features you hope to implement in the future. A good README helps you stand out among the large crowd of developers putting their work on GitHub.
+User Story:
+AS A competitive person trying to consistently workout
+I WANT an app that easily tracks my workouts and group member’s workouts
+SO THAT I can visualize my workout consistency over time while simultaneously competing against others. 
 
-There's no one right way to structure a good README. There is one very wrong way, however, and that is to not include a README at all or to create a very anemic one. This guide outlines a few best practices. As you progress in your career, you will develop your own ideas about what makes a good README.
-
-At a minimum, your project README needs a title and a short description explaining the what, why, and how. What was your motivation? Why did you build this project? (Note: The answer is not "Because it was a homework assignment.") What problem does it solve? What did you learn? What makes your project stand out? If your project has a lot of features, consider adding a heading called "Features" and listing them here.
-
-If you're new to Markdown, read the GitHub guide on [Mastering Markdown](https://guides.github.com/features/mastering-markdown/).
-
-If you need an example of a good README, check out [the VSCode repository](https://github.com/microsoft/vscode).
-
-
-## Table of Contents (Optional)
-
-If your README is very long, add a table of contents to make it easy for users to find what they need.
-
+## Table of Contents 
 * [Installation](#installation)
 * [Usage](#usage)
 * [Credits](#credits)
@@ -27,52 +21,47 @@ If your README is very long, add a table of contents to make it easy for users t
 
 
 ## Installation
-
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+Clone the repo, install all the npm packages, run in the browser.  
 
 
 ## Usage 
-
-Provide instructions and examples for use. Include screenshots as needed. 
-
+If you do not already have an account, register with your email and a password.  Once you either login or register, you will view your dashboard.  If today is an active day, click yes to create your workout.  If it is a rest day, click no.  You can also view your stats directly from this page.  Once your workout is complete, click "workout complete" and watch the clock transform into a flexed arm.  This will create your `Today's Workout` and `Streak`.  Your streak counts the consecutive number of workout days.  You can click `See How You Stack Up` or `Back to Team Page` from the Workout page to view your team's streaks and workout for the day.  This is where you can leave a message for a team member on the message board. You may logout if you wish, or stay logged in and close your browser or app. 
+![App in Use](./client/public/assets/HealthyCompetition.gif) 
 
 ## Credits
+Project for Georgia Tech Full-Stack Bootcamp
 
-List your collaborators, if any, with links to their GitHub profiles.
+Group Members: Danielle Byrne, Jennifer Daeumler, Nicholas Mitchell, and Maya Stucky
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
+ReactSpring Icons:
 <div>Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 
 ## License
+![MIT](https://img.shields.io/static/v1?label=License&message=MIT&color=blue)
 
-The last section of a good README is a license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, use [https://choosealicense.com/](https://choosealicense.com/)
+Copyright (c) [2020]
 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
----
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-🏆 The sections listed above are the minimum for a good README, but your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-
-Badges aren't _necessary_, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ## Contributing
-
-If you created an application or package and would like other developers to contribute it, you will want to add guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them.
-
-
----
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+Not accepting contributions at the time. 
 
